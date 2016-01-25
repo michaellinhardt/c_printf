@@ -4,3 +4,4 @@ printf
 *.dSYM
 *.o
 *.a
+libft/*.a
