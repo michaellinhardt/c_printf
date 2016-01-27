@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/27 03:52:30 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/01/27 04:14:35 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	= 	perftest
 FLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	main.c \
+			display.c \
 			01_only_write.c \
 
 HDIR 	=	./includes/

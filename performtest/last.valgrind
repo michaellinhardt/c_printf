@@ -1,34 +1,40 @@
-==3417== Memcheck, a memory error detector
-==3417== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==3417== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==3417== Command: ./perftest 1
-==3417== 
-ft_strdup2
-==3417== 
-==3417== HEAP SUMMARY:
-==3417==     in use at exit: 26,066 bytes in 185 blocks
-==3417==   total heap usage: 277 allocs, 92 frees, 32,437 bytes allocated
-==3417== 
-==3417== 2,064 bytes in 1 blocks are possibly lost in loss record 57 of 63
-==3417==    at 0x10000917C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==3417==    by 0x1004F4EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E8182: protocols() (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E8093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E5C13: gc_init (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004ED24E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004FA132: layout_string_create (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E883C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E8300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==3417==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==3417== 
-==3417== LEAK SUMMARY:
-==3417==    definitely lost: 0 bytes in 0 blocks
-==3417==    indirectly lost: 0 bytes in 0 blocks
-==3417==      possibly lost: 2,064 bytes in 1 blocks
-==3417==    still reachable: 0 bytes in 0 blocks
-==3417==         suppressed: 24,002 bytes in 184 blocks
-==3417== 
-==3417== For counts of detected and suppressed errors, rerun with: -v
-==3417== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 17 from 17)
+==3846== Memcheck, a memory error detector
+==3846== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3846== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3846== Command: ./perftest 1
+==3846== 
+
+
+==================== * ====================
+			 01: ONLY WRITE 
+==================== * ====================
+Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!
+%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d!
+==3846== 
+==3846== HEAP SUMMARY:
+==3846==     in use at exit: 26,066 bytes in 185 blocks
+==3846==   total heap usage: 278 allocs, 93 frees, 32,576 bytes allocated
+==3846== 
+==3846== 2,064 bytes in 1 blocks are possibly lost in loss record 57 of 63
+==3846==    at 0x10000917C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3846==    by 0x1004F4EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E8182: protocols() (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E8093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E5C13: gc_init (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004ED24E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004FA132: layout_string_create (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E883C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E8300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3846==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3846== 
+==3846== LEAK SUMMARY:
+==3846==    definitely lost: 0 bytes in 0 blocks
+==3846==    indirectly lost: 0 bytes in 0 blocks
+==3846==      possibly lost: 2,064 bytes in 1 blocks
+==3846==    still reachable: 0 bytes in 0 blocks
+==3846==         suppressed: 24,002 bytes in 184 blocks
+==3846== 
+==3846== For counts of detected and suppressed errors, rerun with: -v
+==3846== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 17 from 17)

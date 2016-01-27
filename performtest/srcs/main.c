@@ -6,11 +6,28 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/27 03:58:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/01/27 04:21:04 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "perftest.h"
+
+int		main(int argc, char **argv)
+{
+	if (argc && argv[1])
+		pt_run(argv[1]);
+	else
+		printf("Syntaxe: ./a.out 1, 2, 3... 5");
+	return (0);
+}
+
+void		pt_run(char *test)
+{
+	pt_set_data();
+	pt_init_stats();
+	pt_set_route(ft_atoi(test));
+	pt_free_data();
+}
 
 void		pt_set_route(int test)
 {
@@ -33,6 +50,14 @@ void		pt_set_data(void)
 	d->s[2] = ft_strdup("ft_strdup3");
 	d->s[3] = ft_strdup("ft_strdup4");
 	d->s[4] = ft_strdup("ft_strdup5");
+	d->again = 100000;
+	d->input = ft_strdup("Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!\n%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d!");
+}
+
+void		pt_init_stats(void)
+{
+	d->write = 0;
+	d->malloc = 0;
 }
 
 void		pt_free_data(void)
@@ -42,23 +67,8 @@ void		pt_free_data(void)
 	i = -1;
 	while (++i < 5)
 		ft_strdel(&d->s[i]);
+	ft_strdel(&d->input);
 	free(d->s);
 	free(d->i);
 	free(d);
-}
-
-void		pt_run(char *test)
-{
-	pt_set_data();
-	pt_set_route(ft_atoi(test));
-	pt_free_data();
-}
-
-int		main(int argc, char **argv)
-{
-	if (argc && argv[1])
-		pt_run(argv[1]);
-	else
-		printf("Syntaxe: ./a.out 1, 2, 3... 5");
-	return (0);
 }
