@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/27 04:21:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/01/27 04:28:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,5 @@ void	pt_test_only_write(void)
 	printf("%s\n", d->input);
 	return ;
 }
+
+// FAIRE UN ONLY WRITE PUTCHAR ET UN ONLY WRITE PUT STR
