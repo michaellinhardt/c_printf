@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/27 04:16:36 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/01/27 07:21:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include "libft.h"
 
+# define V 1 // verbose mode
+
 // 					MAIN.C
 void		pt_run(char *argv);
 void		pt_set_data(void);
@@ -28,8 +30,13 @@ void		pt_free_data(void);
 //					DISPLAY.C
 void		pt_title(char *title);
 
-//					01_TEST_WRITE
-void	pt_test_only_write(void);
+//					PARSE.C
+void		pt_parse_only_putchar(void);
+
+//					01_TEST_ONLY_PUTCHAR
+void	pt_test_only_putchar(void);
+//					02_TEST_MULTIPLE_PUTSTR
+void	pt_test_multiple_putstr(void)
 
 typedef struct			s_data
 {
@@ -40,6 +47,9 @@ typedef struct			s_data
 
 	int		write;
 	int		malloc;
+	int		putnbr;
+	int		atoi;
+	int		putchar;
 }						t_data;
 
 t_data	*d;
