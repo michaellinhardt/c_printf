@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/02 15:50:40 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:46:15 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
+	char	*ret;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	ret = s1;
+	while (*s1)
+		s1++;
+	while (n-- && *s2)
+		*s1++ = *s2++;
+	*s1 = '\0';
+	return (ret);
 }

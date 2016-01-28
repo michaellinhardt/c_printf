@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/02 14:09:12 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:46:05 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strcat(char *s1, const char *s2)
 {
+	char	*ret;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	ret = s1;
+	while (*s1)
+		s1++;
+	ft_strcpy(s1, s2);
+	return (ret);
 }

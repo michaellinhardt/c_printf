@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 20:05:43 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/17 21:51:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (!alst || !del)
+		return ;
+	del((*alst)->content, (*alst)->content_size);
+	ft_memdel((void **)alst);
 }

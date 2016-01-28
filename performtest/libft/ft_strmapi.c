@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 17:59:06 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:57:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	size_t		i;
+	char		*fresh;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (!s || !f)
+		return (NULL);
+	fresh = ft_strnew(ft_strlen(s));
+	if (!fresh)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		fresh[i] = (*f)(i, s[i]);
+		i++;
+	}
+	return (fresh);
 }

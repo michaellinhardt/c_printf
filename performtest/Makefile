@@ -15,8 +15,9 @@ FLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	main.c \
 			display.c \
-			parse.c \
 			01_only_putchar.c \
+			02_multiple_putstr.c \
+			03_one_putstr.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -35,10 +36,10 @@ W8			= $(WH)* [ $(BL)W8 $(WH)]
 all: $(NAME)
 
 $(NAME):
-	#@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
-	#@make -C $(LDIR)
+	@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
+	@make -C $(LDIR)
 	@echo "$(W8) $(YE)gcc $(FLAGS) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
-	@gcc $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft
+	@gcc $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:
@@ -64,10 +65,25 @@ test: re
 	@time ./$(NAME) | /bin/cat -e
 	@echo "$(OK) $(GR)Done!$(WH)"
 
+test1: re
+	@echo "$(W8) $(YE)time ./$(NAME) 1$(WH)"
+	@time ./$(NAME) 1
+	@echo "$(OK) $(GR)Done!$(WH)"
+
+test2: re
+	@echo "$(W8) $(YE)time ./$(NAME) 2$(WH)"
+	@time ./$(NAME) 2
+	@echo "$(OK) $(GR)Done!$(WH)"
+
+test3: re
+	@echo "$(W8) $(YE)time ./$(NAME) 3$(WH)"
+	@time ./$(NAME) 3
+	@echo "$(OK) $(GR)Done!$(WH)"
+
 leaks: re -leaks
 -leaks:
 	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 1 > ./last.valgrind 2>&1$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 1 > ./last.valgrind 2>&1
+	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 3 > ./last.valgrind 2>&1
 	@echo "$(W8) $(YE)/bin/cat ./last.valgrind$(WH)"
 	@/bin/cat ./last.valgrind
 	@echo "$(OK) $(GR)Done!$(WH)"

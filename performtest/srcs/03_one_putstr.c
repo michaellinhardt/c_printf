@@ -12,41 +12,58 @@
 
 #include "perftest.h"
 
-void	pt_test_multiple_putstr(void)
+void	pt_test_one_putstr(void)
 {
 	int		i;
 
 	i = 0;
-	pt_title("02: MULTIPLE PUTSTR");
+	pt_title("03: ONE PUTSTR");
 	if (V)
-		printf("*pt_parse_multiple_putstr(d->input) ->\n\tSTRING: one time with putstr \n\t%%s: one time with putstr\n\t%%d: one time with itoa\n\n");
+		printf("*pt_parse_one_putstr(d->input) ->\n\tSTRING: malloc for later \n\t%%s: malloc for later\n\t%%d: malloc for later\n\n");
 	while (d->again--)
-		pt_parse_multiple_putstr();
+		pt_parse_one_putstr();
 }
 
-void		pt_parse_multiple_putstr(void)
+void		pt_parse_one_putstr(void)
 {
 	int		i;
 	int		s;
 	int		e;
 	char	*str = NULL;
+	char	*t = NULL;
+	char	*t2 = NULL;
 
 	i = -1;
 	s = 0;
+	str = ft_strnew(0);
 	while (d->input[++i])
 	{
 		if (d->input[i] == '%')
 		{
 			e = i;
-			str = ft_strsub(d->input, s, (e - s));
-			ft_putstr(str);
-			ft_strdel(&str);
+			t = str;
+			t2 = ft_strsub(d->input, s, (e - s));
+			str = ft_strjoin(t, t2);
+			ft_strdel(&t);
+			ft_strdel(&t2);
 			if (d->input[(i+2)] == 'd')
-				ft_putnbr(d->i[(ft_atoi(&d->input[(i+1)]))]);
+			{
+				t = str;
+				t2 = ft_itoa(d->i[(ft_atoi(&d->input[(i+1)]))]);
+				str = ft_strjoin(t, t2);
+				ft_strdel(&t);
+				ft_strdel(&t2);
+			}
 			else
-				ft_putstr(d->s[(ft_atoi(&d->input[(i+1)]))]);
+			{
+				t = str;
+				str = ft_strjoin(t, d->s[(ft_atoi(&d->input[(i+1)]))]);
+				ft_strdel(&t);
+			}
 			i += 2;
 			s = i + 1;
 		}
 	}
+	ft_putstr(str);
+	ft_strdel(&str);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/11/28 13:42:14 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:58:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
+	char *byte;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (n == 0)
+		return (s);
+	byte = (char *)s;
+	while (n--)
+		*byte++ = (char)c;
+	return (s);
 }

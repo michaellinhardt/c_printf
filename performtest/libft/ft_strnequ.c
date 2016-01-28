@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 18:08:57 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:58:08 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if (!ft_strncmp(s1, s2, n))
+		return (1);
 	return (0);
 }

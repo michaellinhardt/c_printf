@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 17:54:05 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 18:56:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
+	size_t	i;
+	char	*s_new;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (!s || !f)
+		return (NULL);
+	s_new = ft_strnew(ft_strlen(s));
+	if (!s_new)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		s_new[i] = (*f)(s[i]);
+		i++;
+	}
+	return (s_new);
 }

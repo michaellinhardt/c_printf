@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 # define V 1 // verbose mode
 
@@ -30,13 +30,17 @@ void		pt_free_data(void);
 //					DISPLAY.C
 void		pt_title(char *title);
 
-//					PARSE.C
+//					01_TEST_ONLY_PUTCHAR
+void		pt_test_only_putchar(void);
 void		pt_parse_only_putchar(void);
 
-//					01_TEST_ONLY_PUTCHAR
-void	pt_test_only_putchar(void);
 //					02_TEST_MULTIPLE_PUTSTR
-void	pt_test_multiple_putstr(void)
+void		pt_test_multiple_putstr(void);
+void		pt_parse_multiple_putstr(void);
+
+//					03_TEST_ONE_PUTSTR
+void		pt_test_one_putstr(void);
+void		pt_parse_one_putstr(void);
 
 typedef struct			s_data
 {
@@ -44,12 +48,6 @@ typedef struct			s_data
 	int		*i;
 	char	**s;
 	char	*input;
-
-	int		write;
-	int		malloc;
-	int		putnbr;
-	int		atoi;
-	int		putchar;
 }						t_data;
 
 t_data	*d;

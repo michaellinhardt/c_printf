@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_arrcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/16 13:33:22 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/17 21:56:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+char	**ft_arrcpy(char **arr)
 {
+	char	**new_arr;
+	size_t	pos;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (!(new_arr = (char**)malloc(sizeof(char *) * (ft_arrlen(arr) + 1))))
+		return (NULL);
+	pos = 0;
+	while (arr && arr[pos])
+	{
+		new_arr[pos] = ft_strdup(arr[pos]);
+		pos++;
+	}
+	new_arr[pos] = NULL;
+	return (new_arr);
 }

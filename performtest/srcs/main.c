@@ -24,7 +24,6 @@ int		main(int argc, char **argv)
 void		pt_run(char *test)
 {
 	pt_set_data();
-	pt_init_stats();
 	pt_set_route(ft_atoi(test));
 	pt_free_data();
 }
@@ -33,6 +32,10 @@ void		pt_set_route(int test)
 {
 	if (test == 1)
 		pt_test_only_putchar();
+	if (test == 2)
+		pt_test_multiple_putstr();
+	if (test == 3)
+		pt_test_one_putstr();
 }
 
 void		pt_set_data(void)
@@ -50,16 +53,8 @@ void		pt_set_data(void)
 	d->s[2] = ft_strdup("ft_strdup3");
 	d->s[3] = ft_strdup("ft_strdup4");
 	d->s[4] = ft_strdup("ft_strdup5");
-	d->again = 1000;
-	d->input = ft_strdup("Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!\n%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d!");
-}
-
-void		pt_init_stats(void)
-{
-	d->write = 0;
-	d->malloc = 0;
-	d->putnbr = 0;
-	d->atoi = 0;
+	d->again = 100000;
+	d->input = ft_strdup("Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!\n%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d");
 }
 
 void		pt_free_data(void)

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/01 06:40:02 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 19:00:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	size_t		i;
+	const char	*tmp1;
+	const char	*tmp2;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
+	tmp1 = s1;
+	tmp2 = s2;
+	i = 0;
+	while (i < n)
+	{
+		if (tmp1[i] != tmp2[i])
+			return ((unsigned char)tmp1[i] - (unsigned char)tmp2[i]);
+		i++;
+	}
 	return (0);
 }

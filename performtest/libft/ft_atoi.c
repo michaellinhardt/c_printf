@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 14:21:58 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 19:03:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+int		ft_atoi(const char *str)
 {
+	int		ret;
+	int		sign;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	sign = 1;
+	ret = 0;
+	while (ft_isspace(*str))
+		++str;
+	if (!ft_isdigit(*str))
+	{
+		if (*str == '-')
+			sign = -1;
+		else if (*str != '+')
+			return (0);
+		str++;
+	}
+	while (ft_isdigit(*str))
+		ret = ret * 10 + (*str++ - '0') * sign;
+	return (ret);
 }

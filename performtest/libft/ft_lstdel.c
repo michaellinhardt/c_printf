@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 20:05:31 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/17 21:52:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
+	t_list	*list;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	if (!alst || !del)
+		return ;
+	list = *alst;
+	while (list)
+	{
+		del(list->content, list->content_size);
+		free(list);
+		list = list->next;
+	}
+	*alst = NULL;
 }

@@ -23,3 +23,23 @@ void	pt_test_only_putchar(void)
 	while (d->again--)
 		pt_parse_only_putchar();
 }
+
+void		pt_parse_only_putchar(void)
+{
+	int		i;
+
+	i = -1;
+	while (d->input[++i])
+	{
+		if (d->input[i] != '%')
+			ft_putchar(d->input[i]);
+		else
+		{
+			if (d->input[(i+2)] == 'd')
+				ft_putnbr(d->i[(ft_atoi(&d->input[(i+1)]))]);
+			else
+				ft_putstr(d->s[(ft_atoi(&d->input[(i+1)]))]);
+			i += 2;
+		}
+	}
+}

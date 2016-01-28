@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/25 05:53:58 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/01 06:17:04 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/16 19:00:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(int argc, char **argv)
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (argc && argv)
-		;
-	char s[] = "lol ok";
-	printf("%s\n", s);
-
-	return (0);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (s1 > s2)
+	{
+		str1 = str1 + n;
+		str2 = str2 + n;
+		while (n--)
+			*--str1 = *--str2;
+	}
+	else
+		ft_memcpy(s1, s2, n);
+	return (s1);
 }
