@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 	if (argc && argv)
 		;
 	char s[] = "lol ok";
-	printf("%s\n", s);
+	printf("%#s\n", s);
 
 	return (0);
 }

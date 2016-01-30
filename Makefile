@@ -12,6 +12,7 @@
 
 NAME	= 	printf
 FLAGS	=	-Wall -Wextra -Werror -g
+FLAGS2	=	 -g
 
 SRCS	=	main.c \
 
@@ -34,8 +35,8 @@ all: $(NAME)
 $(NAME):
 	@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
 	@make -C $(LDIR)
-	@echo "$(W8) $(YE)gcc $(FLAGS) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
-	@gcc $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
+	@echo "$(W8) $(YE)gcc $(FLAGS2) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
+	@gcc $(FLAGS2) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:

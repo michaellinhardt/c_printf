@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/27 06:43:30 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/01/30 22:02:08 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@ NAME	= 	perftest
 FLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	main.c \
-			display.c \
+			funcs.c \
 			01_only_putchar.c \
 			02_multiple_putstr.c \
 			03_one_putstr.c \
+			04_03_only_if.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -77,13 +78,13 @@ test2: re
 
 test3: re
 	@echo "$(W8) $(YE)time ./$(NAME) 3$(WH)"
-	@time ./$(NAME) 3
+	@time ./$(NAME) 4
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 leaks: re -leaks
 -leaks:
-	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 1 > ./last.valgrind 2>&1$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 3 > ./last.valgrind 2>&1
+	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 4 > ./last.valgrind 2>&1$(WH)"
+	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 4 > ./last.valgrind 2>&1
 	@echo "$(W8) $(YE)/bin/cat ./last.valgrind$(WH)"
 	@/bin/cat ./last.valgrind
 	@echo "$(OK) $(GR)Done!$(WH)"
