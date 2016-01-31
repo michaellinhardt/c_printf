@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/31 02:22:38 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/01/31 02:13:42 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int		main(int argc, char **argv)
-{
-	char	*s1;
-	char	*s2;
-	char	*s3;
+# include "libft/libft.h"
+# include <stdarg.h>
 
-	if (argc && argv)
-		;
-	s1 = ft_strdup("s1lala");
-	s2 = ft_strdup("s2ahah");
-	s3 = ft_strdup("s3hihi");
-	ft_printf("ceci est un test", s1, s2, s3);
-	printf("%-+0#5% ok\n");
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	ft_strdel(&s3);
-	return (0);
-}
+int		ft_printf(const char *restrict format, ...);
+
+#include <stdio.h>
+#endif

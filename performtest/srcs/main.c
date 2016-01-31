@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/27 07:18:02 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/01/31 03:57:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void		pt_set_route(int test)
 		pt_test_one_putstr();
 	if (test == 4)
 		pt_test_one_putstr04();
+	if (test == 5)
+		pt_test_one_putstr05();
 }
 
 void		pt_set_data(void)
@@ -55,7 +57,7 @@ void		pt_set_data(void)
 	d->s[2] = ft_strdup("ft_strdup3");
 	d->s[3] = ft_strdup("ft_strdup4");
 	d->s[4] = ft_strdup("ft_strdup5");
-	d->again = 1;
+	d->again = 4000000;
 	d->input = ft_strdup("Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!\n%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d");
 	d->input2 = ft_strdup("Ceci est un lorem ipsum de printf, %0+--   #0d lorem %1--+ -#d ipsum %0 s!\n%1#s et %2 0d ou %2-s ou %3+d et %3  s et enfin %4#0-+ s pour %4-+ 0#d");
 }

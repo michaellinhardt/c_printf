@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/25 04:16:07 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/01/31 01:50:16 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ FLAGS	=	-Wall -Wextra -Werror -g
 FLAGS2	=	 -g
 
 SRCS	=	main.c \
+			ft_printf.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -35,8 +36,8 @@ all: $(NAME)
 $(NAME):
 	@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
 	@make -C $(LDIR)
-	@echo "$(W8) $(YE)gcc $(FLAGS2) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
-	@gcc $(FLAGS2) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
+	@echo "$(W8) $(YE)gcc $(FLAGS) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
+	@gcc $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:
