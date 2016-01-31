@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/31 03:45:48 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/01/31 20:49:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct			s_data
 	char	**s;
 	char	*input;
 	char	*input2;
+	char	*input3;
 }						t_data;
 
 typedef struct			s_convert
@@ -73,9 +74,28 @@ void		pt_test_one_putstr04(void);
 void		pt_parse_one_putstr04(void);
 void		pt_parse_option_only_if(t_convert *conv);
 
-//					04_03_ONLY_IF && MALLOC
+//					05_03_ONLY_IF && MALLOC
 void		pt_test_one_putstr05(void);
 void		pt_parse_one_putstr05(void);
 void		pt_parse_option_only_if05(t_convert *conv);
+
+//					06_TAB_POINTEUR
+void	pt_test_one_putstr_tab_pointeur(void);
+void	pt_parse_one_putstr_tab_pointeur(void);
+void	pt_get_handler06(char c, char **str);
+void		pt_06_handle_escape(char **str);
+void		pt_06_handle_str(char **str);
+void		pt_06_handle_wstr(char **str);
+void		pt_06_handle_ptr(char **str);
+void		pt_06_handle_int(char **str);
+void		pt_06_handle_octal(char **str);
+void		pt_06_handle_long(char **str);
+void		pt_06_handle_unsigned(char **str);
+void		pt_06_handle_hex(char **str);
+void		pt_06_handle_char(char **str);
+void		pt_06_handle_wchar(char **str);
+void		pt_06_handle_binary(char **str);
+void		pt_06_handle_float(char **str);
+void		pt_06_handle_charswritten(char **str);
 
 #endif

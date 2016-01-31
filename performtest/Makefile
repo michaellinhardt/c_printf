@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/31 03:47:01 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/01/31 20:31:42 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS	=	main.c \
 			03_one_putstr.c \
 			04_03_only_if.c \
 			05_03_only_if.c \
+			06_convert_tab.c \
+			06_tab_pointeur.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -95,8 +97,8 @@ test5: re
 
 leaks: re -leaks
 -leaks:
-	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 4 > ./last.valgrind 2>&1$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 4 > ./last.valgrind 2>&1
+	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 6 > ./last.valgrind 2>&1$(WH)"
+	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 6 > ./last.valgrind 2>&1
 	@echo "$(W8) $(YE)/bin/cat ./last.valgrind$(WH)"
 	@/bin/cat ./last.valgrind
 	@echo "$(OK) $(GR)Done!$(WH)"
