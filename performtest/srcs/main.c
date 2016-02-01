@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/01 12:48:39 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 13:39:59 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		pt_set_data(void)
 	d->s[2] = ft_strdup("ft_strdup3");
 	d->s[3] = ft_strdup("ft_strdup4");
 	d->s[4] = ft_strdup("ft_strdup5");
-	d->again = 1;
+	d->again = 1000000;
 	d->input = ft_strdup("Ceci est un lorem ipsum de printf, %0d lorem %1d ipsum %0s!\n%1s et %2d ou %2s ou %3d et %3s et enfin %4s pour %4d");
 	d->input2 = ft_strdup("Ceci est un lorem ipsum de printf, %0+--   #0d lorem %1--+ -#d ipsum %0 s!\n%1#s et %2 0d ou %2-s ou %3+d et %3  s et enfin %4#0-+ s pour %4-+ 0#d");
 	d->input3 = ft_strdup("Start: %% -- %s -- %S -- %p -- %d -- %D -- %i -- %o -- %O -- %u -- %U -- %x -- %X -- %c -- %C -- %b -- %f -- %n");

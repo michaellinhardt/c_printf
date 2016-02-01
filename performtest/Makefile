@@ -12,7 +12,7 @@
 
 NAME	= 	perftest
 FLAGS	=	-Wall -Wextra -Werror -g
-FLAGS2	=	-Wall -Wextra -Werror
+FLAGS2	=	-Wall -Wextra -Werror -ofast
 
 SRCS	=	main.c \
 			funcs.c \
@@ -23,6 +23,8 @@ SRCS	=	main.c \
 			05_03_only_if.c \
 			06_convert_tab.c \
 			06_tab_pointeur.c \
+			07_convert_if.c \
+			07_only_if.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -90,6 +92,16 @@ test4: re
 	@time ./$(NAME) 4
 	@echo "$(OK) $(GR)Done!$(WH)"
 
+test6: re
+	@echo "$(W8) $(YE)time ./$(NAME) 6$(WH)"
+	@time ./$(NAME) 6
+	@echo "$(OK) $(GR)Done!$(WH)"
+
+test7: re
+	@echo "$(W8) $(YE)time ./$(NAME) 7$(WH)"
+	@time ./$(NAME) 7
+	@echo "$(OK) $(GR)Done!$(WH)"
+
 test5: re
 	@echo "$(W8) $(YE)time ./$(NAME) 5$(WH)"
 	@time ./$(NAME) 5
@@ -97,8 +109,8 @@ test5: re
 
 leaks: re -leaks
 -leaks:
-	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 6 > ./last.valgrind 2>&1$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 6 > ./last.valgrind 2>&1
+	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./$(NAME) 7 > ./last.valgrind 2>&1$(WH)"
+	@valgrind --leak-check=yes --track-origins=yes ./$(NAME) 7 > ./last.valgrind 2>&1
 	@echo "$(W8) $(YE)/bin/cat ./last.valgrind$(WH)"
 	@/bin/cat ./last.valgrind
 	@echo "$(OK) $(GR)Done!$(WH)"

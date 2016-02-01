@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*                                                                         */
 /*                                                        :::      ::::::::   */
 /*   04_03_only_if.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -14,7 +14,7 @@
 
 void    pt_test_one_putstr_tab_pointeur(void)
 {
-    int        i;
+    int     i;
 
     i = 0;
     pt_title("06: ONE PUTSTR - TAB POINTEUR");
@@ -24,12 +24,12 @@ void    pt_test_one_putstr_tab_pointeur(void)
 
 void        pt_parse_one_putstr_tab_pointeur(void)
 {
-    int            s;
-    int            e;
+    int         s;
+    int         e;
     char        *str = NULL;
     char        *t = NULL;
     char        *t2 = NULL;
-    int            i = -1;
+    int         i = -1;
 
     str = ft_strnew(0);
     s = 0;
