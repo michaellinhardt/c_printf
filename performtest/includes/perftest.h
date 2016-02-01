@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/01 12:35:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 14:13:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ void		pt_parse_multiple_putstr(void);
 //					03_TEST_ONE_PUTSTR
 void		pt_test_one_putstr(void);
 void		pt_parse_one_putstr(void);
+
+//					08_TEST_ONE_WRITE
+void		pt_test_one_putstr08(void);
+void		pt_parse_one_putstr08(void);
 
 //					04_03_ONLY_IF && FT_MEMALLOC
 void		pt_test_one_putstr04(void);

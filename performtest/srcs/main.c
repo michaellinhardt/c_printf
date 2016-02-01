@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/01 13:39:59 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 14:20:09 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void		pt_set_route(int test)
 		pt_test_one_putstr_tab_pointeur();
 	if (test == 7)
 		pt_test_one_putstr_only_if();
+	if (test == 8)
+		pt_test_one_putstr08();
 }
 
 void		pt_set_data(void)

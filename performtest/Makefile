@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/31 20:31:42 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/01 14:16:02 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS	=	main.c \
 			06_tab_pointeur.c \
 			07_convert_if.c \
 			07_only_if.c \
+			08_one_write.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
@@ -102,9 +103,9 @@ test7: re
 	@time ./$(NAME) 7
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-test5: re
-	@echo "$(W8) $(YE)time ./$(NAME) 5$(WH)"
-	@time ./$(NAME) 5
+test8: re
+	@echo "$(W8) $(YE)time ./$(NAME) 8$(WH)"
+	@time ./$(NAME) 8
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 leaks: re -leaks

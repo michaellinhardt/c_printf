@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/31 02:22:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 14:54:11 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int		main(int argc, char **argv)
 	s1 = ft_strdup("s1lala");
 	s2 = ft_strdup("s2ahah");
 	s3 = ft_strdup("s3hihi");
-	ft_printf("ceci est un test", s1, s2, s3);
-	printf("%-+0#5% ok\n");
+
+	ft_printf(s1);
+
 	ft_strdel(&s1);
 	ft_strdel(&s2);
 	ft_strdel(&s3);

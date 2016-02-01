@@ -6,13 +6,12 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/01/31 01:50:16 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/01 14:59:47 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	printf
 FLAGS	=	-Wall -Wextra -Werror -g
-FLAGS2	=	 -g
 
 SRCS	=	main.c \
 			ft_printf.c \
