@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/31 20:49:20 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 12:35:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,38 @@ void		pt_parse_option_only_if05(t_convert *conv);
 void	pt_test_one_putstr_tab_pointeur(void);
 void	pt_parse_one_putstr_tab_pointeur(void);
 void	pt_get_handler06(char c, char **str);
-void		pt_06_handle_escape(char **str);
-void		pt_06_handle_str(char **str);
-void		pt_06_handle_wstr(char **str);
-void		pt_06_handle_ptr(char **str);
-void		pt_06_handle_int(char **str);
-void		pt_06_handle_octal(char **str);
-void		pt_06_handle_long(char **str);
-void		pt_06_handle_unsigned(char **str);
-void		pt_06_handle_hex(char **str);
-void		pt_06_handle_char(char **str);
-void		pt_06_handle_wchar(char **str);
-void		pt_06_handle_binary(char **str);
-void		pt_06_handle_float(char **str);
-void		pt_06_handle_charswritten(char **str);
+void		pt_06_handle_escape(char **);
+void		pt_06_handle_str(char **);
+void		pt_06_handle_wstr(char **);
+void		pt_06_handle_ptr(char **);
+void		pt_06_handle_int(char **);
+void		pt_06_handle_octal(char **);
+void		pt_06_handle_long(char **);
+void		pt_06_handle_unsigned(char **);
+void		pt_06_handle_hex(char **);
+void		pt_06_handle_char(char **);
+void		pt_06_handle_wchar(char **);
+void		pt_06_handle_binary(char **);
+void		pt_06_handle_float(char **);
+void		pt_06_handle_charswritten(char **);
+
+//					07_ONLY_IF
+void	pt_test_one_putstr_only_if(void);
+void	pt_parse_one_putstr_only_if(void);
+void	pt_get_handler07(char c, char **str);
+void		pt_07_handle_escape(char **);
+void		pt_07_handle_str(char **);
+void		pt_07_handle_wstr(char **);
+void		pt_07_handle_ptr(char **);
+void		pt_07_handle_int(char **);
+void		pt_07_handle_octal(char **);
+void		pt_07_handle_long(char **);
+void		pt_07_handle_unsigned(char **);
+void		pt_07_handle_hex(char **);
+void		pt_07_handle_char(char **);
+void		pt_07_handle_wchar(char **);
+void		pt_07_handle_binary(char **);
+void		pt_07_handle_float(char **);
+void		pt_07_handle_charswritten(char **);
 
 #endif

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   funcs.c                                            :+:      :+:    :+:   */
+/*   06_convert_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/30 22:47:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/01 12:48:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "perftest.h"
 
-static void	pt_set_handler06(void *handlers)
+static void	pt_set_handler06(void (**handlers)(char **))
 {
+	printf("set handlers\n");
 	handlers['%'] = &pt_06_handle_escape;
 	handlers['s'] = &pt_06_handle_str;
 	handlers['S'] = &pt_06_handle_wstr;
@@ -36,85 +37,167 @@ static void	pt_set_handler06(void *handlers)
 
 void		pt_get_handler06(char c, char **str)
 {
-	static void *handlers = NULL;
+	static void (*handlers[256])(char **) = {NULL};
 
-	if (handlers == NULL)
-	{
-		handlers = ft_memalloc(sizeof(*handlers) * 256);
+	if (!handlers['%'])
 		pt_set_handler06(handlers);
-	}
-	c += 1;
-	*str += 1;
-	*str -= 1;
+	if (handlers[(int)c])
+		handlers[(int)c](str);
+	else
+		printf("bad specifier\n");
 }
 
 void		pt_06_handle_escape(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("modulo");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_str(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("str");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_wstr(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("wstr");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_ptr(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("ptr");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_long(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("long");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_int(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("int");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_octal(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("octal");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_unsigned(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("unsigned");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_hex(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("hex");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_char(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("char");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_wchar(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("wchar");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_binary(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("binary");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_float(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("float");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
 void		pt_06_handle_charswritten(char **str)
 {
-	*str += 1;
-	*str -= 1;
+	char	*t;
+	char	*t2;
+
+	t = *str;
+	t2 = ft_strdup("charswritten");
+	*str = ft_strjoin(t, t2);
+	ft_strdel(&t);
+	ft_strdel(&t2);
 }
