@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/02 07:24:59 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/02 07:41:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ t_printf	*pf_singleton(int last);
 
 // FICHIER JOIN.C
 int			pf_join(int method, const char *restrict format);
+
+// FICHIER PARSE.C
+int		pf_parse(const char *restrict format, ...);
 
 #include <stdio.h>
 #endif

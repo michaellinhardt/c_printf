@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/02 07:33:07 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/02 07:37:09 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS	=	main.c \
 			ft_printf.c \
 			ft_printf_join.c \
 			ft_printf_singleton.c \
+			ft_printf_parse.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
