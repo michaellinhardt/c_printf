@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/02 07:16:01 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/02/02 07:18:38 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-int		main(int argc, char **argv)
+static int	pf_join_format(const char *restrict format)
 {
-	char	*s1;
-	char	*s2;
-	char	*s3;
-	int		ret;
+	t_printf		*pf;
+	char			*prev;
+	char			*next;
 
-	if (argc && argv)
-		;
-	s1 = ft_strdup("s1lala");
-	s2 = ft_strdup("s2ahah");
-	s3 = ft_strdup("s3hihi");
+	pf = pf_singleton(1);
+	prev = pf->join;
+	if (!(next = ft_strsub(format, pf->start, pf->i)))
+		return (1);
+	if (!(pf->join = ft_strjoin(prev, next)))
+		return (1);
+	ft_strdel(&prev);
+	ft_strdel(&next);
+	return (0);
+}
 
-	ret = ft_printf(s1);
-	printf("\n\nRETURN: %d\n", ret);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	ft_strdel(&s3);
+
+int			pf_join(int method, const char *restrict format)
+{
+	if (method == 1 && pf_join_format(format))
+		return (1);
 	return (0);
 }

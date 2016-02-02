@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/02 07:16:01 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/02/02 07:24:46 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-int		main(int argc, char **argv)
+t_printf	*pf_singleton(int last)
 {
-	char	*s1;
-	char	*s2;
-	char	*s3;
-	int		ret;
+	static t_printf		pf;
 
-	if (argc && argv)
-		;
-	s1 = ft_strdup("s1lala");
-	s2 = ft_strdup("s2ahah");
-	s3 = ft_strdup("s3hihi");
-
-	ret = ft_printf(s1);
-	printf("\n\nRETURN: %d\n", ret);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	ft_strdel(&s3);
-	return (0);
+	if (!last)
+	{
+		pf.i = 0;
+		pf.start = 0;
+		pf.ret = -1;
+	}
+	return (&pf);
 }
