@@ -32,8 +32,10 @@
 ### files
 | file | declaration |
 | ------------- | ------------- |
-| ft_printf.c | 	- 	int			ft_printf(format, ...);
-	- 	int			pf_return(ret); |
+| ft_printf.c | int ft_printf(format, ...); |
+| ft_printf.c | int pf_return(ret); |
+| ------------- | ------------- |
+| ft_printf_singleton.c | t_printf *pf_singleton(last); |
 
 - ft_printf.c
 	- 	int			ft_printf(format, ...);
