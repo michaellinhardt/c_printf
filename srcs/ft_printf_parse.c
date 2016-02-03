@@ -17,16 +17,13 @@ static int		pf_fake(const char *restrict format)
 	t_printf		*pf;
 
 	(void)format;
-	printf("call pf_fake");
 	pf = pf_singleton(1);
-
 	return (1);
 }
 
 static int		pf_parse_flag(const char *restrict format)
 {
 	t_printf		*pf;
-	printf("parse flag\n");
 
 	pf = pf_singleton(1);
 	if ((format[pf->i] == '#') && (pf->arg.diez = 1))
@@ -107,11 +104,9 @@ int				pf_parse(const char *restrict format)
 
 	pf = pf_singleton(1);
 	while (format[pf->i++])
-	{
 		if ((format[pf->i] == '%') && (pf_join(1, format)
 		|| pf_parse_specifier(format)))
 			return (1);
-	}
 	if ((pf->i - pf->start) > 0 && pf_join(1, format))
 		return (-1);
 	// char		*tmp;
