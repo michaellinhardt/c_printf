@@ -39,8 +39,8 @@ static int		pf_parse_flag(const char *restrict format)
 		return (1);
 	if ((format[pf->i] == ' ') && (pf->arg.space = 1))
 		return (1);
-	if ((format[pf->i] == '{') && (pf->arg.col = 1))
-		return (1);
+	// if ((format[pf->i] == '{') && (pf->arg.col = 1))
+	// 	return (1);
 	return (1);
 }
 
@@ -72,12 +72,12 @@ static void		pf_parse_specifier_init(int (**spe)(const char *restrict))
 	spe['X'] = &pf_fake;
 	spe['c'] = &pf_fake;
 	spe['C'] = &pf_fake;
+	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;
 	spe['0'] = &pf_parse_flag;
 	spe['+'] = &pf_parse_flag;
 	spe['-'] = &pf_parse_flag;
 	spe[' '] = &pf_parse_flag;
-	spe['{'] = &pf_parse_flag;
 	// int i = -1;
 	// while (++i < 128)
 	// 	if (spe[i])
