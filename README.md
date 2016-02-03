@@ -29,20 +29,15 @@
 - s: ft_strjoin(char *pf->join, char *formated);
 - d:
 
-### files
-| file | declaration |
+### location
+| file | function |
 | ------------- | ------------- |
-| ft_printf.c | int    ft_printf(format, ...); |
-| ft_printf.c | int    pf_return(ret); |
+| ft_printf.c | ft_printf |
+| ft_printf.c | pf_return |
 |   |   |
-| ft_printf_singleton.c | t_printf *pf_singleton(last); |
-
-- ft_printf.c
-	- 	int			ft_printf(format, ...);
-	- 	int			pf_return(ret);
-ft_printf_singleton.c
-	- 	t_printf	*pf_singleton(last);
-ft_printf_parse.c
-	- 	int			pf_parse(format);
-ft_printf_join.c
-	- 	int			pf_join(method, format);
+| ft_printf_singleton.c | pf_singleton |
+| ft_printf_parse.c | pf_return |
+|   |   |
+| ft_printf_parse.c | pf_parse |
+|   |   |
+| ft_printf_join.c | pf_join |
