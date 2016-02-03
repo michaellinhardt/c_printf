@@ -17,32 +17,34 @@ static int		pf_fake(const char *restrict format)
 	t_printf		*pf;
 
 	(void)format;
+	printf("call pf_fake");
 	pf = pf_singleton(1);
 
-	return (0);
+	return (1);
 }
 
 static int		pf_parse_flag(const char *restrict format)
 {
 	t_printf		*pf;
+	printf("parse flag\n");
 
 	pf = pf_singleton(1);
 	if ((format[pf->i] == '#') && (pf->arg.diez = 1))
-		return (0);
+		return (1);
 	if ((format[pf->i] == '0') && (pf->arg.zero = 1))
-		return (0);
+		return (1);
 	if ((format[pf->i] == '+') && (pf->arg.more = 1))
-		return (0);
+		return (1);
 	if ((format[pf->i] == '-') && (pf->arg.less = 1))
-		return (0);
+		return (1);
 	if ((format[pf->i] == ' ') && (pf->arg.space = 1))
-		return (0);
+		return (1);
 	if ((format[pf->i] == '{') && (pf->arg.col = 1))
-		return (0);
-	return (0);
+		return (1);
+	return (1);
 }
 
-static void	pf_parse_specifier_init(int (**spe)(const char *restrict))
+static void		pf_parse_specifier_init(int (**spe)(const char *restrict))
 {
 
 	// sSpdDioOuUxXcC%
@@ -82,20 +84,24 @@ static void	pf_parse_specifier_init(int (**spe)(const char *restrict))
 	// 		printf("%d\n", i);
 }
 
-static int	pf_parse_specifier(const char *restrict format)
+static int		pf_parse_specifier(const char *restrict format)
 {
 	static int		(*spe[128])(const char *restrict) = {NULL};
 	t_printf		*pf;
 
 	if (!spe['%'])
 		pf_parse_specifier_init(spe);
-	if (!(pf = pf_singleton(1)) || (spe['%'](format)))
+	pf = pf_singleton(1);
+	while (format[pf->i] && spe[(int)(format[pf->i])]
+	&& spe[(int)(format[pf->i])](format))
+		pf->i++;
+	if (pf->ret || (!pf->ret && pf_join(2, format)))
 		return (1);
-	pf->start = pf->i + 1;
+	pf->start = pf->i;
 	return (0);
 }
 
-int		pf_parse(const char *restrict format)
+int				pf_parse(const char *restrict format)
 {
 	t_printf	*pf;
 

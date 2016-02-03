@@ -20,7 +20,7 @@ t_printf	*pf_singleton(int last)
 	{
 		pf.i = 0;
 		pf.start = 0;
-		pf.ret = -1;
+		pf.ret = 0;
 	}
 	return (&pf);
 }
