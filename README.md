@@ -20,13 +20,19 @@
 - pf_singleton(int last), 0 to reset all iterator before return
 - pf_join(int from, char *format), join to pf->join a new str
 - if int from=1 join with ft_strsub(format, pf->start, pf->i);
-- if int from=2 join with specifier[x]()
+- if int from=2 join with spe[x]()
 - x is the specifier letter: (int)(char format[pf->i])
-- specifier[x] is ptr to addr function for the specifier x (see below)
+- spe[x] is ptr to addr function for the specifier x (see below)
 - pf_return(int ret), free pf->join before return
 
-### specifier
-- s: ft_strjoin(char *pf->join, char *formated);
+### parsing
+- pf_parse call pf_parse_specifier if *format='%'
+- pf_parse_specifier have static struct s_spe (t_spe)
+- pf_parse_specifier call spe[x]() who write in t_printf
+- then call pf_join who use t_printf to join it with pf->join
+
+### pf_join method
+- #1: 's' = ft_strjoin(char *pf->join, char *formated);
 - d:
 
 ### location
@@ -36,8 +42,8 @@
 | ft_printf.c | pf_return |
 |   |   |
 | ft_printf_singleton.c | pf_singleton |
-| ft_printf_parse.c | pf_return |
 |   |   |
+| ft_printf_parse.c | pf_return |
 | ft_printf_parse.c | pf_parse |
 |   |   |
 | ft_printf_join.c | pf_join |
