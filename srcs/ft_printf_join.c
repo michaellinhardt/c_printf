@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 static int	pf_join_format(const char *restrict format)
@@ -31,9 +30,9 @@ static int	pf_join_format(const char *restrict format)
 }
 
 
-int			pf_join(int method, const char *restrict format)
+int			pf_join(int from, const char *restrict format)
 {
-	if (method == 1 && pf_join_format(format))
+	if (from == 1 && pf_join_format(format))
 		return (1);
 	return (0);
 }

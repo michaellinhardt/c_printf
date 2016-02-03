@@ -6,28 +6,34 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/02 07:41:21 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/03 01:59:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
 int		ft_printf(const char *restrict format, ...)
 {
-	va_list		ap;
 	t_printf	*pf;
 
-	va_start(ap, format);
-	if (!(pf = pf_singleton(0)) || !(pf->join = ft_strnew(0))
-	|| pf_parse(format))
-		return (-1);
+	if (!(pf = pf_singleton(0)) || !(pf->join = ft_strnew(0)))
+		return (pf_return(-1));
+	va_start(pf->ap, format);
+	if (pf_parse(format))
+		return (pf_return(-1));
 
 
 
-	pf->ret = ft_strlen(pf->join);
 	ft_putstr(pf->join);
-	ft_strdel(&pf->join);
-	va_end(ap);
-	return (pf->ret);
+	va_end(pf->ap);
+	return (pf_return(ft_strlen(pf->join)));
+}
+
+int		pf_return(int ret)
+{
+	t_printf	*pf;
+
+	if ((pf = pf_singleton(0)))
+		ft_strdel(&pf->join);
+	return (ret);
 }

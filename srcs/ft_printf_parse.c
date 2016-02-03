@@ -10,12 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-int		pf_parse(const char *restrict format, ...)
+/* p(rint)f_parse(char *format);
+ * pf->i, pf->start, format
+ * pf_singleton(), pf_join(),
+ *
+ *
+ * error return 1
+ */
+
+int		pf_parse(const char *restrict format)
 {
 	t_printf	*pf;
+
 
 	pf = pf_singleton(1);
 	while (format[pf->i++])
@@ -23,5 +31,8 @@ int		pf_parse(const char *restrict format, ...)
 			printf("modulo\n");
 	if ((pf->i - pf->start) > 0 && pf_join(1, format))
 		return (-1);
+	// char		*tmp;
+	// tmp = va_arg(pf->ap, char *);
+	// printf("\npf->ap %s\n", tmp);
 	return (0);
 }
