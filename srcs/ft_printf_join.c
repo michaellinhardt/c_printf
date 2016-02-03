@@ -19,8 +19,10 @@ static int	pf_join_format(const char *restrict format)
 	char			*next;
 
 	pf = pf_singleton(1);
+	if (pf->i - pf->start == 0)
+		return (0);
 	prev = pf->join;
-	if (!(next = ft_strsub(format, pf->start, pf->i)))
+	if (!(next = ft_strsub(format, pf->start, (pf->i - pf->start))))
 		return (1);
 	if (!(pf->join = ft_strjoin(prev, next)))
 		return (1);

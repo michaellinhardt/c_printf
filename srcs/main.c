@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/03 01:54:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/03 04:50:19 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(int argc, char **argv)
 
 	if (argc && argv)
 		;
-	s1 = ft_strdup("s1lala");
+	s1 = ft_strdup("12%%34%5");
 	s2 = ft_strdup("s2ahah");
 	s3 = ft_strdup("s3hihi");
 

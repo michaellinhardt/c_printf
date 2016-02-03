@@ -26,10 +26,12 @@
 - pf_return(int ret), free pf->join before return
 
 ### parsing
-- pf_parse call pf_parse_specifier if *format='%'
-- pf_parse_specifier have static struct s_spe (t_spe)
+- pf_parse read format, when meet '%':
+- it call pf_join to add previous input to pf->join
+- pf_parse call pf_parse_specifier
+- pf_parse_specifier have static struct t_spe spe[];
 - pf_parse_specifier call spe[x]() who write in t_printf
-- then call pf_join who use t_printf to join it with pf->join
+- then call pf_join who use t_printf to add it in pf->join
 
 ### pf_join method
 - #1: 's' = ft_strjoin(char *pf->join, char *formated);
