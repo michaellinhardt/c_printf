@@ -12,14 +12,6 @@
 
 #include "ft_printf.h"
 
-/* p(rint)f_parse(char *format);
- * pf->i, pf->start, format
- * pf_singleton(), pf_join(),
- *
- *
- * error return 1
- */
-
 int		pf_parse(const char *restrict format)
 {
 	t_printf	*pf;

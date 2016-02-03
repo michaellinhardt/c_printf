@@ -1,6 +1,7 @@
-# Printf re-implementation, libpf.a
+# LIBPF.A
+## printf partial re-implementation
 - Langage: C
-- Subject: 42 school project, re-implementation of printf (see docs/printf.pdf for details)
+- 42 school project, docs/printf.pdf
 - Date: jan. 2016
 
 ## repo map
