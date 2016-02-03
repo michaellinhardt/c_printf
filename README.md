@@ -13,7 +13,8 @@
 | srcs/				 | .c sources							 |
 | auteur				 | 42 requierement: author's login	 |
 
-## libpf, namespace: p(rint)f_(function name);
+## man
+- namespace: p(rint)f_(function name);
 ### data functions
 - almost all var are stored in one struct (t_printf)
 - t_printf is static from pf_singleton(int), not malloc'd
