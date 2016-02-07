@@ -18,7 +18,7 @@ t_printf	*pf_singleton(int last)
 
 	if (!last)
 	{
-		pf.i = 0;
+		pf.i = -1;
 		pf.start = 0;
 		pf.ret = 0;
 	}

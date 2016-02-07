@@ -6,12 +6,14 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/02 07:37:09 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/08 00:40:06 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	printf
-FLAGS	=	-Wall -Wextra -Werror -g
+FLAGS1	=	-Wall -Wextra -Werror -g
+FLAGS2	=	-g
+FLAGS	=	$(FLAGS1)
 
 SRCS	=	main.c \
 			ft_printf.c \

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/03 05:43:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/07 22:52:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@
 
 typedef struct		s_arg
 {
-	int				diez : 1;
-	int				zero : 1;
-	int				more : 1;
-	int				less : 1;
-	int				space : 1;
-	int				wid : 1;
-	int				pre : 1;
-	int				col : 1;
-	unsigned int	width;
-	unsigned int	precision;
+	int				modulo;
+	int				diez;
+	int				zero;
+	int				more;
+	int				less;
+	int				space;
+	int				width;
+	int				preci;
+	int				col;
 	char			*d_color;
 	enum {
 		none,
@@ -47,6 +46,7 @@ typedef struct		s_printf
 	int				i;
 	int				start;
 	char			*join;
+	char			*out;
 	int				ret;
 	va_list			ap;
 	t_arg			arg;
