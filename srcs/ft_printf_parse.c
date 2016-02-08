@@ -18,7 +18,7 @@ static int		pf_fake(const char *restrict format)
 
 	(void)format;
 	pf = pf_singleton(1);
-		printf("%25s %6d %10s %6c\n", "pf_fake", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_fake", pf->i, "lettre", format[pf->i]);
 	return (1);
 }
 
@@ -27,7 +27,7 @@ static int		pf_save_modulo(void)
 	t_printf		*pf;
 
 	pf = pf_singleton(1);
-		printf("%25s %6d %10s %6s\n", "pf_save_modulo", pf->i, "lettre", "NA");
+		// printf("%25s %6d %10s %6s\n", "pf_save_modulo", pf->i, "lettre", "NA");
 	pf->join = ft_strdup("%");
 	pf->arg.more = 0;
 	pf->arg.space = 0;
@@ -47,7 +47,7 @@ static int		pf_parse_modulo(const char *restrict format)
 
 	(void)format;
 	pf = pf_singleton(1);
-		printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", format[pf->i]);
 	if (!pf->arg.modulo && (pf->arg.modulo = 1))
 		return (1);
 	if (pf_save_modulo())
@@ -60,7 +60,7 @@ static int		pf_parse_flag(const char *restrict format)
 	t_printf		*pf;
 
 	pf = pf_singleton(1);
-		printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", format[pf->i]);
 	if ((format[pf->i] == '#') && (pf->arg.diez = 1))
 		return (1);
 	if ((format[pf->i] == '0') && (pf->arg.zero = 1))
@@ -84,14 +84,14 @@ static int		pf_parse_width(const char *restrict format)
 	pf = pf_singleton(1);
 	if (format[pf->i] && format[pf->i] == '*' && (pf->arg.width = -1))
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", format[pf->i]);
-		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		// printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 		return (1);
 	}
 	start = pf->i;
 	while (format[pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", format[pf->i]);
 		if ((int)format[pf->i] < '0' || (int)format[pf->i] > '9')
 			break;
 		pf->i++;
@@ -102,7 +102,7 @@ static int		pf_parse_width(const char *restrict format)
 			return (0);
 		pf->arg.width = ft_atoi(pf->join);
 		ft_strdel(&pf->join);
-		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		// printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 	return (1);
 }
 
@@ -134,7 +134,7 @@ static void		pf_parse_specifier_init(int (**spe)(const char *restrict))
 	// int i = -1;
 	// while (++i < 128)
 	// 	if (spe[i])
-	// 		printf("%d\n", i);
+			// printf("%d\n", i);
 }
 
 static int		pf_parse_specifier(const char *restrict format)
@@ -147,14 +147,14 @@ static int		pf_parse_specifier(const char *restrict format)
 	pf = pf_singleton(1);
 	while (format[pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "lettre", format[pf->i]);
 		if ((int)format[pf->i] > '0' && (int)format[pf->i] < 58
 			&& !(pf_parse_width(format)))
 			break;
 		else if (spe[(int)(format[pf->i])]
 			&& !(spe[(int)(format[pf->i])](format)))
 		{
-		printf("%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", format[pf->i]);
 			break;
 		}
 		pf->i++;
@@ -172,7 +172,7 @@ int				pf_parse(const char *restrict format)
 	pf = pf_singleton(1);
 	while (format[++pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse", pf->i, "lettre", format[pf->i]);
+		// printf("%25s %6d %10s %6c\n", "pf_parse", pf->i, "lettre", format[pf->i]);
 		if ((format[pf->i] == '%') && (pf_join(1, format)
 		|| pf_parse_specifier(format)))
 			return (1);
