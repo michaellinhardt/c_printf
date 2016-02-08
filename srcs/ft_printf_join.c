@@ -18,7 +18,7 @@ static int	pf_join_specifier(t_printf *pf)
 
 	if (!pf->join)
 		return (0);
-	printf("%25s %6d\n\n", "join 2", pf->i);
+	// printf("%25s %6d\n\n", "join 2", pf->i);
 	prev = pf->out;
 	if (!(pf->out = ft_strjoin(prev, pf->join)))
 		return (1);
@@ -34,7 +34,7 @@ static int	pf_join_format(t_printf *pf, const char *restrict format)
 
 	if ((pf->i - pf->start) == 0)
 		return (0);
-		printf("%25s %6d\n\n", "join 1", pf->i);
+		// printf("%25s %6d\n\n", "join 1", pf->i);
 	prev = pf->out;
 	if (!(next = ft_strsub(format, pf->start, (pf->i - pf->start))))
 		return (1);
