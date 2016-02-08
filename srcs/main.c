@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 01:11:32 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 01:12:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 	char	*s2;
 	char	*s3;
 	int		ret;
-	int		test = 5;
+	int		test = 200000;
 
 	if (argc && argv)
 		;
