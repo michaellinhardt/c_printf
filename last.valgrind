@@ -1,8 +1,8 @@
-==6641== Memcheck, a memory error detector
-==6641== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==6641== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==6641== Command: ./printf
-==6641== 
+==6793== Memcheck, a memory error detector
+==6793== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==6793== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==6793== Command: ./printf
+==6793== 
                  pf_parse      0     lettre      a
                  pf_parse      1     lettre      b
                  pf_parse      2     lettre      c
@@ -48,31 +48,31 @@ out: abcd%a%
 
 RETURN: 7
 TEST REAL PRINTF     %
-==6641== 
-==6641== HEAP SUMMARY:
-==6641==     in use at exit: 26,123 bytes in 186 blocks
-==6641==   total heap usage: 283 allocs, 97 frees, 32,438 bytes allocated
-==6641== 
-==6641== 2,064 bytes in 1 blocks are possibly lost in loss record 58 of 64
-==6641==    at 0x10000B17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==6641==    by 0x1004F6EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA182: protocols() (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004E7C13: gc_init (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EF24E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004FC132: layout_string_create (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==6641==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==6641== 
-==6641== LEAK SUMMARY:
-==6641==    definitely lost: 0 bytes in 0 blocks
-==6641==    indirectly lost: 0 bytes in 0 blocks
-==6641==      possibly lost: 2,064 bytes in 1 blocks
-==6641==    still reachable: 0 bytes in 0 blocks
-==6641==         suppressed: 24,059 bytes in 185 blocks
-==6641== 
-==6641== For counts of detected and suppressed errors, rerun with: -v
-==6641== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 18 from 18)
+==6793== 
+==6793== HEAP SUMMARY:
+==6793==     in use at exit: 26,123 bytes in 186 blocks
+==6793==   total heap usage: 283 allocs, 97 frees, 32,438 bytes allocated
+==6793== 
+==6793== 2,064 bytes in 1 blocks are possibly lost in loss record 58 of 64
+==6793==    at 0x10000B17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==6793==    by 0x1004F6EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA182: protocols() (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004E7C13: gc_init (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EF24E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004FC132: layout_string_create (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==6793==    by 0x1004EA2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==6793== 
+==6793== LEAK SUMMARY:
+==6793==    definitely lost: 0 bytes in 0 blocks
+==6793==    indirectly lost: 0 bytes in 0 blocks
+==6793==      possibly lost: 2,064 bytes in 1 blocks
+==6793==    still reachable: 0 bytes in 0 blocks
+==6793==         suppressed: 24,059 bytes in 185 blocks
+==6793== 
+==6793== For counts of detected and suppressed errors, rerun with: -v
+==6793== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 18 from 18)
