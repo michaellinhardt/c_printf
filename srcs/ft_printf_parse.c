@@ -16,13 +16,13 @@ static int		pf_fake(t_printf *pf)
 {
 	(void)pf->in;
 	pf->ret = 0;
-	// printf("%25s %6d %10s %6c\n", "pf_fake", pf->i, "lettre", pf->in[pf->i]);
+	printf("%25s %6d %10s %6c\n", "pf_fake", pf->i, "lettre", pf->in[pf->i]);
 	return (1);
 }
 
 static int		pf_save_modulo(t_printf *pf)
 {
-	// printf("%25s %6d %10s %6s\n", "pf_save_modulo", pf->i, "lettre", "NA");
+	printf("%25s %6d %10s %6s\n", "pf_save_modulo", pf->i, "lettre", "NA");
 	pf->join = ft_strdup("%");
 	pf->arg.more = 0;
 	pf->arg.space = 0;
@@ -39,7 +39,7 @@ static int		pf_save_modulo(t_printf *pf)
 static int		pf_parse_modulo(t_printf *pf)
 {
 	(void)pf->in;
-	// printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", pf->in[pf->i]);
+	printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", pf->in[pf->i]);
 	if (!pf->arg.modulo && (pf->arg.modulo = 1))
 		return (1);
 	if (pf_save_modulo(pf))
@@ -49,7 +49,7 @@ static int		pf_parse_modulo(t_printf *pf)
 
 static int		pf_parse_flag(t_printf *pf)
 {
-	// printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", pf->in[pf->i]);
+	printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", pf->in[pf->i]);
 	if ((pf->in[pf->i] == '#') && (pf->arg.diez = 1))
 		return (1);
 	if ((pf->in[pf->i] == '0') && (pf->arg.zero = 1))
@@ -71,14 +71,14 @@ static int		pf_parse_width(t_printf *pf)
 
 	if (pf->in[pf->i] && pf->in[pf->i] == '*' && (pf->arg.width = -1))
 	{
-		// printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
-		// printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 		return (1);
 	}
 	start = pf->i;
 	while (pf->in[pf->i])
 	{
-		// printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
 			break;
 		pf->i++;
@@ -89,7 +89,7 @@ static int		pf_parse_width(t_printf *pf)
 			return (0);
 		pf->arg.width = ft_atoi(pf->join);
 		ft_strdel(&pf->join);
-		// printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 	return (1);
 }
 
@@ -132,14 +132,14 @@ static int		pf_parse_specifier(t_printf *pf)
 		pf_parse_specifier_init(spe);
 	while (pf->in[pf->i])
 	{
-		// printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "lettre", pf->in[pf->i]);
 		if ((int)pf->in[pf->i] > '0' && (int)pf->in[pf->i] < 58
 			&& !(pf_parse_width(pf)))
 			break;
 		else if (spe[(int)(pf->in[pf->i])]
 			&& !(spe[(int)(pf->in[pf->i])](pf)))
 		{
-		// printf("%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", pf->in[pf->i]);
 			break;
 		}
 		pf->i++;
@@ -152,13 +152,13 @@ static int		pf_parse_specifier(t_printf *pf)
 
 int				pf_parse(t_printf *pf)
 {
-	while (pf->in[++pf->i])
+	while (pf->in[pf->i])
 	{
-		// printf("%25s %6d %10s %6c\n", "pf_parse", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6c\n", "pf_parse", pf->i, "lettre", pf->in[pf->i]);
 		if ((pf->in[pf->i] == '%') && (pf_join(pf, 1)
 		|| pf_parse_specifier(pf)))
 			return (1);
-		// pf->i++;
+		pf->i++;
 	}
 	if ((pf->i - pf->start) > 0 && pf_join(pf, 1))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 01:42:46 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 01:58:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		main(int argc, char **argv)
 {
 	int		test = 1;
 	char	*s1;
-	s1 = ft_strdup("abcd%*+-54-%a%%\n");
+	s1 = ft_strdup("%%abcd%*+-54-%a%%\n");
 
 	while (test--)
 		ft_printf(s1);

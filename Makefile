@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/08 01:43:10 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/08 01:56:28 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ FLAGS	=	$(FLAGS1)
 SRCS	=	main.c \
 			ft_printf.c \
 			ft_printf_join.c \
-			ft_printf_singleton.c \
 			ft_printf_parse.c \
 
 HDIR 	=	./includes/
