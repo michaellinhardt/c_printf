@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/08 01:56:28 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/08 03:24:51 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME	= 	printf
 FLAGS1	=	-Wall -Wextra -Werror -g
 FLAGS2	=	-g
 FLAGS3	=	-Wall -Wextra -Werror
-FLAGS	=	$(FLAGS1)
+FLAGS	=	$(FLAGS2)
 
 SRCS	=	main.c \
 			ft_printf.c \
 			ft_printf_join.c \
 			ft_printf_parse.c \
+			ft_printf_build.c \
+			ft_printf_build_format.c \
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/

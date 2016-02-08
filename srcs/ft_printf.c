@@ -6,13 +6,21 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 02:00:21 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 03:12:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *restrict format, ...)
+static int		pf_return(t_printf *pf, int ret)
+{
+	ft_strdel(&pf->in);
+	ft_strdel(&pf->join);
+	ft_strdel(&pf->out);
+	return (ret);
+}
+
+int			ft_printf(const char *restrict format, ...)
 {
 	t_printf		pf;
 
@@ -30,10 +38,15 @@ int		ft_printf(const char *restrict format, ...)
 	return (pf_return(&pf, ft_strlen(pf.out)));
 }
 
-int		pf_return(t_printf *pf, int ret)
+void		pf_print_flags(t_printf *pf)
 {
-	ft_strdel(&pf->in);
-	ft_strdel(&pf->join);
-	ft_strdel(&pf->out);
-	return (ret);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "modulo", pf->arg.modulo);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "diez", pf->arg.diez);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "more", pf->arg.more);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "space", pf->arg.space);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "zero", pf->arg.zero);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "less", pf->arg.less);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "width", pf->arg.width);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "preci", pf->arg.preci);
+	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "col", pf->arg.col);
 }

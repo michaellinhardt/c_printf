@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 01:30:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 03:55:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ typedef struct		s_arg
 {
 	int				modulo;
 	int				diez;
-	int				zero;
 	int				more;
-	int				less;
 	int				space;
+	int				zero;
+	int				less;
 	int				width;
 	int				preci;
 	int				col;
@@ -44,6 +44,7 @@ typedef struct		s_arg
 typedef struct		s_printf
 {
 	int				i;
+	int				j;
 	int				start;
 	char			*join;
 	char			*in;
@@ -55,7 +56,6 @@ typedef struct		s_printf
 
 // FICHIER PRINTF.C
 int			ft_printf(const char *restrict format, ...);
-int			pf_return(t_printf *pf, int ret);
 
 // FICHIER JOIN.C
 int			pf_join(t_printf *pf, int src);
@@ -63,8 +63,14 @@ int			pf_join(t_printf *pf, int src);
 // FICHIER PARSE.C
 int			pf_parse(t_printf *pf);
 
-// FICHIER SINGLETON.C
-t_printf	*pf_singleton(int last);
+// FICHIER BUILD.C
+int			pf_build_modulo(t_printf *pf);
+
+// FICHIER BUILD_FLAGS.C
+int			pf_build_format(t_printf *pf);
+
+// FICHIER DEBUG.C
+void		pf_print_flags(t_printf *pf);
 
 #include <stdio.h>
 #endif

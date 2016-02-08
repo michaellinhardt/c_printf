@@ -20,29 +20,13 @@ static int		pf_fake(t_printf *pf)
 	return (1);
 }
 
-static int		pf_save_modulo(t_printf *pf)
-{
-	printf("%25s %6d %10s %6s\n", "pf_save_modulo", pf->i, "lettre", "NA");
-	pf->join = ft_strdup("%");
-	pf->arg.more = 0;
-	pf->arg.space = 0;
-	pf->arg.diez = 0;
-	// printf("%d\n", pf->arg.diez);
-	// printf("%d\n", pf->arg.zero);
-	// printf("%d\n", pf->arg.more);
-	// printf("%d\n", pf->arg.less);
-	// printf("%d\n", pf->arg.space);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
-	return (0);
-}
-
 static int		pf_parse_modulo(t_printf *pf)
 {
 	(void)pf->in;
 	printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", pf->in[pf->i]);
 	if (!pf->arg.modulo && (pf->arg.modulo = 1))
 		return (1);
-	if (pf_save_modulo(pf))
+	if (pf_build_modulo(pf))
 		pf->ret = 1;
 	return (0);
 }
@@ -69,7 +53,8 @@ static int		pf_parse_width(t_printf *pf)
 {
 	int			start;
 
-	if (pf->in[pf->i] && pf->in[pf->i] == '*' && (pf->arg.width = -1))
+	if (pf->in[pf->i] && pf->in[pf->i] == '*'
+	&& ((pf->arg.width = va_arg(pf->ap, int)) || 1))
 	{
 		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
 		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
@@ -139,7 +124,7 @@ static int		pf_parse_specifier(t_printf *pf)
 		else if (spe[(int)(pf->in[pf->i])]
 			&& !(spe[(int)(pf->in[pf->i])](pf)))
 		{
-		printf("%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", pf->in[pf->i]);
+		printf("\n%25s %6d %10s %6c\n", "fin de specifier", pf->i, "lettre", pf->in[pf->i]);
 			break;
 		}
 		pf->i++;
