@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 00:47:37 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 01:11:32 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int		main(int argc, char **argv)
 	s3 = ft_strdup("s3hihi");
 	test += 1;
 
-	ret = ft_printf(s1, test);
+
+	while (test--)
+		ft_printf(s1);
+
+
+	ret = ft_printf(s1);
 	printf("\n\nRETURN: %d\n", ret);
 	printf("%s %*%\n", "TEST REAL PRINTF", 5);
 	ft_strdel(&s1);
