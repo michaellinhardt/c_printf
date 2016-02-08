@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 01:20:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/08 01:39:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int		ft_printf(const char *restrict format, ...)
 	if (!(pf = pf_singleton(0)) || !(pf->out = ft_strnew(0)))
 		return (pf_return(pf, -1));
 	pf->join = NULL;
+	pf->in = ft_strdup(format);
 	va_start(pf->ap, format);
-	if (pf_parse(pf, format))
+	if (pf_parse(pf))
 		return (pf_return(pf, -1));
 	ft_putstr(pf->out);
 	// printf("out: %s\n", pf->out);
@@ -30,6 +31,7 @@ int		ft_printf(const char *restrict format, ...)
 
 int		pf_return(t_printf *pf, int ret)
 {
+	ft_strdel(&pf->in);
 	ft_strdel(&pf->join);
 	ft_strdel(&pf->out);
 	return (ret);

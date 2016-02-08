@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/08 01:14:50 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/08 01:41:08 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= 	printf
 FLAGS1	=	-Wall -Wextra -Werror -g
 FLAGS2	=	-g
 FLAGS3	=	-Wall -Wextra -Werror
-FLAGS	=	$(FLAGS3)
+FLAGS	=	$(FLAGS1)
 
 SRCS	=	main.c \
 			ft_printf.c \

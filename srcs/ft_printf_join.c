@@ -27,7 +27,7 @@ static int	pf_join_specifier(t_printf *pf)
 	return (0);
 }
 
-static int	pf_join_format(t_printf *pf, const char *restrict format)
+static int	pf_join_format(t_printf *pf)
 {
 	char			*prev;
 	char			*next;
@@ -36,7 +36,7 @@ static int	pf_join_format(t_printf *pf, const char *restrict format)
 		return (0);
 		// printf("%25s %6d\n\n", "join 1", pf->i);
 	prev = pf->out;
-	if (!(next = ft_strsub(format, pf->start, (pf->i - pf->start))))
+	if (!(next = ft_strsub(pf->in, pf->start, (pf->i - pf->start))))
 		return (1);
 	if (!(pf->out = ft_strjoin(prev, next)))
 		return (1);
@@ -47,11 +47,11 @@ static int	pf_join_format(t_printf *pf, const char *restrict format)
 }
 
 
-int			pf_join(t_printf *pf, int from, const char *restrict format)
+int			pf_join(t_printf *pf, int src)
 {
-	if (from == 1 && pf_join_format(pf, format))
+	if (src == 1 && pf_join_format(pf))
 		return (1);
-	if (from == 2 && pf_join_specifier(pf))
+	if (src == 2 && pf_join_specifier(pf))
 		return (1);
 	return (0);
 }
