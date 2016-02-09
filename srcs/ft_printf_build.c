@@ -24,7 +24,6 @@ int		pf_build_invalid(t_printf *pf)
 		pf->arg.width--;
 	if (pf_build_format(pf))
 		return (1);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	return (0);
 }
 
@@ -39,7 +38,6 @@ int		pf_build_modulo(t_printf *pf)
 	pf->arg.preci = 0;
 	if (pf_build_format(pf))
 		return (1);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	pf->valid = 1;
 	return (0);
 }
@@ -56,7 +54,6 @@ int		pf_build_string(t_printf *pf)
 	pf->arg.diez = 0;
 	if (pf_build_format(pf))
 		return (1);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	pf->valid = 1;
 	return (0);
 }
@@ -64,11 +61,9 @@ int		pf_build_string(t_printf *pf)
 int		pf_build_int(t_printf *pf)
 {
 	int		i;
-	int		len;
-	char	*tmp;
 
 	i = va_arg(pf->ap, int);
-	printf("\n%25s %6d %10s %6c\n", "pf_build_char", pf->i, "lettre", pf->in[pf->i]);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_int", pf->i, "value", i);
 	if (!(pf->join = ft_itoa(i)))
 		return (1);
 	pf->arg.diez = 0;
@@ -76,6 +71,34 @@ int		pf_build_int(t_printf *pf)
 		pf->arg.space = 0;
 	else if (pf->arg.more)
 		pf->arg.space = 0;
+	if (pf_build_itoa(pf))
+		return (1);
+	return (0);
+}
+
+int		pf_build_uint(t_printf *pf)
+{
+	unsigned int	i;
+
+	i = va_arg(pf->ap, unsigned int);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_uint", pf->i, "value", i);
+	if (!(pf->join = ft_itoa(i)))
+		return (1);
+	pf->arg.diez = 0;
+	if (pf->arg.more)
+		pf->arg.space = 0;
+	if (pf_build_itoa(pf))
+		return (1);
+	return (0);
+}
+
+int		pf_build_itoa(t_printf *pf)
+{
+	int		i;
+	int		len;
+	char	*tmp;
+
+	printf("\n%25s %6d %10s %6c\n", "pf_build_itoa", pf->i, "lettre", pf->in[pf->i]);
 	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
 	{
 		if (!(tmp = ft_strnew(pf->arg.preci)))
@@ -90,7 +113,6 @@ int		pf_build_int(t_printf *pf)
 	}
 	if (pf_build_format(pf))
 		return (1);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	pf->valid = 1;
 	return (0);
 }
@@ -107,7 +129,6 @@ int		pf_build_char(t_printf *pf)
 	pf->arg.preci = 0;
 	if (pf_build_format(pf))
 		return (1);
-	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	pf->valid = 1;
 	return (0);
 }

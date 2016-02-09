@@ -120,6 +120,7 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['c'] = &pf_build_char;
 	spe['i'] = &pf_build_int;
 	spe['d'] = &pf_build_int;
+	spe['u'] = &pf_build_int;
 
 	spe['S'] = &pf_fake;
 	spe['C'] = &pf_fake;
@@ -128,7 +129,6 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['D'] = &pf_fake;
 	spe['o'] = &pf_fake;
 	spe['O'] = &pf_fake;
-	spe['u'] = &pf_fake;
 	spe['U'] = &pf_fake;
 	spe['x'] = &pf_fake;
 	spe['X'] = &pf_fake;
@@ -181,6 +181,7 @@ static int		pf_parse_specifier(t_printf *pf)
 	if (pf->ret || (!pf->ret && pf_join(pf, 2)))
 		return (1);
 	pf->start = (pf->valid) ? pf->i + 1 : pf->i ;
+	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "end", pf->in[pf->i]);
 	return (0);
 }
