@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 03:12:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/09 02:09:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int			ft_printf(const char *restrict format, ...)
 	if (pf_parse(&pf))
 		return (pf_return(&pf, -1));
 	// ft_putstr(pf.out);
-	printf("out: %s\n", pf.out);
+	printf("%s", pf.out);
 	va_end(pf.ap);
 	return (pf_return(&pf, ft_strlen(pf.out)));
 }

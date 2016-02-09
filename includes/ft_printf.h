@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/08 03:55:53 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/09 02:39:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+// # include <wchar.h>
+// # include <locale.h>
 
 typedef struct		s_arg
 {
@@ -43,6 +45,7 @@ typedef struct		s_arg
 
 typedef struct		s_printf
 {
+	int				valid;
 	int				i;
 	int				j;
 	int				start;
@@ -64,7 +67,11 @@ int			pf_join(t_printf *pf, int src);
 int			pf_parse(t_printf *pf);
 
 // FICHIER BUILD.C
+int			pf_build_invalid(t_printf *pf);
 int			pf_build_modulo(t_printf *pf);
+int			pf_build_string(t_printf *pf);
+int			pf_build_char(t_printf *pf);
+int			pf_build_int(t_printf *pf);
 
 // FICHIER BUILD_FLAGS.C
 int			pf_build_format(t_printf *pf);

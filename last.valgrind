@@ -1,79 +1,62 @@
-==21905== Memcheck, a memory error detector
-==21905== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==21905== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==21905== Command: ./printf
-==21905== 
-                 pf_parse      0     lettre      a
-                 pf_parse      1     lettre      b
-                 pf_parse      2     lettre      c
-                 pf_parse      3     lettre      d
-                 pf_parse      4     lettre      %
-                   join 1      4
+==16630== Memcheck, a memory error detector
+==16630== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==16630== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==16630== Command: ./printf
+==16630== 
+                 pf_parse      0     lettre      %
 
-       pf_parse_specifier      4     lettre      %
-          pf_parse_modulo      4     lettre      %
-       pf_parse_specifier      5     lettre      -
-            pf_parse_flag      5     lettre      -
-       pf_parse_specifier      6     lettre      *
-           pf_parse_width      6     lettre      *
-           pf_parse_width      6      width      3
-       pf_parse_specifier      7     lettre      %
-          pf_parse_modulo      7     lettre      %
+       pf_parse_specifier      0      verif      %
+          pf_parse_modulo      0     lettre      %
 
-          pf_build_modulo      7     lettre     NA
-    pf_build_format_width      7      start      0
-    pf_build_format_width      7       char       
+       pf_parse_specifier      1      incre      .
 
-         fin de specifier      7     lettre      %
-                   join 2      7
+       pf_parse_specifier      1      verif      .
+           pf_parse_preci      2     lettre      0
+           pf_parse_preci      3     lettre      s
+           pf_parse_preci      3      preci      0
 
-                 pf_parse      8     lettre      a
-                 pf_parse      9     lettre      %
-                   join 1      9
+       pf_parse_specifier      3      incre      s
 
-       pf_parse_specifier      9     lettre      %
-          pf_parse_modulo      9     lettre      %
-       pf_parse_specifier     10     lettre      %
-          pf_parse_modulo     10     lettre      %
+       pf_parse_specifier      3      verif      s
 
-          pf_build_modulo     10     lettre     NA
+          pf_build_string      3     lettre      s
 
-         fin de specifier     10     lettre      %
-                   join 2     10
+       fin de specifier 2      3     lettre      s
+                   join 2      3
 
-out: abcd%% a%%
+       pf_parse_specifier      3        end      s
+                 pf_parse      4     lettre      !
+                 pf_parse      5     lettre      
 
+                   join 1      6
 
-RETURN: 10
-
-TEST1:     .
-
-TEST2: %     
-==21905== 
-==21905== HEAP SUMMARY:
-==21905==     in use at exit: 26,107 bytes in 185 blocks
-==21905==   total heap usage: 284 allocs, 99 frees, 32,464 bytes allocated
-==21905== 
-==21905== 2,064 bytes in 1 blocks are possibly lost in loss record 57 of 63
-==21905==    at 0x10000C17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==21905==    by 0x1004F7EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB182: protocols() (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004E8C13: gc_init (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004F024E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004FD132: layout_string_create (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==21905==    by 0x1004EB2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==21905== 
-==21905== LEAK SUMMARY:
-==21905==    definitely lost: 0 bytes in 0 blocks
-==21905==    indirectly lost: 0 bytes in 0 blocks
-==21905==      possibly lost: 2,064 bytes in 1 blocks
-==21905==    still reachable: 0 bytes in 0 blocks
-==21905==         suppressed: 24,043 bytes in 184 blocks
-==21905== 
-==21905== For counts of detected and suppressed errors, rerun with: -v
-==21905== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 17 from 17)
+s2ahah!
+!
+==16630== 
+==16630== HEAP SUMMARY:
+==16630==     in use at exit: 26,107 bytes in 185 blocks
+==16630==   total heap usage: 280 allocs, 95 frees, 32,430 bytes allocated
+==16630== 
+==16630== 2,064 bytes in 1 blocks are possibly lost in loss record 57 of 63
+==16630==    at 0x10000D17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==16630==    by 0x1004F8EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC182: protocols() (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004E9C13: gc_init (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004F124E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004FE132: layout_string_create (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==16630==    by 0x1004EC2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==16630== 
+==16630== LEAK SUMMARY:
+==16630==    definitely lost: 0 bytes in 0 blocks
+==16630==    indirectly lost: 0 bytes in 0 blocks
+==16630==      possibly lost: 2,064 bytes in 1 blocks
+==16630==    still reachable: 0 bytes in 0 blocks
+==16630==         suppressed: 24,043 bytes in 184 blocks
+==16630== 
+==16630== For counts of detected and suppressed errors, rerun with: -v
+==16630== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 17 from 17)
