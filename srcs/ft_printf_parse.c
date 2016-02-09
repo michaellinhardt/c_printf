@@ -53,29 +53,34 @@ static int		pf_parse_preci(t_printf *pf)
 	int			start;
 
 	pf->i++;
+	pf->arg.ispreci = 1;
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
 	&& ((pf->arg.preci = va_arg(pf->ap, int)) || 1))
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_preci", pf->i, "lettre", pf->in[pf->i]);
-		printf("%25s %6d %10s %6d\n", "pf_parse_preci", pf->i, "preci", pf->arg.preci);
+		printf("%25s %6d %10s %6c\n", "pf_parse_preci 1", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6d\n", "pf_parse_preci 1", pf->i, "preci", pf->arg.preci);
 		return (1);
 	}
 	start = pf->i;
 	while (pf->in[pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_preci", pf->i, "lettre", pf->in[pf->i]);
+		printf("%25s %6d %10s %6c\n", "pf_parse_preci 2", pf->i, "lettre", pf->in[pf->i]);
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
 			break;
 		pf->i++;
 	}
 	if (pf->i - start > 0)
+	{
 		if (!(pf->join = ft_strsub(pf->in, start, (pf->i - start)))
 		&& (pf->ret = 1))
 			return (0);
-		pf->arg.preci = ft_atoi(pf->join);
-		ft_strdel(&pf->join);
-		printf("%25s %6d %10s %6d\n", "pf_parse_preci", pf->i, "preci", pf->arg.preci);
-		pf->i--;
+	}
+	else if (pf->i-- || 1)
+		return (1);
+	pf->i--;
+	pf->arg.preci = ft_atoi(pf->join);
+	ft_strdel(&pf->join);
+	printf("%25s %6d %10s %6d\n", "pf_parse_preci", pf->i, "preci", pf->arg.preci);
 	return (1);
 }
 

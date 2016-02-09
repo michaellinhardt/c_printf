@@ -47,9 +47,9 @@ int		pf_build_modulo(t_printf *pf)
 int		pf_build_string(t_printf *pf)
 {
 	printf("\n%25s %6d %10s %6c\n", "pf_build_string", pf->i, "lettre", pf->in[pf->i]);
-	if (pf->arg.preci && !(pf->join = ft_strsub(va_arg(pf->ap, char *), 0, pf->arg.preci)))
+	if (pf->arg.ispreci && !(pf->join = ft_strsub(va_arg(pf->ap, char *), 0, pf->arg.preci)))
 		return (1);
-	if (!pf->arg.preci && !(pf->join = ft_strdup(va_arg(pf->ap, char *))))
+	if (!pf->arg.ispreci && !(pf->join = ft_strdup(va_arg(pf->ap, char *))))
 		return (1);
 	pf->arg.more = 0;
 	pf->arg.space = 0;

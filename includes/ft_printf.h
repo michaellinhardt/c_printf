@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/09 02:39:02 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/09 03:33:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_arg
 	int				less;
 	int				width;
 	int				preci;
+	int				ispreci;
 	int				col;
 	char			*d_color;
 	enum {
