@@ -6,3 +6,4 @@ printf
 *.a
 libft/*.a
 libft/*.o
+libft/a.out
