@@ -64,6 +64,8 @@ int		pf_build_string(t_printf *pf)
 int		pf_build_int(t_printf *pf)
 {
 	int		i;
+	int		len;
+	char	*tmp;
 
 	i = va_arg(pf->ap, int);
 	printf("\n%25s %6d %10s %6c\n", "pf_build_char", pf->i, "lettre", pf->in[pf->i]);
@@ -77,6 +79,18 @@ int		pf_build_int(t_printf *pf)
 	}
 	else if (pf->arg.more)
 		pf->arg.space = 0;
+	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
+	{
+		if (!(tmp = ft_strnew(pf->arg.preci)))
+			return (1);
+		i = -1;
+		pf->j = -1;
+		len = (int)ft_strlen(pf->join);
+		while (++i < pf->arg.preci)
+			tmp[i] = ((pf->arg.preci - i) > len) ? '0' : pf->join[++pf->j];
+		ft_strdel(&pf->join);
+		pf->join = tmp;
+	}
 	if (pf_build_format(pf))
 		return (1);
 	ft_bzero((void *)&pf->arg, sizeof(t_arg));

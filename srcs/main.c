@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/09 03:50:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/09 04:11:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int		main(int argc, char **argv)
 	if (argc && argv)
 		;
 	taille = 10;
-	s1 = ft_strdup("%.s!\n");
+	s1 = ft_strdup("%.3d!\n");
 	s2 = ft_strdup("s2ahah");
 	s3 = ft_strdup("%     ");
 	src = s1;
 
-	ft_printf(s1, s2);
-	printf(s1, s2);
+	ft_printf(s1, 42);
+	printf(s1, 42);
 
 	// printf("\n\nRETURN: %d\n", ret);
 	ft_strdel(&s1);
