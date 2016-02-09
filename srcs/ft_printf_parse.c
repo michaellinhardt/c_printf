@@ -120,18 +120,18 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['c'] = &pf_build_char;
 	spe['i'] = &pf_build_int;
 	spe['d'] = &pf_build_int;
-	spe['u'] = &pf_build_int;
+	spe['u'] = &pf_build_uint;
 
 	spe['S'] = &pf_fake;
 	spe['C'] = &pf_fake;
 
-	spe['p'] = &pf_fake;
 	spe['D'] = &pf_fake;
 	spe['o'] = &pf_fake;
 	spe['O'] = &pf_fake;
 	spe['U'] = &pf_fake;
 	spe['x'] = &pf_fake;
 	spe['X'] = &pf_fake;
+	spe['p'] = &pf_fake;
 	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;
 	spe['0'] = &pf_parse_flag;

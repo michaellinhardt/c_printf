@@ -5,3 +5,4 @@ printf
 *.o
 *.a
 libft/*.a
+libft/*.o

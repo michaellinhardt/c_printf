@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/09 21:06:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/09 23:49:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 
 	char	*s1;
 	char	*s2;
-	char	*s3;
+	long long int	s3;
 	// wchar_t s4[50] = L"Salut G\x82rard !";
 	char	*src;
 	int		taille;
@@ -39,16 +39,22 @@ int		main(int argc, char **argv)
 	taille = 10;
 	s1 = ft_strdup("%u!\n");
 	s2 = ft_strdup("s2ahah");
-	s3 = ft_strdup("%     ");
 	src = s1;
 
 	ft_printf(s1, 42);
 	printf(s1, 42);
 
+	s3 = (unsigned int)&s1;
+	printf("%p\n", s1);
+	printf("0x");
+	printf("%llx\n", s3);
+
+	printf("%o\n", 9);
+
 	// printf("\n\nRETURN: %d\n", ret);
 	ft_strdel(&s1);
 	ft_strdel(&s2);
-	ft_strdel(&s3);
+	// ft_strdel(&s3);
 
 	return (0);
 }
