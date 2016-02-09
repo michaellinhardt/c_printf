@@ -22,7 +22,7 @@ static int	pf_build_format_width(t_printf *pf)
 	if (pf->arg.width < (int)ft_strlen(pf->join))
 		return (0);
 	start = (pf->arg.less) ? 0 : (pf->arg.width - ft_strlen(pf->join));
-	c = (pf->arg.zero && !pf->arg.less) ? '0' : ' ';
+	c = (pf->arg.zero && !pf->arg.less && !pf->arg.ispreci) ? '0' : ' ';
 	tmp = pf->join;
 	if (!(pf->join = ft_strnew(pf->arg.width)))
 		return (1);

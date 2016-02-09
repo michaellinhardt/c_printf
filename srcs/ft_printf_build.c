@@ -72,11 +72,8 @@ int		pf_build_int(t_printf *pf)
 	if (!(pf->join = ft_itoa(i)))
 		return (1);
 	pf->arg.diez = 0;
-	if (i < 0)
-	{
-		pf->arg.more = 0;
+	if (i < 0 && !(pf->arg.more = 0))
 		pf->arg.space = 0;
-	}
 	else if (pf->arg.more)
 		pf->arg.space = 0;
 	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
