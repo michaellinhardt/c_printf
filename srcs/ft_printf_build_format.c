@@ -69,11 +69,11 @@ int			pf_build_format(t_printf *pf)
 {
 	if (!pf->join)
 		return (1);
+	if (pf->arg.diez2 && pf_build_diez2(pf))
+		return (1);
 	if (pf->arg.width && pf_build_format_width(pf))
 		return (1);
 	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf))
-		return (1);
-	if (pf->arg.diez2 && pf_build_diez2(pf))
 		return (1);
 	return (0);
 }
