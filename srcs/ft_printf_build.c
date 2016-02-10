@@ -78,10 +78,10 @@ int		pf_build_int(t_printf *pf)
 
 int		pf_build_oint(t_printf *pf)
 {
-	int		i;
-	char	*tmp;
+	unsigned int	i;
+	char			*tmp;
 
-	i = va_arg(pf->ap, int);
+	i = va_arg(pf->ap, unsigned int);
 	printf("\n%25s %6d %10s %6d\n", "pf_build_oint", pf->i, "value", i);
 	if (!(pf->join = ft_itoa_base(i, "01234567")))
 		return (1);
@@ -98,13 +98,28 @@ int		pf_build_oint(t_printf *pf)
 	return (0);
 }
 
+int		pf_build_ptr(t_printf *pf)
+{
+	unsigned long	i;
+
+	i = (unsigned long)va_arg(pf->ap, void *);
+	printf("\n%25s %6d %10s\n", "pf_build_ptr", pf->i, "NA");
+	if (!(pf->join = ft_ulitoa_base(i, "0123456789abcdef")))
+		return (1);
+	pf->arg.diez2 = 1;
+	pf->arg.space = 0;
+	pf->arg.more = 0;
+	if (pf_build_itoa(pf))
+		return (1);
+	return (0);
+}
+
 int		pf_build_xint(t_printf *pf)
 {
-	int		i;
-	char	*tmp;
+	unsigned int	i;
 
-	i = va_arg(pf->ap, int);
-	printf("\n%25s %6d %10s %6d\n", "pf_build_oint", pf->i, "value", i);
+	i = va_arg(pf->ap, unsigned int);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_xint", pf->i, "value", i);
 	if (!(pf->join = ft_itoa_base(i, "0123456789abcdef")))
 		return (1);
 	pf->arg.diez2 = pf->arg.diez;
@@ -117,11 +132,10 @@ int		pf_build_xint(t_printf *pf)
 
 int		pf_build_xint2(t_printf *pf)
 {
-	int		i;
-	char	*tmp;
+	unsigned int	i;
 
-	i = va_arg(pf->ap, int);
-	printf("\n%25s %6d %10s %6d\n", "pf_build_oint", pf->i, "value", i);
+	i = va_arg(pf->ap, unsigned int);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_xint2", pf->i, "value", i);
 	if (!(pf->join = ft_strtoupper(ft_itoa_base(i, "0123456789abcdef"))))
 		return (1);
 	pf->arg.diez2 = pf->arg.diez;

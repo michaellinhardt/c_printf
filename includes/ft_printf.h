@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/10 21:32:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/10 22:14:12 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int			pf_build_uint(t_printf *pf);
 int			pf_build_oint(t_printf *pf);
 int			pf_build_xint(t_printf *pf);
 int			pf_build_xint2(t_printf *pf);
+int			pf_build_ptr(t_printf *pf);
 
 // FICHIER BUILD_FLAGS.C
 int			pf_build_format(t_printf *pf);
