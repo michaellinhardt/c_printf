@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/10 21:23:15 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/10 21:40:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['u'] = &pf_build_uint;
 	spe['o'] = &pf_build_oint;
 	spe['x'] = &pf_build_xint;
+	spe['X'] = &pf_build_xint2;
 
 	spe['S'] = &pf_fake;
 	spe['C'] = &pf_fake;
@@ -130,7 +131,6 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['D'] = &pf_fake;
 	spe['O'] = &pf_fake;
 	spe['U'] = &pf_fake;
-	spe['X'] = &pf_fake;
 	spe['p'] = &pf_fake;
 	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;

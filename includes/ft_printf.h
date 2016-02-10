@@ -78,6 +78,7 @@ int			pf_build_int(t_printf *pf);
 int			pf_build_uint(t_printf *pf);
 int			pf_build_oint(t_printf *pf);
 int			pf_build_xint(t_printf *pf);
+int			pf_build_xint2(t_printf *pf);
 
 // FICHIER BUILD_FLAGS.C
 int			pf_build_format(t_printf *pf);
