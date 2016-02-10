@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/09 21:05:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/10 21:32:40 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_arg
 {
 	int				modulo;
 	int				diez;
+	int				diez2;
 	int				more;
 	int				space;
 	int				zero;
@@ -75,6 +76,8 @@ int			pf_build_char(t_printf *pf);
 int			pf_build_itoa(t_printf *pf);
 int			pf_build_int(t_printf *pf);
 int			pf_build_uint(t_printf *pf);
+int			pf_build_oint(t_printf *pf);
+int			pf_build_xint(t_printf *pf);
 
 // FICHIER BUILD_FLAGS.C
 int			pf_build_format(t_printf *pf);

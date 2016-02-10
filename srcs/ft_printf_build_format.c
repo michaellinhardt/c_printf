@@ -54,6 +54,17 @@ static int	pf_build_format_sign(t_printf *pf)
 	return (0);
 }
 
+static int	pf_build_diez2(t_printf *pf)
+{
+	char	*tmp;
+
+	tmp = pf->join;
+	if (!(pf->join = ft_strjoin("0x", tmp)))
+		return (1);
+	ft_strdel(&tmp);
+	return (0);
+}
+
 int			pf_build_format(t_printf *pf)
 {
 	if (!pf->join)
@@ -61,6 +72,8 @@ int			pf_build_format(t_printf *pf)
 	if (pf->arg.width && pf_build_format_width(pf))
 		return (1);
 	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf))
+		return (1);
+	if (pf->arg.diez2 && pf_build_diez2(pf))
 		return (1);
 	return (0);
 }

@@ -76,6 +76,45 @@ int		pf_build_int(t_printf *pf)
 	return (0);
 }
 
+int		pf_build_oint(t_printf *pf)
+{
+	int		i;
+	char	*tmp;
+
+	i = va_arg(pf->ap, int);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_oint", pf->i, "value", i);
+	if (!(pf->join = ft_itoa_base(i, "01234567")))
+		return (1);
+	if (pf->arg.diez)
+	{
+		tmp = pf->join;
+		pf->join = ft_strjoin("0", tmp);
+		ft_strdel(&tmp);
+	}
+	pf->arg.space = 0;
+	pf->arg.more = 0;
+	if (pf_build_itoa(pf))
+		return (1);
+	return (0);
+}
+
+int		pf_build_xint(t_printf *pf)
+{
+	int		i;
+	char	*tmp;
+
+	i = va_arg(pf->ap, int);
+	printf("\n%25s %6d %10s %6d\n", "pf_build_oint", pf->i, "value", i);
+	if (!(pf->join = ft_itoa_base(i, "0123456789abcdef")))
+		return (1);
+	pf->arg.diez2 = pf->arg.diez;
+	pf->arg.space = 0;
+	pf->arg.more = 0;
+	if (pf_build_itoa(pf))
+		return (1);
+	return (0);
+}
+
 int		pf_build_uint(t_printf *pf)
 {
 	unsigned int	i;
