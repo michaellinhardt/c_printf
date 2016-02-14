@@ -14,7 +14,8 @@
 
 int		pf_build_invalid(t_printf *pf)
 {
-	printf("\n%25s %6d %10s %6c\n", "pf_build_invalid", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6c\n", "pf_build_invalid", pf->i, "lettre", pf->in[pf->i]);
 	if (!(pf->join = ft_strnew(0)))
 		return (1);
 	pf->arg.more = 0;
@@ -29,7 +30,8 @@ int		pf_build_invalid(t_printf *pf)
 
 int		pf_build_modulo(t_printf *pf)
 {
-	printf("\n%25s %6d %10s %6c\n", "pf_build_modulo", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6c\n", "pf_build_modulo", pf->i, "lettre", pf->in[pf->i]);
 	if (!(pf->join = ft_strdup("%")))
 		return (1);
 	pf->arg.more = 0;
@@ -44,11 +46,18 @@ int		pf_build_modulo(t_printf *pf)
 
 int		pf_build_string(t_printf *pf)
 {
-	printf("\n%25s %6d %10s %6c\n", "pf_build_string", pf->i, "lettre", pf->in[pf->i]);
-	if (pf->arg.ispreci && !(pf->join = ft_strsub(va_arg(pf->ap, char *), 0, pf->arg.preci)))
-		return (1);
-	if (!pf->arg.ispreci && !(pf->join = ft_strdup(va_arg(pf->ap, char *))))
-		return (1);
+	char	*verif;
+	int		dofree;
+
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6c\n", "pf_build_string", pf->i, "lettre", pf->in[pf->i]);
+	dofree = 0;
+	if (!(verif = (char *)va_arg(pf->ap, void *)) && (dofree = 1))
+		verif = ft_strdup("(null)");
+	pf->join = (pf->arg.ispreci) ? ft_strsub(verif, 0, pf->arg.preci) :
+	ft_strdup(verif);
+	if (dofree)
+		ft_strdel(&verif);
 	pf->arg.more = 0;
 	pf->arg.space = 0;
 	pf->arg.diez = 0;
@@ -64,7 +73,8 @@ int		pf_build_oint(t_printf *pf)
 	char			*tmp;
 
 	i = va_arg(pf->ap, uintmax_t);
-	printf("\n%25s %6d %10s %jud\n", "pf_build_oint", pf->i, "value", i);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %jud\n", "pf_build_oint", pf->i, "value", i);
 	if (!(pf->join = ft_uimaxtoa_base(i, "01234567")))
 		return (1);
 	if (pf->arg.diez)
@@ -85,7 +95,8 @@ int		pf_build_ptr(t_printf *pf)
 	uintmax_t		i;
 
 	i = (uintmax_t)va_arg(pf->ap, void *);
-	printf("\n%25s %6d %10s\n", "pf_build_ptr", pf->i, "NA");
+	if (DEBUG)
+		printf("\n%25s %6d %10s\n", "pf_build_ptr", pf->i, "NA");
 	if (!(pf->join = ft_uimaxtoa_base(i, "0123456789abcdef")))
 		return (1);
 	pf->arg.diez2 = 1;
@@ -101,7 +112,8 @@ int		pf_build_xint(t_printf *pf)
 	uintmax_t		i;
 
 	i = va_arg(pf->ap, uintmax_t);
-	printf("\n%25s %6d %10s %jud\n", "pf_build_xint", pf->i, "value", i);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %jud\n", "pf_build_xint", pf->i, "value", i);
 	if (!(pf->join = ft_uimaxtoa_base(i, "0123456789abcdef")))
 		return (1);
 	pf->arg.diez2 = pf->arg.diez;
@@ -117,7 +129,8 @@ int		pf_build_xint2(t_printf *pf)
 	uintmax_t		i;
 
 	i = va_arg(pf->ap, uintmax_t);
-	printf("\n%25s %6d %10s %6ju\n", "pf_build_xint2", pf->i, "value", i);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6ju\n", "pf_build_xint2", pf->i, "value", i);
 	if (!(pf->join = ft_strtoupper(ft_uimaxtoa_base(i, "0123456789abcdef"))))
 		return (1);
 	pf->arg.diez2 = pf->arg.diez;
@@ -134,7 +147,8 @@ int		pf_build_itoa(t_printf *pf)
 	int		len;
 	char	*tmp;
 
-	printf("\n%25s %6d %10s %6c\n", "pf_build_itoa", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6c\n", "pf_build_itoa", pf->i, "lettre", pf->in[pf->i]);
 	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
 	{
 		if (!(tmp = ft_strnew(pf->arg.preci)))
@@ -155,7 +169,8 @@ int		pf_build_itoa(t_printf *pf)
 
 int		pf_build_char(t_printf *pf)
 {
-	printf("\n%25s %6d %10s %6c\n", "pf_build_char", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6c\n", "pf_build_char", pf->i, "lettre", pf->in[pf->i]);
 	if (!(pf->join = ft_strnew(1)))
 		return (1);
 	pf->join[0] = (char)va_arg(pf->ap, int);

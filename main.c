@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 03:34:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 06:28:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,24 @@ int		main(int argc, char **argv)
 	s2 = ft_strdup("s2ahah");
 	src = s1;
 
-	ft_printf("%jd!\n", nbr);
-	printf("%jd!\n", nbr);
+	printf(" - ret: %d ", ft_printf("%d", -42));
+	printf("\n");
+	printf(" - ret: %d ", printf("%d", -42));
+	printf("\n");
+	printf("\n");
+
+	ft_printf("%X", -42);
+	printf("\n");
+	printf("%X", -42);
+	printf("\n");
+	printf("\n");
 
 	s3 = (unsigned int)&s1;
-	printf("\n%p\n", s1);
-	printf("0x");
-	printf("%llx\n", s3);
+	// printf("\n%p\n", s1);
+	// printf("0x");
+	// printf("%llx\n", s3);
 
-	printf("%#5.4o\n", 9);
+	// printf("%#5.4o\n", 9);
 
 	// printf("\n\nRETURN: %d\n", ret);
 	ft_strdel(&s1);

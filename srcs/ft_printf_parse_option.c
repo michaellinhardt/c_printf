@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 02:19:32 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 03:00:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 05:15:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		pf_parse_flag(t_printf *pf)
 {
-	printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("%25s %6d %10s %6c\n", "pf_parse_flag", pf->i, "lettre", pf->in[pf->i]);
 	if ((pf->in[pf->i] == '#') && (pf->arg.diez = 1))
 		return (1);
 	if ((pf->in[pf->i] == '0') && (pf->arg.zero = 1))
@@ -32,7 +33,8 @@ int		pf_parse_flag(t_printf *pf)
 
 int		pf_parse_length(t_printf *pf)
 {
-	printf("%25s %6d %10s %6c\n", "pf_parse_length", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("%25s %6d %10s %6c\n", "pf_parse_length", pf->i, "lettre", pf->in[pf->i]);
 	if (pf->in[(pf->i + 1)] && (pf->in[(pf->i + 1)] == 'h')
 	&& (pf->in[pf->i] == 'h') && (pf->arg.length = hh) && pf->i++)
 		return (1);
@@ -59,14 +61,17 @@ int		pf_parse_preci(t_printf *pf)
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
 	&& ((pf->arg.preci = va_arg(pf->ap, int)) || 1))
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_preci 1", pf->i, "lettre", pf->in[pf->i]);
-		printf("%25s %6d %10s %6d\n", "pf_parse_preci 1", pf->i, "preci", pf->arg.preci);
+		if (DEBUG)
+			printf("%25s %6d %10s %6c\n", "pf_parse_preci 1", pf->i, "lettre", pf->in[pf->i]);
+		if (DEBUG)
+			printf("%25s %6d %10s %6d\n", "pf_parse_preci 1", pf->i, "preci", pf->arg.preci);
 		return (1);
 	}
 	start = pf->i;
 	while (pf->in[pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_preci 2", pf->i, "lettre", pf->in[pf->i]);
+		if (DEBUG)
+			printf("%25s %6d %10s %6c\n", "pf_parse_preci 2", pf->i, "lettre", pf->in[pf->i]);
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
 			break;
 		pf->i++;
@@ -82,7 +87,8 @@ int		pf_parse_preci(t_printf *pf)
 	pf->i--;
 	pf->arg.preci = ft_atoi(pf->join);
 	ft_strdel(&pf->join);
-	printf("%25s %6d %10s %6d\n", "pf_parse_preci", pf->i, "preci", pf->arg.preci);
+	if (DEBUG)
+		printf("%25s %6d %10s %6d\n", "pf_parse_preci", pf->i, "preci", pf->arg.preci);
 	return (1);
 }
 
@@ -93,14 +99,17 @@ int		pf_parse_width(t_printf *pf)
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
 	&& ((pf->arg.width = va_arg(pf->ap, int)) || 1))
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
-		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		if (DEBUG)
+			printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
+		if (DEBUG)
+			printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 		return (1);
 	}
 	start = pf->i;
 	while (pf->in[pf->i])
 	{
-		printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
+		if (DEBUG)
+			printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
 			break;
 		pf->i++;
@@ -111,6 +120,7 @@ int		pf_parse_width(t_printf *pf)
 			return (0);
 		pf->arg.width = ft_atoi(pf->join);
 		ft_strdel(&pf->join);
-		printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
+		if (DEBUG)
+			printf("%25s %6d %10s %6d\n", "pf_parse_width", pf->i, "width", pf->arg.width);
 	return (1);
 }

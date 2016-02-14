@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/09 02:09:57 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 05:39:57 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int			ft_printf(const char *restrict format, ...)
 {
 	t_printf		pf;
 
+	if (!format)
+		return (-1);
 	ft_bzero((void **)&pf, sizeof(t_printf));
 	if (!(pf.out = ft_strnew(0)))
 		return (pf_return(&pf, -1));
@@ -32,8 +34,10 @@ int			ft_printf(const char *restrict format, ...)
 	va_start(pf.ap, format);
 	if (pf_parse(&pf))
 		return (pf_return(&pf, -1));
-	// ft_putstr(pf.out);
-	printf("%s", pf.out);
+	if (!DEBUG)
+		printf("%s", pf.out);
+	else
+		printf("%s", pf.out);
 	va_end(pf.ap);
 	return (pf_return(&pf, ft_strlen(pf.out)));
 }

@@ -33,8 +33,10 @@ static int	pf_build_format_width(t_printf *pf)
 		pf->join[i] = (i < start || !(tmp[pf->j])) ? c : tmp[pf->j++];
 	}
 	ft_strdel(&tmp);
-	printf("%25s %6d %10s %6d\n", "pf_build_format_width", pf->i, "start", start);
-	printf("%25s %6d %10s %6c\n", "pf_build_format_width", pf->i, "char", c);
+	if (DEBUG)
+		printf("%25s %6d %10s %6d\n", "pf_build_format_width", pf->i, "start", start);
+	if (DEBUG)
+		printf("%25s %6d %10s %6c\n", "pf_build_format_width", pf->i, "char", c);
 	return (0);
 }
 
@@ -67,13 +69,14 @@ static int	pf_build__format_diez2(t_printf *pf)
 
 int			pf_build_format(t_printf *pf)
 {
-	if (!pf->join)
+	if (!pf->join && (pf->ret = 1))
 		return (1);
-	if (pf->arg.diez2 && pf_build__format_diez2(pf))
+	if (pf->arg.diez2 && pf_build__format_diez2(pf) && (pf->ret = 1))
 		return (1);
-	if (pf->arg.width && pf_build_format_width(pf))
+	if (pf->arg.width && pf_build_format_width(pf) && (pf->ret = 1))
 		return (1);
-	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf))
+	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf)
+	 && (pf->ret = 1))
 		return (1);
 	return (0);
 }

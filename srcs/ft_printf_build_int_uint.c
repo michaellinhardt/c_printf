@@ -19,7 +19,8 @@ int			pf_build_int(t_printf *pf)
 	if (pf->arg.length == z)
 		return (pf_build_uint(pf));
 	i = va_arg(pf->ap, intmax_t);
-	printf("\n%25s %6d %10s %6jd\n", "pf_build_int", pf->i, "value", i);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6jd\n", "pf_build_int", pf->i, "value", i);
 	if (!(pf->join = ft_imaxtoa_base(i, "0123456789")))
 		return (1);
 	pf->arg.diez = 0;
@@ -37,7 +38,8 @@ int		pf_build_uint(t_printf *pf)
 	uintmax_t	i;
 
 	i = va_arg(pf->ap, uintmax_t);
-	printf("\n%25s %6d %10s %6ju\n", "pf_build_uint", pf->i, "value", i);
+	if (DEBUG)
+		printf("\n%25s %6d %10s %6ju\n", "pf_build_uint", pf->i, "value", i);
 	if (!(pf->join = ft_uimaxtoa_base(i, "0123456789")))
 		return (1);
 	pf->arg.diez = 0;
