@@ -22,7 +22,7 @@ static int	pf_build_format_width(t_printf *pf)
 	if (pf->arg.width < (int)ft_strlen(pf->join))
 		return (0);
 	start = (pf->arg.less) ? 0 : (pf->arg.width - ft_strlen(pf->join));
-	c = (pf->arg.zero && !pf->arg.less && !pf->arg.ispreci) ? '0' : ' ';
+	c = (pf->arg.zero && !pf->arg.less) ? '0' : ' ';
 	tmp = pf->join;
 	if (!(pf->join = ft_strnew(pf->arg.width)))
 		return (1);
@@ -67,16 +67,27 @@ static int	pf_build__format_diez2(t_printf *pf)
 	return (0);
 }
 
-int			pf_build_format(t_printf *pf)
+static void	pf_build_format_zero2(t_printf *pf)
+{
+	pf->j = -1;
+	while (pf->join[++pf->j])
+		if (pf->join[pf->j] == ' ')
+			pf->join[pf->j] = '0';
+}
+
+void		pf_build_format(t_printf *pf)
 {
 	if (!pf->join && (pf->ret = 1))
-		return (1);
+		return ;
 	if (pf->arg.diez2 && pf_build__format_diez2(pf) && (pf->ret = 1))
-		return (1);
+		return ;
 	if (pf->arg.width && pf_build_format_width(pf) && (pf->ret = 1))
-		return (1);
+		return ;
+	if (pf->arg.zero2)
+		pf_build_format_zero2(pf);
 	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf)
 	 && (pf->ret = 1))
-		return (1);
-	return (0);
+		return ;
+	if (pf->arg.toupper)
+		ft_strtoupper(pf->join);
 }

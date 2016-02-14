@@ -6,11 +6,20 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 05:39:57 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 08:20:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		pf_print(t_printf *pf)
+{
+	pf->ret = ft_strlen(pf->out);
+	pf->j = -1;
+	while (pf->nulchar[++pf->j] > -1)
+		pf->out[(pf->nulchar[pf->j])] = '\0';
+	write(1, pf->out, pf->ret);
+}
 
 static int		pf_return(t_printf *pf, int ret)
 {
@@ -32,14 +41,12 @@ int			ft_printf(const char *restrict format, ...)
 	pf.join = NULL;
 	pf.in = ft_strdup(format);
 	va_start(pf.ap, format);
+	pf.nulchar[0] = -1;
 	if (pf_parse(&pf))
 		return (pf_return(&pf, -1));
-	if (!DEBUG)
-		printf("%s", pf.out);
-	else
-		printf("%s", pf.out);
+	pf_print(&pf);
 	va_end(pf.ap);
-	return (pf_return(&pf, ft_strlen(pf.out)));
+	return (pf_return(&pf, pf.ret));
 }
 
 void		pf_print_flags(t_printf *pf)

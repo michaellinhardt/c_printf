@@ -6,19 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 05:20:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 11:44:37 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int		pf_fake(t_printf *pf)
-{
-	pf->arg.more = 1;
-	if (DEBUG)
-		printf("%25s %6d %10s %6c\n", "pf_fake", pf->i, "lettre", pf->in[pf->i]);
-	return (0);
-}
 
 static int		pf_parse_modulo(t_printf *pf)
 {
@@ -45,7 +37,7 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['o'] = &pf_build_oint;
 	spe['O'] = &pf_build_oint;
 	spe['x'] = &pf_build_xint;
-	spe['X'] = &pf_build_xint2;
+	spe['X'] = &pf_build_xint;
 	spe['p'] = &pf_build_ptr;
 	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;
@@ -54,16 +46,16 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['-'] = &pf_parse_flag;
 	spe[' '] = &pf_parse_flag;
 
+	spe['*'] = &pf_parse_width;
+	spe['.'] = &pf_parse_preci;
+
 	spe['h'] = &pf_parse_length;
 	spe['l'] = &pf_parse_length;
 	spe['j'] = &pf_parse_length;
 	spe['z'] = &pf_parse_length;
 
-	spe['S'] = &pf_fake;
-	spe['C'] = &pf_fake;
-
-	spe['*'] = &pf_parse_width;
-	spe['.'] = &pf_parse_preci;
+	spe['S'] = &pf_build_string;
+	spe['C'] = &pf_build_char;
 	// int i = -1;
 	// while (++i < 128)
 	// 	if (spe[i])
@@ -103,11 +95,11 @@ static int		pf_parse_specifier(t_printf *pf)
 		if (DEBUG)
 			printf("\n%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "incre", pf->in[pf->i]);
 	}
-	if (pf->valid == 0 && pf_build_invalid(pf))
+	if (pf->valid == 0 && !pf->ret && pf_build_invalid(pf))
 		return (1);
 	if (pf->ret || (!pf->ret && pf_join(pf, 2)))
 		return (1);
-	pf->start = (pf->valid) ? pf->i + 1 : pf->i ;
+	pf->start = pf->i + 1;
 	ft_bzero((void *)&pf->arg, sizeof(t_arg));
 	if (DEBUG)
 		printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "end", pf->in[pf->i]);

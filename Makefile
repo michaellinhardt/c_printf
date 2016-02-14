@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/14 06:25:54 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/14 09:06:10 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,17 @@ CC		=		gcc
 FLAGS1	=		-Wall -Wextra -Werror -g
 FLAGS2	=		-g
 FLAGS3	=		-Wall -Wextra -Werror
-FLAGS	=		$(FLAGS1)
+FLAGS	=		$(FLAGS2)
 
 SRCS	=		ft_printf.c \
 				ft_printf_join.c \
 				ft_printf_parse.c \
 				ft_printf_parse_option.c \
-				ft_printf_build.c \
-				ft_printf_build_int_uint.c \
-				ft_printf_build_format.c
+				ft_printf_build_format.c \
+				ft_printf_build_tools.c \
+				ft_printf_build_str.c \
+				ft_printf_build_int.c \
+				ft_printf_build_int_tools.c
 
 SRCS_LIB		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c \

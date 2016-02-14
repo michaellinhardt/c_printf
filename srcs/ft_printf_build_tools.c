@@ -12,40 +12,46 @@
 
 #include "ft_printf.h"
 
-int			pf_build_int(t_printf *pf)
+int		pf_build_nulchar(t_printf *pf)
 {
-	intmax_t	i;
+	pf->j = 0;
+	while (pf->nulchar[pf->j] > -1)
+		pf->j++;
+	pf->nulchar[pf->j] = ft_strlen(pf->out);
+	if (pf->arg.width && !pf->arg.less)
+		pf->nulchar[pf->j] += pf->arg.width - 1;
+	pf->nulchar[++pf->j] = -1;
+	return ((int)'*');
+}
 
-	if (pf->arg.length == z)
-		return (pf_build_uint(pf));
-	i = va_arg(pf->ap, intmax_t);
+int		pf_build_invalid(t_printf *pf)
+{
 	if (DEBUG)
-		printf("\n%25s %6d %10s %6jd\n", "pf_build_int", pf->i, "value", i);
-	if (!(pf->join = ft_imaxtoa_base(i, "0123456789")))
+		printf("\n%25s %6d %10s %6c\n", "pf_build_invalid", pf->i, "lettre", pf->in[pf->i]);
+	if (!(pf->join = ft_strnew(1)))
 		return (1);
+	if (pf->in[pf->i])
+		pf->join[0] = pf->in[pf->i];
+	else
+		pf->arg.width = 0;
+	pf->arg.more = 0;
+	pf->arg.space = 0;
 	pf->arg.diez = 0;
-	if (i < 0 && !(pf->arg.more = 0))
-		pf->arg.space = 0;
-	else if (pf->arg.more)
-		pf->arg.space = 0;
-	if (pf_build_itoa(pf))
-		return (1);
+	pf_build_format(pf);
 	return (0);
 }
 
-int		pf_build_uint(t_printf *pf)
+int		pf_build_modulo(t_printf *pf)
 {
-	uintmax_t	i;
-
-	i = va_arg(pf->ap, uintmax_t);
 	if (DEBUG)
-		printf("\n%25s %6d %10s %6ju\n", "pf_build_uint", pf->i, "value", i);
-	if (!(pf->join = ft_uimaxtoa_base(i, "0123456789")))
+		printf("\n%25s %6d %10s %6c\n", "pf_build_modulo", pf->i, "lettre", pf->in[pf->i]);
+	if (!(pf->join = ft_strdup("%")))
 		return (1);
+	pf->arg.more = 0;
+	pf->arg.space = 0;
 	pf->arg.diez = 0;
-	if (pf->arg.more)
-		pf->arg.space = 0;
-	if (pf_build_itoa(pf))
-		return (1);
+	pf->arg.preci = 0;
+	pf_build_format(pf);
+	pf->valid = 1;
 	return (0);
 }

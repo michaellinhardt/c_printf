@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 02:19:32 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 05:15:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 11:49:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		pf_parse_preci(t_printf *pf)
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
 	&& ((pf->arg.preci = va_arg(pf->ap, int)) || 1))
 	{
+		if (pf->arg.preci < 0 && !(pf->arg.ispreci = 0))
+			pf->arg.preci = 0;
 		if (DEBUG)
 			printf("%25s %6d %10s %6c\n", "pf_parse_preci 1", pf->i, "lettre", pf->in[pf->i]);
 		if (DEBUG)
@@ -99,6 +101,8 @@ int		pf_parse_width(t_printf *pf)
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
 	&& ((pf->arg.width = va_arg(pf->ap, int)) || 1))
 	{
+		if ((pf->arg.width < 0) && (pf->arg.less = 1))
+			pf->arg.width = -(pf->arg.width);
 		if (DEBUG)
 			printf("%25s %6d %10s %6c\n", "pf_parse_width", pf->i, "lettre", pf->in[pf->i]);
 		if (DEBUG)
