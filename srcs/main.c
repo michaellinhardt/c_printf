@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/10 23:06:17 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/14 03:34:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,19 @@ int		main(int argc, char **argv)
 	int		taille;
 	int		ret = 0;
 
+	intmax_t	nbr = 'c'; nbr += 1;
+	// printf("sizeof: %i\n", nbr);
+
 	ret += 1;
 	if (argc && argv)
 		;
 	taille = 10;
-	s1 = ft_strdup("%p!\n");
+	s1 = ft_strdup("%i!\n");
 	s2 = ft_strdup("s2ahah");
 	src = s1;
 
-	ft_printf(s1, &s1);
-	printf(s1, &s1);
+	ft_printf("%jd!\n", nbr);
+	printf("%jd!\n", nbr);
 
 	s3 = (unsigned int)&s1;
 	printf("\n%p\n", s1);

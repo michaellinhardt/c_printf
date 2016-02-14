@@ -54,7 +54,7 @@ static int	pf_build_format_sign(t_printf *pf)
 	return (0);
 }
 
-static int	pf_build_diez2(t_printf *pf)
+static int	pf_build__format_diez2(t_printf *pf)
 {
 	char	*tmp;
 
@@ -69,7 +69,7 @@ int			pf_build_format(t_printf *pf)
 {
 	if (!pf->join)
 		return (1);
-	if (pf->arg.diez2 && pf_build_diez2(pf))
+	if (pf->arg.diez2 && pf_build__format_diez2(pf))
 		return (1);
 	if (pf->arg.width && pf_build_format_width(pf))
 		return (1);
