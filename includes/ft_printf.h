@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 09:58:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/16 02:15:27 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-// # include <wchar.h>
-// # include <locale.h>
+# include <wchar.h>
+# include <locale.h>
 
 # define DEBUG 0
 
@@ -41,8 +41,8 @@ typedef struct		s_arg
 	char			*d_color;
 	enum {
 		none,
-		hh,
 		h,
+		hh,
 		l,
 		ll,
 		j,

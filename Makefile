@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/14 09:06:10 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/16 00:28:20 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,8 +91,8 @@ fclean: clean
 	@/bin/rm -rf $(NAME)
 	@echo "$(W8) $(YE)/bin/rm -rf ./last.valgrind$(WH)"
 	@/bin/rm -rf ./last.valgrind
-	@echo "$(W8) $(YE)/bin/rm -rf ./$(NAME).dSYM$(WH)"
-	@/bin/rm -rf ./$(NAME).dSYM
+	@echo "$(W8) $(YE)/bin/rm -rf ./*.dSYM$(WH)"
+	@/bin/rm -rf ./*.dSYM
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 re: fclean all
@@ -112,13 +112,13 @@ re: fclean all
 	@/bin/rm -rf main.o
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-test: re -main -test -main-clean
+test: all -main -test -main-clean
 -test:
 	@echo "$(W8) $(YE)time ./a.out | /bin/cat -e$(WH)"
 	@time ./a.out | /bin/cat -e
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-leaks: re -main -leaks -main-clean
+leaks: all -main -leaks -main-clean
 -leaks:
 	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./a.out > ./last.valgrind 2>&1$(WH)"
 	@valgrind --leak-check=yes --track-origins=yes ./a.out > ./last.valgrind 2>&1

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 02:19:32 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 11:49:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/16 02:23:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,24 @@ int		pf_parse_length(t_printf *pf)
 {
 	if (DEBUG)
 		printf("%25s %6d %10s %6c\n", "pf_parse_length", pf->i, "lettre", pf->in[pf->i]);
+	if (DEBUG)
+		printf("%25s %6d %10s %6d\n", "pf_parse_length", pf->i, "actual", pf->arg.length);
+	if (pf->in[pf->i] == 'h')
+		pf->arg.length = (h > pf->arg.length) ? h : pf->arg.length ;
 	if (pf->in[(pf->i + 1)] && (pf->in[(pf->i + 1)] == 'h')
-	&& (pf->in[pf->i] == 'h') && (pf->arg.length = hh) && pf->i++)
-		return (1);
-	if ((pf->in[pf->i] == 'h') && (pf->arg.length = h))
-		return (1);
+	&& (pf->in[pf->i] == 'h') && pf->i++)
+		pf->arg.length = (hh > pf->arg.length) ? hh : pf->arg.length ;
+	if (pf->in[pf->i] == 'l')
+		pf->arg.length = (l > pf->arg.length) ? l : pf->arg.length ;
 	if (pf->in[(pf->i + 1)] && (pf->in[(pf->i + 1)] == 'l')
-	&& (pf->in[pf->i] == 'l') && (pf->arg.length = ll) && pf->i++)
-		return (1);
-	if ((pf->in[pf->i] == 'l') && (pf->arg.length = l))
-		return (1);
-	if ((pf->in[pf->i] == 'j') && (pf->arg.length = j))
-		return (1);
-	if ((pf->in[pf->i] == 'z') && (pf->arg.length = z))
-		return (1);
+	&& (pf->in[pf->i] == 'l') && pf->i++)
+		pf->arg.length = (ll > pf->arg.length) ? ll : pf->arg.length ;
+	if (pf->in[pf->i] == 'j')
+		pf->arg.length = (j > pf->arg.length) ? j : pf->arg.length ;
+	if (pf->in[pf->i] == 'z')
+		pf->arg.length = (z > pf->arg.length) ? z : pf->arg.length ;
+	if (DEBUG)
+		printf("%25s %6d %10s %6d\n", "pf_parse_length", pf->i, "after", pf->arg.length);
 	return (1);
 }
 
@@ -70,6 +74,7 @@ int		pf_parse_preci(t_printf *pf)
 		return (1);
 	}
 	start = pf->i;
+	pf->arg.preci = 0;
 	while (pf->in[pf->i])
 	{
 		if (DEBUG)

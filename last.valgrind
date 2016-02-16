@@ -1,0 +1,46 @@
+==70046== Memcheck, a memory error detector
+==70046== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==70046== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==70046== Command: ./a.out
+==70046== 
+���eLocale set to en_US.UTF-8
+945 - α
+193 - Á
+177 - ±
+8805 - ≥
+FU Á±≥
+ret: 11
+FU 945
+ret: 7
+FU 945
+ret: 7
+==70046== 
+==70046== HEAP SUMMARY:
+==70046==     in use at exit: 120,908 bytes in 195 blocks
+==70046==   total heap usage: 284 allocs, 89 frees, 138,891 bytes allocated
+==70046== 
+==70046== 2,064 bytes in 1 blocks are possibly lost in loss record 65 of 73
+==70046==    at 0x10000917C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==70046==    by 0x1004F4EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E8182: protocols() (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E8093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E5C13: gc_init (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004ED24E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004FA132: layout_string_create (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E883C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E8300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==70046==    by 0x1004E82E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==70046== 
+==70046== LEAK SUMMARY:
+==70046==    definitely lost: 0 bytes in 0 blocks
+==70046==    indirectly lost: 0 bytes in 0 blocks
+==70046==      possibly lost: 2,064 bytes in 1 blocks
+==70046==    still reachable: 94,809 bytes in 10 blocks
+==70046==         suppressed: 24,035 bytes in 184 blocks
+==70046== Reachable blocks (those to which a pointer was found) are not shown.
+==70046== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==70046== 
+==70046== For counts of detected and suppressed errors, rerun with: -v
+==70046== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 17 from 17)

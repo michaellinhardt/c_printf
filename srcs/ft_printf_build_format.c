@@ -22,6 +22,7 @@ static int	pf_build_format_width(t_printf *pf)
 	if (pf->arg.width < (int)ft_strlen(pf->join))
 		return (0);
 	start = (pf->arg.less) ? 0 : (pf->arg.width - ft_strlen(pf->join));
+	start = start + (pf->arg.diez2 * pf->arg.zero);
 	c = (pf->arg.zero && !pf->arg.less) ? '0' : ' ';
 	tmp = pf->join;
 	if (!(pf->join = ft_strnew(pf->arg.width)))
@@ -30,6 +31,9 @@ static int	pf_build_format_width(t_printf *pf)
 	pf->j = 0;
 	while (++i < pf->arg.width)
 	{
+		if (pf->arg.zero && pf->arg.diez2 && pf->j < 2
+		&& (pf->join[i] = tmp[pf->j++]))
+			continue;
 		pf->join[i] = (i < start || !(tmp[pf->j])) ? c : tmp[pf->j++];
 	}
 	ft_strdel(&tmp);
@@ -44,13 +48,25 @@ static int	pf_build_format_sign(t_printf *pf)
 {
 	char	*s;
 	char	*tmp;
+	int		i;
+	int		need;
 
 	s = (pf->arg.more) ? ft_strdup("+") : ft_strdup(" ");
 	if (!s)
 		return (1);
 	tmp = pf->join;
-	if (!(pf->join = ft_strjoin(s, tmp)))
+	if (!(pf->join = ft_strnew((ft_strlen(pf->join) + 1))))
 		return (1);
+	pf->j = -1;
+	i = 0;
+	need = (pf->arg.more + pf->arg.space);
+	while (tmp[i])
+	{
+		if (tmp[i] != ' ' && (need) && !(need = 0))
+			pf->join[++pf->j] = *s;
+		else
+			pf->join[++pf->j] = tmp[i++];
+	}
 	ft_strdel(&s);
 	ft_strdel(&tmp);
 	return (0);
