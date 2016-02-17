@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 04:29:05 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 06:19:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <wchar.h>
-
-# define DEBUG 0
 
 typedef struct		s_arg
 {

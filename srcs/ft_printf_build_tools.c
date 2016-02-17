@@ -26,8 +26,6 @@ int		pf_build_nulchar(t_printf *pf)
 
 int		pf_build_invalid(t_printf *pf)
 {
-	if (DEBUG)
-		printf("\n%25s %6d %10s %6c\n", "pf_build_invalid", pf->i, "lettre", pf->in[pf->i]);
 	if (!(pf->join = ft_strnew(1)))
 		return (1);
 	if (pf->in[pf->i])
@@ -43,8 +41,6 @@ int		pf_build_invalid(t_printf *pf)
 
 int		pf_build_modulo(t_printf *pf)
 {
-	if (DEBUG)
-		printf("\n%25s %6d %10s %6c\n", "pf_build_modulo", pf->i, "lettre", pf->in[pf->i]);
 	if (!(pf->join = ft_strdup("%")))
 		return (1);
 	pf->arg.more = 0;

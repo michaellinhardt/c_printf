@@ -19,8 +19,6 @@ int		pf_build_oint(t_printf *pf)
 
 	pf->arg.length = (pf->in[pf->i] == 'O') ? l : pf->arg.length;
 	i = pf_build_get_uint(pf);
-	if (DEBUG)
-		printf("\n%25s %6d %10s %jud\n", "pf_build_oint", pf->i, "value", i);
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci && !pf->arg.diez)
 		pf->join = ft_strnew(0);
 	else if (!(pf->join = ft_uimaxtoa_base(i, "01234567")))
@@ -44,8 +42,6 @@ int		pf_build_ptr(t_printf *pf)
 
 	pf->arg.length = l;
 	i = pf_build_get_uint(pf);
-	if (DEBUG)
-		printf("\n%25s %6d %10s\n", "pf_build_ptr", pf->i, "NA");
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci)
 		pf->join = ft_strnew(0);
 	else if (!(pf->join = ft_uimaxtoa_base(i, "0123456789abcdef")))
@@ -67,8 +63,6 @@ int		pf_build_xint(t_printf *pf)
 	uintmax_t		i;
 
 	i = pf_build_get_uint(pf);
-	if (DEBUG)
-		printf("\n%25s %6d %10s %jud\n", "pf_build_xint", pf->i, "value", i);
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci)
 		pf->join = ft_strnew(0);
 	else if (!(pf->join = ft_uimaxtoa_base(i, "0123456789abcdef")))
@@ -88,8 +82,6 @@ int					pf_build_int(t_printf *pf)
 
 	pf->arg.length = (pf->in[pf->i] == 'D') ? l : pf->arg.length;
 	i = pf_build_get_int(pf);
-	if (DEBUG)
-		printf("\n%25s %6d %10s %6jd\n", "pf_build_int", pf->i, "value", i);
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci)
 		pf->join = ft_strnew(0);
 	else if (!(pf->join = ft_imaxtoa_base(i, "0123456789")))
@@ -117,8 +109,6 @@ int		pf_build_uint(t_printf *pf)
 
 	pf->arg.length = (pf->in[pf->i] == 'U') ? l : pf->arg.length ;
 	i = pf_build_get_uint(pf);
-	if (DEBUG)
-		printf("\n%25s %6d %10s %6ju\n", "pf_build_uint", pf->i, "value", i);
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci)
 		pf->join = ft_strnew(0);
 	else if (!(pf->join = ft_uimaxtoa_base(i, "0123456789")))

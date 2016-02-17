@@ -37,10 +37,6 @@ static int	pf_build_format_width(t_printf *pf)
 		pf->join[i] = (i < start || !(tmp[pf->j])) ? c : tmp[pf->j++];
 	}
 	ft_strdel(&tmp);
-	if (DEBUG)
-		printf("%25s %6d %10s %6d\n", "pf_build_format_width", pf->i, "start", start);
-	if (DEBUG)
-		printf("%25s %6d %10s %6c\n", "pf_build_format_width", pf->i, "char", c);
 	return (0);
 }
 

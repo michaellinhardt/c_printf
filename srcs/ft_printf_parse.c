@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 05:20:34 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 06:20:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 static int		pf_parse_modulo(t_printf *pf)
 {
 	(void)pf->in;
-	if (DEBUG)
-		printf("%25s %6d %10s %6c\n", "pf_parse_modulo", pf->i, "lettre", pf->in[pf->i]);
 	if (!pf->arg.modulo && (pf->arg.modulo = 1))
 		return (1);
 	if (pf_build_modulo(pf))
@@ -73,27 +71,19 @@ static int		pf_parse_specifier(t_printf *pf)
 		if ((int)pf->in[pf->i] > '0' && (int)pf->in[pf->i] < 58
 			&& !(pf_parse_width(pf)))
 		{
-			if (DEBUG)
-				printf("\n%25s %6d %10s %6c\n", "fin de specifier 1", pf->i, "lettre", pf->in[pf->i]);
 			break;
 		}
 		else if (((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > 57)
 		&& (!spe[(int)(pf->in[pf->i])]))
 		{
-			if (DEBUG)
-				printf("\n%25s %6d %10s %6c\n", "fin de specifier 3", pf->i, "lettre", pf->in[pf->i]);
 			break;
 		}
 		else if (pf->in[pf->i] && spe[(int)(pf->in[pf->i])]
 			&& !(spe[(int)(pf->in[pf->i])](pf)))
 		{
-			if (DEBUG)
-				printf("\n%25s %6d %10s %6c\n", "fin de specifier 2", pf->i, "lettre", pf->in[pf->i]);
 			break;
 		}
 		pf->i++;
-		if (DEBUG)
-			printf("\n%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "incre", pf->in[pf->i]);
 	}
 	if (pf->valid == 0 && !pf->ret && pf_build_invalid(pf))
 		return (1);
@@ -101,8 +91,6 @@ static int		pf_parse_specifier(t_printf *pf)
 		return (1);
 	pf->start = pf->i + 1;
 	ft_bzero((void *)&pf->arg, sizeof(t_arg));
-	if (DEBUG)
-		printf("%25s %6d %10s %6c\n", "pf_parse_specifier", pf->i, "end", pf->in[pf->i]);
 	return (0);
 }
 
@@ -111,8 +99,6 @@ int				pf_parse(t_printf *pf)
 
 	while (pf->in[pf->i])
 	{
-		if (DEBUG)
-			printf("%25s %6d %10s %6c\n", "pf_parse", pf->i, "lettre", pf->in[pf->i]);
 		if ((pf->in[pf->i] == '%') && (pf_join(pf, 1)
 		|| pf_parse_specifier(pf)))
 			return (1);

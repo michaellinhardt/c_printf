@@ -79,8 +79,6 @@ void		pf_build_itoa(t_printf *pf)
 	int		len;
 	char	*tmp;
 
-	if (DEBUG)
-		printf("\n%25s %6d %10s %6c\n", "pf_build_itoa", pf->i, "lettre", pf->in[pf->i]);
 	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
 	{
 		if (!(tmp = ft_strnew(pf->arg.preci)) && (pf->ret = 1))

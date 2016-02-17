@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/14 08:20:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 06:18:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,3 @@ int			ft_printf(const char *restrict format, ...)
 	return (pf_return(&pf, pf.ret));
 }
 
-void		pf_print_flags(t_printf *pf)
-{
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "modulo", pf->arg.modulo);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "diez", pf->arg.diez);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "more", pf->arg.more);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "space", pf->arg.space);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "zero", pf->arg.zero);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "less", pf->arg.less);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "width", pf->arg.width);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "preci", pf->arg.preci);
-	printf("%25s %6d %10s %6d\n", "pf_print_flags", pf->i, "col", pf->arg.col);
-}
