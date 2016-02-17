@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/17 05:09:25 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/17 06:24:14 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC		=		gcc
 FLAGS1	=		-Wall -Wextra -Werror -g
 FLAGS2	=		-g
 FLAGS3	=		-Wall -Wextra -Werror
-FLAGS	=		$(FLAGS2)
+FLAGS	=		$(FLAGS3)
 
 SRCS	=		ft_printf.c \
 				ft_printf_join.c \
