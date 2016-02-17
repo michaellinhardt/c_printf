@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 03:30:31 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 03:49:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 03:59:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_wstrtostr(wchar_t const *src)
 		return ((char *) NULL);
 		if (*src++)
 			;
+		ft_strdel(&prev);
+		ft_strdel(&next);
 	}
 	return (str);
 }

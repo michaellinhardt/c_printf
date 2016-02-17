@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/16 02:15:27 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 04:29:05 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <wchar.h>
-# include <locale.h>
 
 # define DEBUG 0
 
@@ -83,6 +82,8 @@ int			pf_parse_width(t_printf *pf);
 // FICHIER BUILD_STR.C
 int			pf_build_string(t_printf *pf);
 int			pf_build_char(t_printf *pf);
+int			pf_build_wstring(t_printf *pf);
+int			pf_build_wchar(t_printf *pf);
 
 // FICHIER BUILD_INT.C
 int			pf_build_int(t_printf *pf);

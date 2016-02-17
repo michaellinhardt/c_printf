@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 01:30:34 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/17 05:20:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['%'] = &pf_parse_modulo;
 	spe['s'] = &pf_build_string;
 	spe['c'] = &pf_build_char;
+	spe['S'] = &pf_build_wstring;
+	spe['C'] = &pf_build_wchar;
 	spe['i'] = &pf_build_int;
 	spe['d'] = &pf_build_int;
 	spe['D'] = &pf_build_int;
@@ -54,8 +56,6 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['j'] = &pf_parse_length;
 	spe['z'] = &pf_parse_length;
 
-	spe['S'] = &pf_build_string;
-	spe['C'] = &pf_build_char;
 	// int i = -1;
 	// while (++i < 128)
 	// 	if (spe[i])

@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/16 23:40:37 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/17 05:09:25 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS_LIB		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_atoi.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c \
 				  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c ft_strrev.c \
-				  ft_pcol.c ft_imaxtoa_base.c ft_uimaxtoa_base.c
+				  ft_pcol.c ft_imaxtoa_base.c ft_uimaxtoa_base.c ft_wstrtostr.c \
+				  ft_wchartostr.c
 
 HDIR		=	./includes/
 LDIR		=	./libft/
