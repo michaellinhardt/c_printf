@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 06:23:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/18 01:15:48 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['x'] = &pf_build_xint;
 	spe['X'] = &pf_build_xint;
 	spe['p'] = &pf_build_ptr;
+	spe['f'] = &pf_build_float;
+	spe['F'] = &pf_build_float;
 	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;
 	spe['0'] = &pf_parse_flag;
@@ -53,6 +55,7 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['l'] = &pf_parse_length;
 	spe['j'] = &pf_parse_length;
 	spe['z'] = &pf_parse_length;
+	spe['L'] = &pf_parse_length;
 
 	// int i = -1;
 	// while (++i < 128)
@@ -70,19 +73,13 @@ static int		pf_parse_specifier(t_printf *pf)
 	{
 		if ((int)pf->in[pf->i] > '0' && (int)pf->in[pf->i] < 58
 			&& !(pf_parse_width(pf)))
-		{
 			break;
-		}
 		else if (((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > 57)
 		&& (!spe[(int)(pf->in[pf->i])]))
-		{
 			break;
-		}
 		else if (pf->in[pf->i] && spe[(int)(pf->in[pf->i])]
 			&& !(spe[(int)(pf->in[pf->i])](pf)))
-		{
 			break;
-		}
 		pf->i++;
 	}
 	if (pf->valid == 0 && !pf->ret && pf_build_invalid(pf))

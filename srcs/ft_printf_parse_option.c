@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 02:19:32 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 06:16:57 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/18 01:16:26 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int		pf_parse_length(t_printf *pf)
 		pf->arg.length = (j > pf->arg.length) ? j : pf->arg.length ;
 	if (pf->in[pf->i] == 'z')
 		pf->arg.length = (z > pf->arg.length) ? z : pf->arg.length ;
+	if (pf->in[pf->i] == 'L')
+		pf->arg.length = (L > pf->arg.length) ? L : pf->arg.length ;
 	return (1);
 }
 

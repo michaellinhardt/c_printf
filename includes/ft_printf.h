@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 06:19:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/18 09:10:41 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_arg
 	char			*d_color;
 	enum {
 		none,
+		L,
 		h,
 		hh,
 		l,
@@ -103,8 +104,8 @@ int			pf_build_modulo(t_printf *pf);
 // FICHIER BUILD_FORMAT.C
 void		pf_build_format(t_printf *pf);
 
-// FICHIER DEBUG.C
-void		pf_print_flags(t_printf *pf);
+// FICHIER BUILD_FLOAT.C
+int			pf_build_float(t_printf *pf);
 
 #include <stdio.h>
 #endif
