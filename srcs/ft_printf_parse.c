@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/18 01:15:48 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 03:25:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ static int		pf_parse_modulo(t_printf *pf)
 	if (pf_build_modulo(pf))
 		pf->ret = 1;
 	return (0);
+}
+
+static void		pf_parse_specifier_init2(int (**spe)(t_printf *))
+{
+	spe['h'] = &pf_parse_length;
+	spe['l'] = &pf_parse_length;
+	spe['j'] = &pf_parse_length;
+	spe['z'] = &pf_parse_length;
+	spe['L'] = &pf_parse_length;
+	// spe['{'] = &pf_parse_flag;
 }
 
 static void		pf_parse_specifier_init(int (**spe)(t_printf *))
@@ -41,26 +51,14 @@ static void		pf_parse_specifier_init(int (**spe)(t_printf *))
 	spe['p'] = &pf_build_ptr;
 	spe['f'] = &pf_build_float;
 	spe['F'] = &pf_build_float;
-	// spe['{'] = &pf_parse_flag;
 	spe['#'] = &pf_parse_flag;
 	spe['0'] = &pf_parse_flag;
 	spe['+'] = &pf_parse_flag;
 	spe['-'] = &pf_parse_flag;
 	spe[' '] = &pf_parse_flag;
-
 	spe['*'] = &pf_parse_width;
 	spe['.'] = &pf_parse_preci;
-
-	spe['h'] = &pf_parse_length;
-	spe['l'] = &pf_parse_length;
-	spe['j'] = &pf_parse_length;
-	spe['z'] = &pf_parse_length;
-	spe['L'] = &pf_parse_length;
-
-	// int i = -1;
-	// while (++i < 128)
-	// 	if (spe[i])
-		// printf("%d\n", i);
+	pf_parse_specifier_init2(spe);
 }
 
 static int		pf_parse_specifier(t_printf *pf)

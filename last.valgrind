@@ -1,46 +1,107 @@
-==1902== Memcheck, a memory error detector
-==1902== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==1902== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==1902== Command: ./a.out
-==1902== 
-            -1.19995 - ret: 20
-            -1.19995 - ret: 20
-==1902== 
-==1902== HEAP SUMMARY:
-==1902==     in use at exit: 26,279 bytes in 189 blocks
-==1902==   total heap usage: 285 allocs, 96 frees, 32,633 bytes allocated
-==1902== 
-==1902== 148 (80 direct, 68 indirect) bytes in 1 blocks are definitely lost in loss record 43 of 67
-==1902==    at 0x10000DEBB: malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==1902==    by 0x1001C88D6: __Balloc_D2A (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1001C921F: __d2b_D2A (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1001C5877: __dtoa (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1001EE3E6: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
-==1902==    by 0x100000F34: main (main.c:21)
-==1902== 
-==1902== 2,064 bytes in 1 blocks are possibly lost in loss record 61 of 67
-==1902==    at 0x10000E17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==1902==    by 0x1004F9EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED182: protocols() (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004EAC13: gc_init (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004F224E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004FF132: layout_string_create (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==1902==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
-==1902== 
-==1902== LEAK SUMMARY:
-==1902==    definitely lost: 80 bytes in 1 blocks
-==1902==    indirectly lost: 68 bytes in 2 blocks
-==1902==      possibly lost: 2,064 bytes in 1 blocks
-==1902==    still reachable: 0 bytes in 0 blocks
-==1902==         suppressed: 24,067 bytes in 185 blocks
-==1902== 
-==1902== For counts of detected and suppressed errors, rerun with: -v
-==1902== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 18 from 18)
+==17467== Memcheck, a memory error detector
+==17467== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==17467== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==17467== Command: ./a.out
+==17467== 
+==17467== Conditional jump or move depends on uninitialised value(s)
+==17467==    at 0x100003F4C: pf_build_float_get (in ./a.out)
+==17467==    by 0x100003CD2: pf_build_float (in ./a.out)
+==17467==    by 0x1000016B5: pf_parse_specifier (in ./a.out)
+==17467==    by 0x100001467: pf_parse (in ./a.out)
+==17467==    by 0x1000010B4: ft_printf (in ./a.out)
+==17467==    by 0x100000E74: main (main.c:22)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+==17467== Conditional jump or move depends on uninitialised value(s)
+==17467==    at 0x100003F52: pf_build_float_get (in ./a.out)
+==17467==    by 0x100003CD2: pf_build_float (in ./a.out)
+==17467==    by 0x1000016B5: pf_parse_specifier (in ./a.out)
+==17467==    by 0x100001467: pf_parse (in ./a.out)
+==17467==    by 0x1000010B4: ft_printf (in ./a.out)
+==17467==    by 0x100000E74: main (main.c:22)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+          +0.0000000==17467== Conditional jump or move depends on uninitialised value(s)
+==17467==    at 0x100321263: __fpclassify (in /usr/lib/system/libsystem_m.dylib)
+==17467==    by 0x10020FC1F: __ldtoa (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EE0E9: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x100000EA1: main (main.c:23)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+==17467== Conditional jump or move depends on uninitialised value(s)
+==17467==    at 0x10020FC51: __ldtoa (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EE0E9: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x100000EA1: main (main.c:23)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+==17467== Use of uninitialised value of size 8
+==17467==    at 0x10020FC69: __ldtoa (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EE0E9: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x100000EA1: main (main.c:23)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+==17467== Conditional jump or move depends on uninitialised value(s)
+==17467==    at 0x1001EEC53: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x100000EA1: main (main.c:23)
+==17467==  Uninitialised value was created by a stack allocation
+==17467==    at 0x7FFF5FC01036: _dyld_start (in /usr/lib/dyld)
+==17467== 
+ - ret: 20
+          +0.0000000 - ret: 20
+==17467== 
+==17467== HEAP SUMMARY:
+==17467==     in use at exit: 26,243 bytes in 188 blocks
+==17467==   total heap usage: 285 allocs, 97 frees, 32,616 bytes allocated
+==17467== 
+==17467== 112 (80 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 39 of 66
+==17467==    at 0x10000DEBB: malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==17467==    by 0x1001C88D6: __Balloc_D2A (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001C5553: __rv_alloc_D2A (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001C5574: __nrv_alloc_D2A (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x10020FCD2: __ldtoa (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EE0E9: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1002176C8: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001ED389: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x1001EB223: printf (in /usr/lib/system/libsystem_c.dylib)
+==17467==    by 0x100000EA1: main (main.c:23)
+==17467== 
+==17467== 2,064 bytes in 1 blocks are possibly lost in loss record 60 of 66
+==17467==    at 0x10000E17C: malloc_zone_malloc (in /usr/local/Cellar/valgrind/3.11.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==17467==    by 0x1004F9EFD: _objc_copyClassNamesForImage (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED182: protocols() (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED093: readClass(objc_class*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004EAC13: gc_init (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004F224E: objc_initializeClassPair_internal(objc_class*, char const*, objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004FF132: layout_string_create (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED83C: realizeClass(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED300: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==17467==    by 0x1004ED2E9: copySwiftV1MangledName(char const*, bool) (in /usr/lib/libobjc.A.dylib)
+==17467== 
+==17467== LEAK SUMMARY:
+==17467==    definitely lost: 80 bytes in 1 blocks
+==17467==    indirectly lost: 32 bytes in 1 blocks
+==17467==      possibly lost: 2,064 bytes in 1 blocks
+==17467==    still reachable: 0 bytes in 0 blocks
+==17467==         suppressed: 24,067 bytes in 185 blocks
+==17467== 
+==17467== For counts of detected and suppressed errors, rerun with: -v
+==17467== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 18 from 18)

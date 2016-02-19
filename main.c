@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/18 11:05:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 04:00:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int		main(int argc, char **argv)
 	if (argc && argv)
 		;
 
-	printf(" - ret: %d\n", ft_printf("% #20.5f", -1.199949999));
-	printf(" - ret: %d\n", printf("%# 20.5f", -1.199949999));
+	long double i;
+	i = 1.537895;
+	printf(" - ret: %d\n", ft_printf("%#1.1Lf", (double)i));
+	printf(" - ret: %d\n", printf("%#1.1Lf", (double)i));
 
 	return (0);
 }

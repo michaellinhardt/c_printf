@@ -6,22 +6,42 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/19 03:17:21 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 04:03:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static long double	pf_build_float_get(t_printf *pf)
+{
+	long double	i;
+
+	if (pf->arg.length == L && !(i = (long double)va_arg(pf->ap, long double)))
+		i = (long double)1.1;
+	else if (pf->arg.length != L && !(i = (long double)va_arg(pf->ap, double)))
+		i = (long double)1.1;
+	pf->j = 2;
+	return (i);
+}
+
 static int	pf_build_float_less(t_printf *pf)
 {
 	char		*tmp;
 
-	tmp = pf->join;
-	if (!(pf->join = ft_strjoin("-", tmp)))
-		return (1);
-	ft_strdel(&tmp);
-	pf->arg.more = 0;
-	pf->arg.space = 0;
+	if (pf->j == 1)
+	{
+		tmp = pf->join;
+		if (!(pf->join = ft_strjoin("-", tmp)))
+			return (1);
+		ft_strdel(&tmp);
+		pf->arg.more = 0;
+		pf->arg.space = 0;
+	}
+	else
+	{
+		pf->join[0] = '0';
+		pf->join[2] = '0';
+	}
 	return (0);
 }
 
@@ -61,8 +81,7 @@ int					pf_build_float(t_printf *pf)
 	char		*right;
 	int			verif;
 
-	i = (pf->arg.length == L) ? (long double)va_arg(pf->ap, long double)
-	: (long double)va_arg(pf->ap, double);
+	i = pf_build_float_get(pf);
 	i *= (i < 0 && (pf->j = 1)) ? -1 : 1;
 	if ((verif = pf_build_float_right(pf, i - (uintmax_t)i, -1)) == -1)
 		return (1);
