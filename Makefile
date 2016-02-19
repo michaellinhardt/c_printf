@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/19 04:36:39 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/19 06:07:21 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS	=		ft_printf.c \
 				ft_printf_build_int.c \
 				ft_printf_build_int_base.c \
 				ft_printf_build_int_tools.c \
-				ft_printf_build_float.c
+				ft_printf_build_float.c \
+				ft_printf_build_float_tools.c
 
 SRCS_LIB		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c \
