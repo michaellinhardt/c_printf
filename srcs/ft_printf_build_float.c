@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/19 04:03:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 04:41:50 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static long double	pf_build_float_get(t_printf *pf)
 	long double	i;
 
 	if (pf->arg.length == L && !(i = (long double)va_arg(pf->ap, long double)))
+	{
+		pf->j = 2;
 		i = (long double)1.1;
+	}
 	else if (pf->arg.length != L && !(i = (long double)va_arg(pf->ap, double)))
+	{
+		pf->j = 2;
 		i = (long double)1.1;
-	pf->j = 2;
+	}
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/18 09:10:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 04:37:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,12 @@ int			pf_build_wchar(t_printf *pf);
 // FICHIER BUILD_INT.C
 int			pf_build_int(t_printf *pf);
 int			pf_build_uint(t_printf *pf);
+
+// FICHIER BUILD_INT_BASE.C
 int			pf_build_oint(t_printf *pf);
 int			pf_build_xint(t_printf *pf);
 int			pf_build_ptr(t_printf *pf);
+int			pf_build_binary(t_printf *pf);
 
 // FICHIER BUILD_TOOLS_INT
 uintmax_t	pf_build_get_uint(t_printf *pf);

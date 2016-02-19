@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 06:17:46 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/19 04:38:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			pf_build_wstring(t_printf *pf)
 	dofree = 0;
 	if (!(verif = (wchar_t *)va_arg(pf->ap, void *)) && (dofree = 1))
 		verif = (wchar_t *)ft_strdup("(null)");
-	str = (dofree) ? ft_strdup(verif) : ft_wstrtostr(verif);
+	str = (dofree) ? ft_strdup((char *)verif) : ft_wstrtostr(verif);
 	if (pf->arg.ispreci && pf->arg.preci)
 		pf_build_wstring_preci(pf, verif);
 	if (dofree)
