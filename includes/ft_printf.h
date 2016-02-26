@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/19 06:06:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/26 01:04:58 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct		s_printf
 	int				valid;
 	int				i;
 	int				j;
+	int				k;
+	char			e;
 	int				start;
 	char			*join;
 	char			*in;

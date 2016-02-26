@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/19 06:07:21 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/25 22:25:45 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,8 @@ re: fclean all
 	@/bin/rm -rf main.o
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-test: all -main -test -main-clean
+test: all -main -test
+#test: all -main -test -main-clean
 -test:
 	@echo "$(W8) $(YE)time ./a.out | /bin/cat -e$(WH)"
 	@time ./a.out | /bin/cat -e

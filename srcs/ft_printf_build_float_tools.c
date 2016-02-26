@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 06:06:21 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/19 06:06:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/26 00:13:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,10 @@ int			pf_build_float_less(t_printf *pf)
 	return (0);
 }
 
-int			pf_build_float_right(t_printf *pf, long double i, int count)
+static int	pf_build_float_right_round(t_printf *pf, long double i, int count)
 {
-	uintmax_t	right;
-	int			next;
+	uintmax_t		next;
 
-	pf->arg.preci = (!pf->arg.ispreci) ? 6 : pf->arg.preci;
-	if (!(pf->join = ft_strnew(pf->arg.preci)))
-		return (-1);
-	count = -1;
-	while (++count < pf->arg.preci && (i *= 10.0))
-	{
-		right = (uintmax_t)i;
-		i = (long double)(i - (uintmax_t)i);
-		pf->join[count] = right + '0' ;
-	}
 	if ((next = (uintmax_t)(i * 10)) > 4)
 	{
 		while (pf->join[--count])
@@ -76,5 +65,32 @@ int			pf_build_float_right(t_printf *pf, long double i, int count)
 				break;
 			}
 	}
+	return (count);
+}
+
+static int	pf_build_float_right_zero(t_printf *pf, int count)
+{
+	while (++count < pf->arg.preci)
+		pf->join[count] = '0' ;
+	return (count);
+}
+
+int			pf_build_float_right(t_printf *pf, long double i, int count)
+{
+	uintmax_t	right;
+
+	pf->arg.preci = (!pf->arg.ispreci) ? 6 : pf->arg.preci;
+	if (!(pf->join = ft_strnew(pf->arg.preci)))
+		return (-1);
+	count = -1;
+	if (i == 0)
+		return (((count = pf_build_float_right_zero(pf, count)) == -1) ? 1 : 0);
+	while (++count < pf->arg.preci && (i *= 10.0))
+	{
+		right = ((uintmax_t)i) ? (uintmax_t)i : (uintmax_t)0;
+		i = (long double)(i - (uintmax_t)i);
+		pf->join[count] = right + '0' ;
+	}
+	count = pf_build_float_right_round(pf, i, count);
 	return ((count == -1) ? 1 : 0);
 }
