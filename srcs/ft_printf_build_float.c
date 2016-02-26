@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/26 01:16:05 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/26 01:18:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void			pf_build_float_short(t_printf *pf)
+static void			pf_build_float_g(t_printf *pf)
 {
 	int		i;
 	int		j;
@@ -100,7 +100,7 @@ int					pf_build_float(t_printf *pf)
 	if (pf_build_float_normal(pf, i))
 		return (1);
 	if (pf->in[pf->i] == 'g' || pf->in[pf->i] == 'G')
-		pf_build_float_short(pf);
+		pf_build_float_g(pf);
 	if ((pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E') && pf_build_float_e2(pf))
 			return (1);
 	pf_build_itoa(pf);

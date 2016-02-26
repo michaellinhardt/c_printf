@@ -15,10 +15,10 @@
 static void		pf_test(void)
 {
 	int i = 0;
-	double j = 10.012;
+	double j = 0.01200;
 
-	ft_printf("%E\n", (double)j);
-	printf("%E\n", j);
+	ft_printf("%g\n", (double)j);
+	printf("%g\n", j);
 }
 
 int				main(int argc, char **argv)
