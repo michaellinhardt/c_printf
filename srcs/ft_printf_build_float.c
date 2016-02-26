@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/26 01:08:09 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/02/26 01:16:05 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,45 +55,37 @@ static int			pf_build_float_normal(t_printf *pf, long double i)
 	return (0);
 }
 
-static long double	pf_build_float_e(t_printf *pf, long double i, int step)
+static int		pf_build_float_e2(t_printf *pf)
 {
 	char		*tmp;
 	char		*itoa;
 	int			j;
 
-	if (step == 1)
-	{
-		if (i >= 10 && ((pf->k++) || 1) && (pf->e = '+'))
-			return (pf_build_float_e(pf, (i / 10), 1));
-		if ((int)i == 0 && (pf->e = '-') && ((pf->k++) || 1))
-			return (pf_build_float_e(pf, (i * 10), 1));
-		return (i);
-	}
-	else
-	{
-		if (!(tmp = ft_strnew(ft_strlen(pf->join) + 4)))
-			return ((long double)(pf->ret = 1));
-		j = -1;
-		while (pf->join[++j])
-			tmp[j] = pf->join[j];
-		tmp[j++] = pf->in[pf->i];
-		tmp[j++] = pf->e;
-		if (!(itoa = ft_itoa(pf->k)))
-			return ((long double)(pf->ret = 1));
-		if (pf->k < 10)
-		{
-			tmp[j++] = '0';
-			tmp[j++] = *itoa;
-		}
-		else
-		{
-			tmp[j++] = *itoa++;
-			tmp[j++] = *itoa++;
-		}
-		ft_strdel(&pf->join);
-		pf->join = tmp;
-		ft_strdel(&itoa);
-	}
+	if (!(tmp = ft_strnew(ft_strlen(pf->join) + 4)))
+		return (1);
+	j = -1;
+	while (pf->join[++j])
+		tmp[j] = pf->join[j];
+	tmp[j++] = pf->in[pf->i];
+	tmp[j++] = pf->e;
+	if (!(itoa = ft_itoa(pf->k)))
+		return (1);
+	if (pf->k < 10 && ((tmp[j++] = '0') || 1))
+		tmp[j++] = *itoa;
+	else if ((tmp[j++] = *itoa++) || 1)
+		tmp[j++] = *itoa++;
+	ft_strdel(&pf->join);
+	pf->join = tmp;
+	ft_strdel(&itoa);
+	return (0);
+}
+
+static long double	pf_build_float_e1(t_printf *pf, long double i)
+{
+	if (i >= 10 && ((pf->k++) || 1) && (pf->e = '+'))
+		return (pf_build_float_e1(pf, (i / 10)));
+	if ((int)i == 0 && (pf->e = '-') && ((pf->k++) || 1))
+		return (pf_build_float_e1(pf, (i * 10)));
 	return (i);
 }
 
@@ -104,17 +96,13 @@ int					pf_build_float(t_printf *pf)
 	i = pf_build_float_get(pf);
 	i *= (i < 0 && (pf->j = 1)) ? -1 : 1;
 	if (pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E')
-		i = pf_build_float_e(pf, i, 1);
+		i = pf_build_float_e1(pf, i);
 	if (pf_build_float_normal(pf, i))
 		return (1);
 	if (pf->in[pf->i] == 'g' || pf->in[pf->i] == 'G')
 		pf_build_float_short(pf);
-	if (pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E')
-	{
-		pf_build_float_e(pf, i, 2);
-		if (pf->ret == 1)
+	if ((pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E') && pf_build_float_e2(pf))
 			return (1);
-	}
 	pf_build_itoa(pf);
 	return (0);
 }
