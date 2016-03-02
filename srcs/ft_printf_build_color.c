@@ -14,17 +14,17 @@
 
 static int		pf_build_color_get(t_printf *pf)
 {
-	if (pf->arg.width == 0 && !(pf->join = ft_strdup("\e[39m")))
+	if (pf->arg.width == 0 && !(pf->join = ft_strdup(CWHI)))
 		return (1);
-	if (pf->arg.width == 1 && !(pf->join = ft_strdup("\e[31m")))
+	if (pf->arg.width == 1 && !(pf->join = ft_strdup(CRED)))
 		return (1);
-	if (pf->arg.width == 2 && !(pf->join = ft_strdup("\e[32m")))
+	if (pf->arg.width == 2 && !(pf->join = ft_strdup(CGRE)))
 		return (1);
-	if (pf->arg.width == 3 && !(pf->join = ft_strdup("\e[33m")))
+	if (pf->arg.width == 3 && !(pf->join = ft_strdup(CYEL)))
 		return (1);
-	if (pf->arg.width == 4 && !(pf->join = ft_strdup("\e[34m")))
+	if (pf->arg.width == 4 && !(pf->join = ft_strdup(CBLU)))
 		return (1);
-	if (pf->arg.width == 5 && !(pf->join = ft_strdup("\e[90m")))
+	if (pf->arg.width == 5 && !(pf->join = ft_strdup(CGREY)))
 		return (1);
 	return (0);
 }

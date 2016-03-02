@@ -61,8 +61,8 @@ static int	pf_build_float_right_round(t_printf *pf, long double i, int count)
 				continue;
 			else
 			{
-				pf->join[count] = ((pf->join[count] - '0') + 1) + '0' ;
-				break;
+				pf->join[count] = ((pf->join[count] - '0') + 1) + '0';
+				break ;
 			}
 	}
 	return (count);
@@ -71,7 +71,7 @@ static int	pf_build_float_right_round(t_printf *pf, long double i, int count)
 static int	pf_build_float_right_zero(t_printf *pf, int count)
 {
 	while (++count < pf->arg.preci)
-		pf->join[count] = '0' ;
+		pf->join[count] = '0';
 	return (count);
 }
 
@@ -89,7 +89,7 @@ int			pf_build_float_right(t_printf *pf, long double i, int count)
 	{
 		right = ((uintmax_t)i) ? (uintmax_t)i : (uintmax_t)0;
 		i = (long double)(i - (uintmax_t)i);
-		pf->join[count] = right + '0' ;
+		pf->join[count] = right + '0';
 	}
 	count = pf_build_float_right_round(pf, i, count);
 	return ((count == -1) ? 1 : 0);

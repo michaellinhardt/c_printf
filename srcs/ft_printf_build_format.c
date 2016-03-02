@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_build_format.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2016/02/02 07:33:40 by mlinhard         ###   ########.fr       */
-/*   Updated: 2016/02/02 07:33:40 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/03/02 14:42:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		pf_build_format(t_printf *pf)
 	if (pf->arg.zero2)
 		pf_build_format_zero2(pf);
 	if ((pf->arg.more || pf->arg.space) && pf_build_format_sign(pf)
-	 && (pf->ret = 1))
+	&& (pf->ret = 1))
 		return ;
 	if (pf->arg.toupper)
 		ft_strtoupper(pf->join);

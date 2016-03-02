@@ -24,7 +24,7 @@ static void			pf_build_float_g(t_printf *pf)
 		if (pf->join[i] == '0')
 			pf->join[i] = '\0';
 		else
-			break;
+			break ;
 	}
 	if (pf->join[i] == '.')
 		pf->join[i] = '\0';
@@ -55,7 +55,7 @@ static int			pf_build_float_normal(t_printf *pf, long double i)
 	return (0);
 }
 
-static int		pf_build_float_e2(t_printf *pf)
+static int			pf_build_float_e2(t_printf *pf)
 {
 	char		*tmp;
 	char		*itoa;
@@ -102,7 +102,7 @@ int					pf_build_float(t_printf *pf)
 	if (pf->in[pf->i] == 'g' || pf->in[pf->i] == 'G')
 		pf_build_float_g(pf);
 	if ((pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E') && pf_build_float_e2(pf))
-			return (1);
+		return (1);
 	pf_build_itoa(pf);
 	return (0);
 }

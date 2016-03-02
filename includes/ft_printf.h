@@ -19,6 +19,13 @@
 # include <stdlib.h>
 # include <wchar.h>
 
+# define CWHI "\e[39m"
+# define CRED "\e[31m"
+# define CGRE "\e[32m"
+# define CYEL "\e[33m"
+# define CBLU "\e[34m"
+# define CGREY "\e[90m"
+
 typedef struct		s_arg
 {
 	int				modulo;

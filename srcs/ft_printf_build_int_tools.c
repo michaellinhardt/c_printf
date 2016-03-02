@@ -68,7 +68,7 @@ static void	pf_build_swapless(t_printf *pf)
 		else if (pf->join[i] == '-')
 		{
 			pf->join[i] = '0';
-			break;
+			break ;
 		}
 	}
 }
@@ -81,8 +81,11 @@ void		pf_build_itoa(t_printf *pf)
 
 	if (pf->arg.preci && pf->arg.preci > (int)ft_strlen(pf->join))
 	{
-		if (!(tmp = ft_strnew(pf->arg.preci)) && (pf->ret = 1))
+		if (!(tmp = ft_strnew(pf->arg.preci)))
+		{
+			pf->ret = 1;
 			return ;
+		}
 		i = -1;
 		pf->j = -1;
 		len = (int)ft_strlen(pf->join);

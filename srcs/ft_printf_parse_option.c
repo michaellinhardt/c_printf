@@ -24,29 +24,27 @@ int		pf_parse_flag(t_printf *pf)
 		return (1);
 	if ((pf->in[pf->i] == ' ') && (pf->arg.space = 1))
 		return (1);
-	// if ((pf->in[pf->i] == '{') && (pf->arg.col = 1))
-	// 	return (1);
 	return (1);
 }
 
 int		pf_parse_length(t_printf *pf)
 {
 	if (pf->in[pf->i] == 'h')
-		pf->arg.length = (h > pf->arg.length) ? h : pf->arg.length ;
+		pf->arg.length = (h > pf->arg.length) ? h : pf->arg.length;
 	if (pf->in[(pf->i + 1)] && (pf->in[(pf->i + 1)] == 'h')
 	&& (pf->in[pf->i] == 'h') && pf->i++)
-		pf->arg.length = (hh > pf->arg.length) ? hh : pf->arg.length ;
+		pf->arg.length = (hh > pf->arg.length) ? hh : pf->arg.length;
 	if (pf->in[pf->i] == 'l')
-		pf->arg.length = (l > pf->arg.length) ? l : pf->arg.length ;
+		pf->arg.length = (l > pf->arg.length) ? l : pf->arg.length;
 	if (pf->in[(pf->i + 1)] && (pf->in[(pf->i + 1)] == 'l')
 	&& (pf->in[pf->i] == 'l') && pf->i++)
-		pf->arg.length = (ll > pf->arg.length) ? ll : pf->arg.length ;
+		pf->arg.length = (ll > pf->arg.length) ? ll : pf->arg.length;
 	if (pf->in[pf->i] == 'j')
-		pf->arg.length = (j > pf->arg.length) ? j : pf->arg.length ;
+		pf->arg.length = (j > pf->arg.length) ? j : pf->arg.length;
 	if (pf->in[pf->i] == 'z')
-		pf->arg.length = (z > pf->arg.length) ? z : pf->arg.length ;
+		pf->arg.length = (z > pf->arg.length) ? z : pf->arg.length;
 	if (pf->in[pf->i] == 'L')
-		pf->arg.length = (L > pf->arg.length) ? L : pf->arg.length ;
+		pf->arg.length = (L > pf->arg.length) ? L : pf->arg.length;
 	return (1);
 }
 
@@ -68,7 +66,7 @@ int		pf_parse_preci(t_printf *pf)
 	while (pf->in[pf->i])
 	{
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
-			break;
+			break ;
 		pf->i++;
 	}
 	if (pf->i - start > 0)
@@ -100,14 +98,14 @@ int		pf_parse_width(t_printf *pf)
 	while (pf->in[pf->i])
 	{
 		if ((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > '9')
-			break;
+			break ;
 		pf->i++;
 	}
 	if (pf->i - start > 0)
 		if (!(pf->join = ft_strsub(pf->in, start, (pf->i - start)))
 		&& (pf->ret = 1))
 			return (0);
-		pf->arg.width = ft_atoi(pf->join);
-		ft_strdel(&pf->join);
+	pf->arg.width = ft_atoi(pf->join);
+	ft_strdel(&pf->join);
 	return (1);
 }

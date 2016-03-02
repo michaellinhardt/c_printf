@@ -14,7 +14,12 @@
 
 static void		pf_test(void)
 {
-	printf("{%}");
+	ft_printf("%0{col\n");
+	ft_printf("%1{col\n");
+	ft_printf("%2{col\n");
+	ft_printf("%3{col\n");
+	ft_printf("%4{col\n");
+	ft_printf("%5{col\n");
 }
 
 int				main(int argc, char **argv)

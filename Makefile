@@ -84,15 +84,15 @@ $(NAME): $(LIST_OBJ) $(LIST_OBJ_LIB)
 # 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:
-	#@echo "$(W8) $(YE)make clean -C $(LDIR)$(WH)"
-	#@make clean -C $(LDIR)
+#@echo "$(W8) $(YE)make clean -C $(LDIR)$(WH)"
+#@make clean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf $(LIST_OBJ) $(LIST_OBJ_LIB)$(WH)"
 	@/bin/rm -rf $(LIST_OBJ) $(LIST_OBJ_LIB)
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 fclean: clean
-	#@echo "$(W8) $(YE)make fclean -C $(LDIR)$(WH)"
-	#@make fclean -C $(LDIR)
+#@echo "$(W8) $(YE)make fclean -C $(LDIR)$(WH)"
+#@make fclean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf $(NAME)$(WH)"
 	@/bin/rm -rf $(NAME)
 	@echo "$(W8) $(YE)/bin/rm -rf ./last.valgrind$(WH)"

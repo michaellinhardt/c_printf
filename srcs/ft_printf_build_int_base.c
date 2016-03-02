@@ -76,7 +76,7 @@ int		pf_build_xint(t_printf *pf)
 	return (0);
 }
 
-int			pf_build_binary(t_printf *pf)
+int		pf_build_binary(t_printf *pf)
 {
 	intmax_t	i;
 

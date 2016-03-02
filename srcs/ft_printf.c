@@ -29,7 +29,7 @@ static int		pf_return(t_printf *pf, int ret)
 	return (ret);
 }
 
-int			ft_printf(const char *restrict format, ...)
+int				ft_printf(const char *restrict format, ...)
 {
 	t_printf		pf;
 
@@ -48,4 +48,3 @@ int			ft_printf(const char *restrict format, ...)
 	va_end(pf.ap);
 	return (pf_return(&pf, pf.ret));
 }
-

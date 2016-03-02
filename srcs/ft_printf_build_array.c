@@ -32,15 +32,15 @@ static int		pf_build_array_info(t_printf *pf)
 
 static int		pf_build_array_int(t_printf *pf)
 {
-	int		*tab;
-	char	*prev;
-	char	*next;
-	char	space[2];
+	int			*tab;
+	char		*prev;
+	char		*next;
+	static char	space[2] = {0};
 
 	if (!(tab = (int *)va_arg(pf->ap, void *)))
 		return (1);
 	pf->j = -1;
-	space[0] = (!(space[1] = '\0') && pf->arg.space) ? ' ' : '\n';
+	space[0] = (pf->arg.space) ? ' ' : '\n';
 	if (!(pf->join = ft_strnew(0)))
 		return (1);
 	while (++pf->j < pf->arg.width)
@@ -61,15 +61,15 @@ static int		pf_build_array_int(t_printf *pf)
 
 static int		pf_build_array_char(t_printf *pf)
 {
-	char	**tab;
-	char	*prev;
-	char	*next;
-	char	space[2];
+	char		**tab;
+	char		*prev;
+	char		*next;
+	static char	space[2] = {0};
 
 	if (!(tab = (char **)va_arg(pf->ap, void *)))
 		return (1);
 	pf->j = -1;
-	space[0] = (!(space[1] = '\0') && pf->arg.space) ? ' ' : '\n';
+	space[0] = (pf->arg.space) ? ' ' : '\n';
 	if (!(tab[0]) || !(pf->join = ft_strnew(0)))
 		return (1);
 	while (tab[++pf->j])

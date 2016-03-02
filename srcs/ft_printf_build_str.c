@@ -43,8 +43,11 @@ int			pf_build_wstring(t_printf *pf)
 	int		dofree;
 
 	dofree = 0;
-	if (!(verif = (wchar_t *)va_arg(pf->ap, void *)) && (dofree = 1))
+	if (!(verif = (wchar_t *)va_arg(pf->ap, void *)))
+	{
+		dofree = 1;
 		verif = (wchar_t *)ft_strdup("(null)");
+	}
 	str = (dofree) ? ft_strdup((char *)verif) : ft_wstrtostr(verif);
 	if (pf->arg.ispreci && pf->arg.preci)
 		pf_build_wstring_preci(pf, verif);
@@ -69,8 +72,11 @@ int			pf_build_string(t_printf *pf)
 	if (pf->arg.length == l)
 		return (pf_build_wstring(pf));
 	dofree = 0;
-	if (!(verif = (char *)va_arg(pf->ap, void *)) && (dofree = 1))
+	if (!(verif = (char *)va_arg(pf->ap, void *)))
+	{
+		dofree = 1;
 		verif = ft_strdup("(null)");
+	}
 	pf->join = (pf->arg.ispreci) ? ft_strsub(verif, 0, pf->arg.preci) :
 	ft_strdup(verif);
 	if (dofree)
@@ -83,12 +89,15 @@ int			pf_build_string(t_printf *pf)
 	return (0);
 }
 
-int		pf_build_char(t_printf *pf)
+int			pf_build_char(t_printf *pf)
 {
 	if (pf->arg.length == l)
 		return (pf_build_wchar(pf));
-	if (!(pf->join = ft_strnew(1)) && (pf->ret = 1))
+	if (!(pf->join = ft_strnew(1)))
+	{
+		pf->ret = 1;
 		return (0);
+	}
 	if (!(pf->join[0] = (char)va_arg(pf->ap, void *)))
 		pf->join[0] = (char)pf_build_nulchar(pf);
 	pf->arg.more = 0;
@@ -101,7 +110,7 @@ int		pf_build_char(t_printf *pf)
 	return (0);
 }
 
-int		pf_build_wchar(t_printf *pf)
+int			pf_build_wchar(t_printf *pf)
 {
 	wchar_t wc;
 

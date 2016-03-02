@@ -79,13 +79,13 @@ static int		pf_parse_specifier(t_printf *pf)
 	{
 		if ((int)pf->in[pf->i] > '0' && (int)pf->in[pf->i] < 58
 			&& !(pf_parse_width(pf)))
-			break;
+			break ;
 		else if (((int)pf->in[pf->i] < '0' || (int)pf->in[pf->i] > 57)
 		&& (!spe[(int)(pf->in[pf->i])]))
-			break;
+			break ;
 		else if (pf->in[pf->i] && spe[(int)(pf->in[pf->i])]
 			&& !(spe[(int)(pf->in[pf->i])](pf)))
-			break;
+			break ;
 		pf->i++;
 	}
 	if (pf->valid == 0 && !pf->ret && pf_build_invalid(pf))
@@ -105,7 +105,7 @@ int				pf_parse(t_printf *pf)
 		|| pf_parse_specifier(pf)))
 			return (1);
 		if (!pf->in[pf->i])
-			break;
+			break ;
 		pf->i++;
 	}
 	if ((pf->i - pf->start) > 0 && pf_join(pf, 1))

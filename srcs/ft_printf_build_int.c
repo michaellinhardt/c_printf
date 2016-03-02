@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int					pf_build_int(t_printf *pf)
+int		pf_build_int(t_printf *pf)
 {
 	intmax_t	i;
 
@@ -43,7 +43,7 @@ int		pf_build_uint(t_printf *pf)
 {
 	uintmax_t	i;
 
-	pf->arg.length = (pf->in[pf->i] == 'U') ? l : pf->arg.length ;
+	pf->arg.length = (pf->in[pf->i] == 'U') ? l : pf->arg.length;
 	i = pf_build_get_uint(pf);
 	if (i == 0 && pf->arg.ispreci && !pf->arg.preci)
 		pf->join = ft_strnew(0);

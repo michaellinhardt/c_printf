@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_join.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 static int	pf_join_specifier(t_printf *pf)
 {
-	char			*prev;
+	char	*prev;
 
 	if (!pf->join)
 		return (0);
@@ -28,8 +28,8 @@ static int	pf_join_specifier(t_printf *pf)
 
 static int	pf_join_format(t_printf *pf)
 {
-	char			*prev;
-	char			*next;
+	char	*prev;
+	char	*next;
 
 	if ((pf->i - pf->start) == 0)
 		return (0);
@@ -43,7 +43,6 @@ static int	pf_join_format(t_printf *pf)
 	ft_strdel(&next);
 	return (0);
 }
-
 
 int			pf_join(t_printf *pf, int src)
 {
