@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/26 00:27:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:32:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ static void		pf_parse_specifier_init2(int (**spe)(t_printf *))
 	spe['j'] = &pf_parse_length;
 	spe['z'] = &pf_parse_length;
 	spe['L'] = &pf_parse_length;
-	// spe['{'] = &pf_parse_flag;
+	spe['{'] = &pf_build_color;
 	spe['b'] = &pf_build_binary;
 	spe['B'] = &pf_build_binary;
 	spe['g'] = &pf_build_float;
 	spe['G'] = &pf_build_float;
 	spe['e'] = &pf_build_float;
 	spe['E'] = &pf_build_float;
+	spe['t'] = &pf_build_array;
+	spe['T'] = &pf_build_array;
 }
 
 static void		pf_parse_specifier_init(int (**spe)(t_printf *))
@@ -97,7 +99,6 @@ static int		pf_parse_specifier(t_printf *pf)
 
 int				pf_parse(t_printf *pf)
 {
-
 	while (pf->in[pf->i])
 	{
 		if ((pf->in[pf->i] == '%') && (pf_join(pf, 1)
@@ -111,8 +112,5 @@ int				pf_parse(t_printf *pf)
 		return (1);
 	if (pf_join(pf, 2))
 		return (1);
-	// char		*tmp;
-	// tmp = va_arg(pf->ap, char *);
-	// printf("\npf->ap %s\n", tmp);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 01:12:26 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/26 01:18:23 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/02 14:42:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					pf_build_float(t_printf *pf)
 
 	i = pf_build_float_get(pf);
 	i *= (i < 0 && (pf->j = 1)) ? -1 : 1;
-	if (pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E')
+	if ((pf->e = '+') && (pf->in[pf->i] == 'e' || pf->in[pf->i] == 'E'))
 		i = pf_build_float_e1(pf, i);
 	if (pf_build_float_normal(pf, i))
 		return (1);

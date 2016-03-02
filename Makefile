@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/25 22:25:45 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/02 19:12:11 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS	=		ft_printf.c \
 				ft_printf_join.c \
 				ft_printf_parse.c \
 				ft_printf_parse_option.c \
+				ft_printf_build_color.c \
+				ft_printf_build_array.c \
 				ft_printf_build_format.c \
 				ft_printf_build_tools.c \
 				ft_printf_build_str.c \
@@ -116,11 +118,12 @@ re: fclean all
 	@/bin/rm -rf main.o
 	@echo "$(OK) $(GR)Done!$(WH)"
 
+re-test: fclean all -main -test
 test: all -main -test
 #test: all -main -test -main-clean
 -test:
 	@echo "$(W8) $(YE)time ./a.out | /bin/cat -e$(WH)"
-	@time ./a.out | /bin/cat -e
+	@time ./a.out
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 leaks: all -main -leaks -main-clean

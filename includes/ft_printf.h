@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/26 01:04:58 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/02 17:56:44 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,11 @@ int			pf_build_invalid(t_printf *pf);
 int			pf_build_nulchar(t_printf *pf);
 int			pf_build_modulo(t_printf *pf);
 
+// FICHIER BUILD_COLOR
+int			pf_build_color(t_printf *pf);
+
+// FICHIER BUILD_ARRAY
+int			pf_build_array(t_printf *pf);
 
 #include <stdio.h>
 #endif
