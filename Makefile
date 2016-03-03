@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/02 19:12:11 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/03 14:59:11 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,27 +76,14 @@ $(NAME): $(LIST_OBJ) $(LIST_OBJ_LIB)
 	ar rc $(NAME) $(LIST_OBJ) $(LIST_OBJ_LIB)
 	ranlib $(NAME)
 
-# $(NAME):
-# 	@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
-# 	@make -C $(LDIR)
-# 	@echo "$(W8) $(YE)gcc $(FLAGS) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
-# 	@gcc $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
-# 	@echo "$(OK) $(GR)Done!$(WH)"
-
 clean:
-#@echo "$(W8) $(YE)make clean -C $(LDIR)$(WH)"
-#@make clean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf $(LIST_OBJ) $(LIST_OBJ_LIB)$(WH)"
 	@/bin/rm -rf $(LIST_OBJ) $(LIST_OBJ_LIB)
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 fclean: clean
-#@echo "$(W8) $(YE)make fclean -C $(LDIR)$(WH)"
-#@make fclean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf $(NAME)$(WH)"
 	@/bin/rm -rf $(NAME)
-	@echo "$(W8) $(YE)/bin/rm -rf ./last.valgrind$(WH)"
-	@/bin/rm -rf ./last.valgrind
 	@echo "$(W8) $(YE)/bin/rm -rf ./*.dSYM$(WH)"
 	@/bin/rm -rf ./*.dSYM
 	@echo "$(OK) $(GR)Done!$(WH)"
@@ -106,12 +93,10 @@ re: fclean all
 -main-clean:
 	@echo "$(W8) $(YE)/bin/rm -rf a.out$(WH)"
 	@/bin/rm -rf a.out
-
--main:
-	@echo "$(W8) $(YE)/bin/rm -rf a.out$(WH)"
-	@/bin/rm -rf a.out
 	@echo "$(W8) $(YE)/bin/rm -rf main.o$(WH)"
 	@/bin/rm -rf main.o
+
+-main: -main-clean
 	@echo "$(W8) $(YE)$(CC) $(FLAGS) main.c -I$(HDIR) -L./ -lftprintf$(WH)"
 	@$(CC) $(FLAGS) main.c -I$(HDIR) -I./ -L./ -lftprintf
 	@echo "$(W8) $(YE)/bin/rm -rf main.o$(WH)"
@@ -120,16 +105,15 @@ re: fclean all
 
 re-test: fclean all -main -test
 test: all -main -test
-#test: all -main -test -main-clean
 -test:
-	@echo "$(W8) $(YE)time ./a.out | /bin/cat -e$(WH)"
+	@echo "$(W8) $(YE)time ./a.out$(WH)"
 	@time ./a.out
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-leaks: all -main -leaks -main-clean
+leaks: all -main -leaks
 -leaks:
-	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./a.out > ./last.valgrind 2>&1$(WH)"
+	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./a.out$(WH)"
 	@valgrind --leak-check=yes --track-origins=yes ./a.out
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-.PHONY: all clean fclean re test leaks -leaks -main
+.PHONY: all clean fclean re test re-test leaks
