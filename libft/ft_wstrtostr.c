@@ -19,14 +19,14 @@ char	*ft_wstrtostr(wchar_t const *src)
 	char *next;
 
 	if (!(str = ft_strnew(0)))
-		return ((char *) NULL);
+		return ((char *)NULL);
 	while (*src)
 	{
 		prev = str;
 		if (!(next = ft_wchartostr(*src)))
-		return ((char *) NULL);
+			return ((char *)NULL);
 		if (!(str = ft_strjoin(prev, next)))
-		return ((char *) NULL);
+			return ((char *)NULL);
 		if (*src++)
 			;
 		ft_strdel(&prev);
