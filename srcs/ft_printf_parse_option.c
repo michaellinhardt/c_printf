@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		pf_parse_flag(t_printf *pf)
+int			pf_parse_flag(t_printf *pf)
 {
 	if ((pf->in[pf->i] == '#') && (pf->arg.diez = 1))
 		return (1);
@@ -27,7 +27,7 @@ int		pf_parse_flag(t_printf *pf)
 	return (1);
 }
 
-int		pf_parse_length(t_printf *pf)
+int			pf_parse_length(t_printf *pf)
 {
 	if (pf->in[pf->i] == 'h')
 		pf->arg.length = (h > pf->arg.length) ? h : pf->arg.length;
@@ -48,10 +48,8 @@ int		pf_parse_length(t_printf *pf)
 	return (1);
 }
 
-int		pf_parse_preci(t_printf *pf)
+static int	pf_parse_preci_get(t_printf *pf)
 {
-	int			start;
-
 	pf->i++;
 	pf->arg.ispreci = 1;
 	if (pf->in[pf->i] && pf->in[pf->i] == '*'
@@ -61,6 +59,15 @@ int		pf_parse_preci(t_printf *pf)
 			pf->arg.preci = 0;
 		return (1);
 	}
+	return (0);
+}
+
+int			pf_parse_preci(t_printf *pf)
+{
+	int			start;
+
+	if (pf_parse_preci_get(pf))
+		return (1);
 	start = pf->i;
 	pf->arg.preci = 0;
 	while (pf->in[pf->i])
@@ -83,7 +90,7 @@ int		pf_parse_preci(t_printf *pf)
 	return (1);
 }
 
-int		pf_parse_width(t_printf *pf)
+int			pf_parse_width(t_printf *pf)
 {
 	int			start;
 

@@ -72,63 +72,49 @@ typedef struct		s_printf
 	t_arg			arg;
 }					t_printf;
 
-// FICHIER PRINTF.C
-int			ft_printf(const char *restrict format, ...);
+int					ft_printf(const char *restrict format, ...);
 
-// FICHIER JOIN.C
-int			pf_join(t_printf *pf, int src);
+int					pf_join(t_printf *pf, int src);
 
-// FICHIER PARSE.C
-int			pf_parse(t_printf *pf);
+int					pf_parse(t_printf *pf);
 
-// FICHIER PARSE_OPTION.C
-int			pf_parse_flag(t_printf *pf);
-int			pf_parse_length(t_printf *pf);
-int			pf_parse_preci(t_printf *pf);
-int			pf_parse_width(t_printf *pf);
+int					pf_parse_flag(t_printf *pf);
+int					pf_parse_length(t_printf *pf);
+int					pf_parse_preci(t_printf *pf);
+int					pf_parse_width(t_printf *pf);
 
-// FICHIER BUILD_FORMAT.C
-void		pf_build_format(t_printf *pf);
+void				pf_build_format(t_printf *pf);
 
-// FICHIER BUILD_STR.C
-int			pf_build_string(t_printf *pf);
-int			pf_build_char(t_printf *pf);
-int			pf_build_wstring(t_printf *pf);
-int			pf_build_wchar(t_printf *pf);
+int					pf_build_string(t_printf *pf);
+int					pf_build_char(t_printf *pf);
+int					pf_build_wstring(t_printf *pf);
+int					pf_build_wchar(t_printf *pf);
 
-// FICHIER BUILD_INT.C
-int			pf_build_int(t_printf *pf);
-int			pf_build_uint(t_printf *pf);
+int					pf_build_int(t_printf *pf);
+int					pf_build_uint(t_printf *pf);
 
-// FICHIER BUILD_INT_BASE.C
-int			pf_build_oint(t_printf *pf);
-int			pf_build_xint(t_printf *pf);
-int			pf_build_ptr(t_printf *pf);
-int			pf_build_binary(t_printf *pf);
+int					pf_build_oint(t_printf *pf);
+int					pf_build_xint(t_printf *pf);
+int					pf_build_ptr(t_printf *pf);
+int					pf_build_binary(t_printf *pf);
 
-// FICHIER BUILD_INT_TOOLS
-uintmax_t	pf_build_get_uint(t_printf *pf);
-intmax_t	pf_build_get_int(t_printf *pf);
-void		pf_build_itoa(t_printf *pf);
+uintmax_t			pf_build_get_uint(t_printf *pf);
+intmax_t			pf_build_get_int(t_printf *pf);
+void				pf_build_itoa(t_printf *pf);
 
-// FICHIER BUILD_FLOAT.C
-int			pf_build_float(t_printf *pf);
+int					pf_build_float(t_printf *pf);
 
-// FICHIER BUILD_FLOAT_TOOLS.C
-long double	pf_build_float_get(t_printf *pf);
-int			pf_build_float_less(t_printf *pf);
-int			pf_build_float_right(t_printf *pf, long double i, int count);
+long double			pf_build_float_get(t_printf *pf);
+int					pf_build_float_less(t_printf *pf);
+int					pf_build_float_right(t_printf *pf
+					, long double i, int count);
 
-// FICHIER BUILD_TOOLS
-int			pf_build_invalid(t_printf *pf);
-int			pf_build_nulchar(t_printf *pf);
-int			pf_build_modulo(t_printf *pf);
+int					pf_build_invalid(t_printf *pf);
+int					pf_build_nulchar(t_printf *pf);
+int					pf_build_modulo(t_printf *pf);
 
-// FICHIER BUILD_COLOR
-int			pf_build_color(t_printf *pf);
+int					pf_build_color(t_printf *pf);
 
-// FICHIER BUILD_ARRAY
-int			pf_build_array(t_printf *pf);
+int					pf_build_array(t_printf *pf);
 
-#include <stdio.h>
 #endif

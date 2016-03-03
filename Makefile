@@ -15,7 +15,7 @@ CC		=		gcc
 FLAGS1	=		-Wall -Wextra -Werror -g
 FLAGS2	=		-g
 FLAGS3	=		-Wall -Wextra -Werror
-FLAGS	=		$(FLAGS2)
+FLAGS	=		$(FLAGS3)
 
 SRCS	=		ft_printf.c \
 				ft_printf_join.c \
@@ -129,9 +129,7 @@ test: all -main -test
 leaks: all -main -leaks -main-clean
 -leaks:
 	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./a.out > ./last.valgrind 2>&1$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./a.out > ./last.valgrind 2>&1
-	@echo "$(W8) $(YE)/bin/cat ./last.valgrind$(WH)"
-	@/bin/cat ./last.valgrind
+	@valgrind --leak-check=yes --track-origins=yes ./a.out
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 .PHONY: all clean fclean re test leaks -leaks -main
