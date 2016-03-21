@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 16:20:26 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/03/10 13:31:00 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/03/10 16:12:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int			main(void)
+char	*ft_strrealloc(char *str, int size)
 {
-	long double ld = 50e50;
+	char	*ret;
 
-	ft_printf("\n\n% +#-100Lf\n\n\n", ld);
-	printf("\n\n% +#-100Lf\n\n\n", ld);
-	return (0);
+	if (!(ret = ft_strnew(ft_strlen(str) + size + 2)))
+		return (NULL);
+	ft_memcpy(ret, str, ft_strlen(str));
+	ft_strdel(&str);
+	return (ret);
 }

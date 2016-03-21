@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/03 14:59:11 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/21 16:01:33 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC		=		gcc
 FLAGS1	=		-Wall -Wextra -Werror -g
 FLAGS2	=		-g
 FLAGS3	=		-Wall -Wextra -Werror
-FLAGS	=		$(FLAGS3)
+FLAGS	=		$(FLAGS2)
 
 SRCS	=		ft_printf.c \
 				ft_printf_join.c \
@@ -29,8 +29,7 @@ SRCS	=		ft_printf.c \
 				ft_printf_build_int.c \
 				ft_printf_build_int_base.c \
 				ft_printf_build_int_tools.c \
-				ft_printf_build_float.c \
-				ft_printf_build_float_tools.c
+				ft_printf_build_double.c
 
 SRCS_LIB		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c \
@@ -47,7 +46,7 @@ SRCS_LIB		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c ft_strrev.c \
 				  ft_pcol.c ft_imaxtoa_base.c ft_uimaxtoa_base.c ft_wstrtostr.c \
-				  ft_wchartostr.c
+				  ft_wchartostr.c ft_strrealloc.c ft_ldtoa.c
 
 HDIR		=	./includes/
 LDIR		=	./libft/

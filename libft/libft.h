@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 03:45:11 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 15:23:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ char				*ft_strtolower(char *str);
 char				*ft_pcol(char *s);
 int					ft_countwords(const char *s, char c);
 
-size_t				ft_arrlen(char **arr);
-char				**ft_arrcpy(char **arr);
-void				ft_arrfree(char **arr);
-void				ft_arrprint(char **arr);
-
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -103,6 +98,7 @@ char				**ft_strsplit(char const *s, char c);
 
 char				*ft_wchartostr(wchar_t const wc);
 char				*ft_wstrtostr(wchar_t const *src);
+char				*ft_strrealloc(char *str, int size);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -110,5 +106,20 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+char				*ft_ldtoa(long double ld, int preci);
+
+typedef struct		s_ldtoa
+{
+	long double		save;
+	long double		ld;
+	long double		tmp;
+	char			*ret;
+	int				divi;
+	int				multi;
+	int				preci;
+	int				isneg;
+	int				i;
+}					t_ldtoa;
 
 #endif

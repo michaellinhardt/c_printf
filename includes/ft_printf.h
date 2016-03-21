@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/02 17:56:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:01:50 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <wchar.h>
+# include <locale.h>
 
 # define CWHI "\e[39m"
 # define CRED "\e[31m"
@@ -61,7 +62,6 @@ typedef struct		s_printf
 	int				i;
 	int				j;
 	int				k;
-	char			e;
 	int				start;
 	char			*join;
 	char			*in;
@@ -105,9 +105,6 @@ void				pf_build_itoa(t_printf *pf);
 int					pf_build_float(t_printf *pf);
 
 long double			pf_build_float_get(t_printf *pf);
-int					pf_build_float_less(t_printf *pf);
-int					pf_build_float_right(t_printf *pf
-					, long double i, int count);
 
 int					pf_build_invalid(t_printf *pf);
 int					pf_build_nulchar(t_printf *pf);
@@ -116,5 +113,7 @@ int					pf_build_modulo(t_printf *pf);
 int					pf_build_color(t_printf *pf);
 
 int					pf_build_array(t_printf *pf);
+
+int					pf_build_double(t_printf *pf);
 
 #endif
