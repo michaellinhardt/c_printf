@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 16:20:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:13:13 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ static void		pf_parse_specifier_init2(int (**spe)(t_printf *))
 	spe['B'] = &pf_build_binary;
 	spe['t'] = &pf_build_array;
 	spe['T'] = &pf_build_array;
-	spe['f'] = &pf_build_double;
-	spe['F'] = &pf_build_double;
+	spe['f'] = &pf_build_float;
+	spe['F'] = &pf_build_float;
+	spe['g'] = &pf_build_float;
+	spe['G'] = &pf_build_float;
+	spe['e'] = &pf_build_exp;
+	spe['E'] = &pf_build_exp;
 }
 
 static void		pf_parse_specifier_init(int (**spe)(t_printf *))

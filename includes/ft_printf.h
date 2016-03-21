@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 16:01:50 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 17:59:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int					pf_build_color(t_printf *pf);
 
 int					pf_build_array(t_printf *pf);
 
-int					pf_build_double(t_printf *pf);
+int					pf_build_float(t_printf *pf);
+int					pf_build_exp(t_printf *pf);
 
 #endif

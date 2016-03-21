@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 16:20:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:00:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int			main(void)
 {
-	long double ld = 50e50;
+	double ld = -0.0;
 
-	ft_printf("\n\n% +#-100Lf\n\n\n", ld);
-	printf("\n\n% +#-100Lf\n\n\n", ld);
+	ft_printf("%f\n", ld);
+	printf("%f\n", ld);
 	return (0);
 }

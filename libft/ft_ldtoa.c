@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 10:06:49 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 15:20:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:22:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_ldtoa_solve(t_ldtoa *db)
 		db->multi++;
 		if (db->multi > db->divi && (db->divi = 999999) && db->preci > 0)
 		{
-			if (!db->i)
+			if (!db->i || db->ret[(db->i - 1)] == '-')
 				db->ret[db->i++] = '0';
 			db->ret[db->i++] = '.';
 		}
