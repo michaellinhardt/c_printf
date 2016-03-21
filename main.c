@@ -15,9 +15,9 @@
 
 int			main(void)
 {
-	double ld = -0.0;
+	double ld = 3.999;
 
-	ft_printf("%f\n", ld);
-	printf("%f\n", ld);
+	ft_printf("%.20f\n", ld);
+	printf("%.20f\n", ld);
 	return (0);
 }

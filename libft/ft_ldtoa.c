@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 10:06:49 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 18:23:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 19:41:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char		*ft_ldtoa(long double ld, int preci)
 	ft_bzero(&db, sizeof(t_ldtoa));
 	if (!(db.ret = ft_strnew(2048)))
 		return ((char *)NULL);
-	if (ld < 0 && (db.isneg = 1))
+	if (( 1 / ld) < 0 && (db.isneg = 1))
 	{
 		db.ret[db.i++] = '-';
 		ld *= -1;
