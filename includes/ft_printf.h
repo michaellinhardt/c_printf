@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 17:59:02 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/21 22:30:33 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ void				pf_build_itoa(t_printf *pf);
 
 int					pf_build_float(t_printf *pf);
 
-long double			pf_build_float_get(t_printf *pf);
-
 int					pf_build_invalid(t_printf *pf);
 int					pf_build_nulchar(t_printf *pf);
 int					pf_build_modulo(t_printf *pf);
@@ -116,5 +114,8 @@ int					pf_build_array(t_printf *pf);
 
 int					pf_build_float(t_printf *pf);
 int					pf_build_exp(t_printf *pf);
+long double			pf_build_float_get(t_printf *pf);
+
+int					pf_build_float_g(t_printf *pf);
 
 #endif
