@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 22:36:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 01:50:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void		pf_parse_specifier_init2(int (**spe)(t_printf *))
 	spe['G'] = &pf_build_float_g;
 	spe['e'] = &pf_build_exp;
 	spe['E'] = &pf_build_exp;
+	spe['n'] = &pf_build_n;
 }
 
 static void		pf_parse_specifier_init(int (**spe)(t_printf *))

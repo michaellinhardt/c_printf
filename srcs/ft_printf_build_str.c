@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 19:24:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 01:48:50 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ int			pf_build_wchar(t_printf *pf)
 		wc = (wchar_t)pf_build_nulchar(pf);
 	else
 	{
-		if ((wc < 0 || wc > 1114111) && (pf->ret = 1))
+		if ((wc < 0 || (wc > 55295 && wc < 57344) || wc > 1114111)
+			&& (pf->ret = 1))
 			return (0);
 	}
 	if (!(pf->join = ft_wchartostr(wc)))

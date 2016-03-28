@@ -6,12 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 22:29:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/22 02:03:09 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/22 11:06:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static char			*pf_build_float_g_normal2(t_printf *pf, long double ld)
 {
