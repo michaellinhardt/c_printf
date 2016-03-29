@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 01:48:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 02:58:27 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void		pf_print(t_printf *pf)
 	pf->j = -1;
 	while (pf->nulchar[++pf->j] > -1)
 		pf->out[(pf->nulchar[pf->j])] = '\0';
-	write(1, pf->out, pf->ret);
+	if (pf->write == 0)
+		write(1, pf->out, pf->ret);
+	else
+		*pf->wout = ft_strdup(pf->out);
 }
 
 static int		pf_return(t_printf *pf, int ret)

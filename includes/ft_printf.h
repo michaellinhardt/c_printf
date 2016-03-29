@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/22 11:08:49 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 03:12:48 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct		s_printf
 	char			*join;
 	char			*in;
 	char			*out;
+	int				write;
+	char			**wout;
+	int				freestr;
 	int				ret;
 	int				nulchar[512];
 	va_list			ap;
@@ -119,5 +122,7 @@ long double			pf_build_float_get(t_printf *pf);
 int					pf_build_float_g(t_printf *pf);
 
 int					pf_build_n(t_printf *pf);
+
+int					pf_build_write(t_printf *pf);
 
 #endif

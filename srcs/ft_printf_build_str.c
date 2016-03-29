@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 01:48:50 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 03:20:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			pf_build_string(t_printf *pf)
 
 	if (pf->arg.length == l)
 		return (pf_build_wstring(pf));
-	dofree = 0;
+	dofree = (pf->freestr == 1) ? 1 : 0;
 	if (!(verif = (char *)va_arg(pf->ap, void *)))
 	{
 		dofree = 1;
