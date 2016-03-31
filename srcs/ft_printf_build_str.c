@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 01:12:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 03:20:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/31 19:23:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	pf_build_wstring_preci(t_printf *pf, wchar_t const *ws)
 
 	i = 0;
 	last = 0;
-	while (*ws && (i <= pf->arg.preci))
+	while (*ws && (i <= (size_t)pf->arg.preci))
 	{
 		last = i;
 		if (*ws <= 0x7F)
@@ -33,7 +33,7 @@ static void	pf_build_wstring_preci(t_printf *pf, wchar_t const *ws)
 		if (*ws++)
 			;
 	}
-	pf->arg.preci = (i <= pf->arg.preci) ? i : last;
+	pf->arg.preci = (i <= (size_t)pf->arg.preci) ? i : last;
 }
 
 int			pf_build_wstring(t_printf *pf)
