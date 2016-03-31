@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 22:29:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/22 11:06:45 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/31 19:08:30 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char			*pf_build_float_g_normal2(t_printf *pf, long double ld)
 		while (verif[++i])
 		{
 			if (verif[i] != '0' && verif[i] != '.' && verif[i] != '-'
-			 && (++stop || 1))
+			&& (++stop || 1))
 				break ;
 			if (verif[i] == '0' && i > 0)
 				pf->arg.preci++;
@@ -85,10 +85,11 @@ static char			*pf_build_float_g_exp_round(t_printf *pf, long double ld
 
 int					pf_build_float_g_exp(t_printf *pf, long double ld)
 {
-	char		end[100] = {0};
+	char		*end;
 	char		*tmp1;
 	char		*tmp2;
 
+	end = ft_strnew(100);
 	end[0] = (pf->in[pf->i] + '0') - 2 - '0';
 	end[1] = '+';
 	while ((ld < -9.9 || ld > 9.9) && ++pf->arg.diez)
@@ -100,6 +101,7 @@ int					pf_build_float_g_exp(t_printf *pf, long double ld)
 		end[2] = '0';
 	tmp1 = ft_itoa(pf->arg.diez);
 	tmp2 = ft_strjoin(end, tmp1);
+	ft_strdel(&end);
 	ft_strdel(&tmp1);
 	tmp1 = ft_ldtoa(ld, pf->arg.preci - 1);
 	tmp1 = pf_build_float_g_exp_round(pf, ld, tmp1);

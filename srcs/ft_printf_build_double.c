@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 16:00:17 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/22 00:36:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/31 19:12:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 long double			pf_build_exp_solve(t_printf *pf, long double ld)
 {
-	char		end[100] = {0};
+	char		*end;
 	char		*tmp1;
 	char		*tmp2;
 
+	end = ft_strnew(100);
 	end[0] = pf->in[pf->i];
 	end[1] = '+';
 	while ((ld < -9.9 || ld > 9.9) && ++pf->arg.diez)
@@ -29,6 +30,7 @@ long double			pf_build_exp_solve(t_printf *pf, long double ld)
 		end[2] = '0';
 	tmp1 = ft_itoa(pf->arg.diez);
 	tmp2 = ft_strjoin(end, tmp1);
+	ft_strdel(&end);
 	ft_strdel(&tmp1);
 	tmp1 = ft_ldtoa(ld, pf->arg.preci);
 	pf->join = ft_strjoin(tmp1, tmp2);
