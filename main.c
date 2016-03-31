@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:23:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 03:19:53 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 03:22:32 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			main(void)
 	// 	ft_test2(i);
 
 	// (void)l;
-	ft_printf("%-!%s%s%s\n", &test, tmp1, tmp2, tmp3);
+	ft_printf("%-!%1{%s%s%s\n", &test, tmp1, tmp2, tmp3);
 	printf("%s\n", test);
 	ft_strdel(&test);
 
