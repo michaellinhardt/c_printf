@@ -6,16 +6,13 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 03:05:25 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/29 02:14:05 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/31 19:22:43 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=		libftprintf.a
 CC		=		gcc
-FLAGS1	=		-Wall -Wextra -Werror -g
-FLAGS2	=		-g
-FLAGS3	=		-Wall -Wextra -Werror
-FLAGS	=		$(FLAGS1)
+CFLAGS	=		-Wall -Wextra -Werror
 
 SRCS	=		ft_printf.c \
 				ft_printf_join.c \
@@ -86,36 +83,8 @@ clean:
 fclean: clean
 	@echo "$(W8) $(YE)/bin/rm -rf $(NAME)$(WH)"
 	@/bin/rm -rf $(NAME)
-	@echo "$(W8) $(YE)/bin/rm -rf ./*.dSYM$(WH)"
-	@/bin/rm -rf ./*.dSYM
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 re: fclean all
 
--main-clean:
-	@echo "$(W8) $(YE)/bin/rm -rf a.out$(WH)"
-	@/bin/rm -rf a.out
-	@echo "$(W8) $(YE)/bin/rm -rf main.o$(WH)"
-	@/bin/rm -rf main.o
-
--main: -main-clean
-	@echo "$(W8) $(YE)$(CC) $(FLAGS) main.c -I$(HDIR) -L./ -lftprintf$(WH)"
-	@$(CC) $(FLAGS) main.c -I$(HDIR) -I./ -L./ -lftprintf
-	@echo "$(W8) $(YE)/bin/rm -rf main.o$(WH)"
-	@/bin/rm -rf main.o
-	@echo "$(OK) $(GR)Done!$(WH)"
-
-re-test: fclean all -main -test
-test: all -main -test
--test:
-	@echo "$(W8) $(YE)time ./a.out$(WH)"
-	@time ./a.out
-	@echo "$(OK) $(GR)Done!$(WH)"
-
-leaks: all -main -leaks
--leaks:
-	@echo "$(W8) $(YE)valgrind --leak-check=yes --track-origins=yes ./a.out$(WH)"
-	@valgrind --leak-check=yes --track-origins=yes ./a.out
-	@echo "$(OK) $(GR)Done!$(WH)"
-
-.PHONY: all clean fclean re test re-test leaks
+.PHONY: all clean fclean re
